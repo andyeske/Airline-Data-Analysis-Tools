@@ -13,7 +13,7 @@ Description
 
 ---
 <a name="APAT"></a>
-## Airline Peformance Analysis Tool (APAT)
+### Airline Peformance Analysis Tool (APAT)
 
 
 
@@ -21,15 +21,15 @@ Description
 
 ---
 <a name="AMAT"></a>
-## Airline Market Analysis Tool (AMAT)
+### Airline Market Analysis Tool (AMAT)
 
 Coming Soon!
 
 ([ back to top ](#back_to_top))
 
 ---
-<a name="AMAT"></a>
-## Airline Route Analysis Tool (ARAT)
+<a name="ARAT"></a>
+### Airline Route Analysis Tool (ARAT)
 
 Coming Soon!
 
