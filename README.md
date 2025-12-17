@@ -15,13 +15,13 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 <a name="APAT"></a>
 ### Airline Peformance Analysis Tool (APAT)
 
-**Tool Purpose:** ```APAT``` can be used to compute a variety of performance metrics, a sample of which are contained in this repository. These metrics include:
+**Tool Purpose:** ```APAT``` can be used to compute a variety of performance metrics, including: . The outputs from APAT are displayed below:
 
 [Overview Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables):
-* (1) Total Revenue Passenger Miles (RPMs) | RPMs_by_Aircraft_and_Airline.xlsx
-* (2) Total Available Seat Miles (ASMs) | ASMs_by_Aircraft_and_Airline.xlsx
-* (3) Average Load Factor (RPMs/ASMs) | LFs_by_Aircraft_and_Airline.xlsx
-* (4) Total Departures (# departures) | Departures_by_Aircraft_and_Airline.xlsx
+* (1) Total Revenue Passenger Miles (RPMs) | File Name: _RPMs_by_Aircraft_and_Airline.xlsx_
+* (2) Total Available Seat Miles (ASMs) | File Name: _ASMs_by_Aircraft_and_Airline.xlsx_
+* (3) Average Load Factor (RPMs/ASMs) | File Name: _LFs_by_Aircraft_and_Airline.xlsx_
+* (4) Total Departures (# departures) | File Name: _Departures_by_Aircraft_and_Airline.xlsx_
 
 [Utilization Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Utilization%20Metrics%20Tables):
 * (5) Average Number of Departures per Day (# departures/day assigned) - Excel Name: Departures_per_Day_by_Aircraft_and_Airline.xlsx
