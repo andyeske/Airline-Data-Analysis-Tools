@@ -15,7 +15,7 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 <a name="APAT"></a>
 ### Airline Peformance Analysis Tool (APAT)
 
-**Tool Purpose:** ```APAT``` can be used to compute 19 different system-wide performance metrics, to the aircraft and airline level of granularity, largely grouped under overview, utilization, fuel consumption, and aircraft operating cost metrics. The outputs from ```APAT``` consist of 21 excel datatables, which are displayed below (alongside links to sample tables):
+**Tool Purpose:** ```APAT``` can be used to compute 19 different system-wide performance metrics, to the aircraft and airline level of granularity, largely grouped under overview, utilization, fuel consumption, and aircraft operating cost metrics. The outputs from ```APAT``` consist of 21 excel data tables, which are displayed below (alongside links to sample tables):
 
 [Overview Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables): 
 * (1) ```Total Revenue Passenger Miles (RPMs)``` | _RPMs_by_Aircraft_and_Airline.xlsx_
@@ -50,15 +50,17 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 
 Here, Tables (20) and (21) contain a summary of (1), (2), (6), (8), (4), (5), (7), (3), (9), (12), (13), and (14), specific to an aircraft type (20) or an airline (21). See "User Actions" for more details on how to select the desired aircraft type or airline.
 
-Note: These datatables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: These data tables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
-**Data Inputs:** To use ```APAT```, the user must first download four open-source datatables, which include:
+**Data Inputs:** To use ```APAT```, the user must first download four open-source datasets, which include:
 * [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) data. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Unique Carrier Name | h) Origin | i) Destinaiton | j) Aircraft | k) Month.
 * [BTS Form 41 Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) data. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
 * Aircraft Codes, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
-**User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Datatables (1) - (19) are automatically generated, while (20) - (21) could 
+Note: After downloading the two BTS datasets, unzip them, and rename them to "T100 Data.csv" and "F41 Data.csv", respectively. Place all four datasets under the same folder, alongside the ```APAT```, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+
+**User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Data tables (1) - (19) are automatically generated, while (20) - (21) could 
 
 ```Desired_Aircraft = 'A320';```
 ```Desired_Airline = 'American';```
