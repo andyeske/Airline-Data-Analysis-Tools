@@ -53,8 +53,8 @@ Here, Tables (20) and (21) contain a summary of (1), (2), (6), (8), (4), (5), (7
 Note: These datatables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```APAT```, the user must first download four open-source datatables, which include:
-* [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) data. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed, b) Seats, c) Passengers, d) Distance, e) Ramp to Ramp Time, f) Unique Carrier, g) Unique Carrier Name, h) Origin, i) Destinaiton, j) Aircraft, and k) Month.
-* [BTS Form 41 Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) data. Select the same year as above for _Filter Year_, "All Quarters" for _Filter Period_. For the entries to download, select all.
+* [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) data. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Unique Carrier Name | h) Origin | i) Destinaiton | j) Aircraft | k) Month.
+* [BTS Form 41 Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) data. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
 * Aircraft Codes, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
