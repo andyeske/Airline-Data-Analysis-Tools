@@ -24,25 +24,25 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 * (4) ```Total Departures (# departures)``` | _Departures_by_Aircraft_and_Airline.xlsx_ 
 
 [Utilization Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Utilization%20Metrics%20Tables):
-* (5) Average Number of Departures per Day (# departures/day assigned) | _Departures_per_Day_by_Aircraft_and_Airline.xlsx_ 
-* (6) Average Number ASMs per Day (ASMs/day assigned) | _ASMs_per_Day_by_Aircraft_and_Airline.xlsx_ 
-* (7) Average Aircraft Utilization per Day (block-hr/day assigned) | _Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx_
-* (8) Average Number of Seats per Departure (# seats/# departures) | _Seats_per_Departures_by_Aircraft_and_Airline.xlsx_ 
-* (9) Average Stage Length (mi) | _ASL_by_Aircraft_and_Airline.xlsx_ 
+* (5) ```Average Number of Departures per Day (# departures/day assigned)``` | _Departures_per_Day_by_Aircraft_and_Airline.xlsx_ 
+* (6) ```Average Number ASMs per Day (ASMs/day assigned)``` | _ASMs_per_Day_by_Aircraft_and_Airline.xlsx_ 
+* (7) ```Average Aircraft Utilization per Day (block-hr/day assigned)``` | _Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx_
+* (8) ```Average Number of Seats per Departure (# seats/# departures)``` | _Seats_per_Departures_by_Aircraft_and_Airline.xlsx_ 
+* (9) ```Average Stage Length (mi)``` | _ASL_by_Aircraft_and_Airline.xlsx_ 
 
 [Fuel Consumption](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Fuel%20Consumption%20Tables): 
-* (10) Average Fuel Intensity per ASMs (L/ASMs) | _Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx_ 
-* (11) Average Fuel Intensity per Distance (L/mi) | _Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx_ 
+* (10) ```Average Fuel Intensity per ASMs (L/ASMs)``` | _Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx_ 
+* (11) ```Average Fuel Intensity per Distance (L/mi)``` | _Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx_ 
 
 [Aircraft Operating Costs](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aircraft%20Operating%20Costs%20Tables): 
-* (12) AOC per Block Hour (USD$/block-hr) | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_ 
-* (13) AOC per Seat Hour (USD$/seat-hr) | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_ 
-* (14) AOC per ASMs (USD$/ASM) | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_ 
-* (15) Unnormalized Fuel Costs (USD$) | _Fuel_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (16) Unnormalized Maintenance Costs (USD$) | _Maintenance_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (17) Unnormalized Crew Costs (USD$) | _Crew_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (18) Unnormalized Ownership Costs (USD$) | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (19) Unnormalized Other Costs (USD$) | _Other_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (12) ```AOC per Block Hour (USD$/block-hr)``` | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_ 
+* (13) ```AOC per Seat Hour (USD$/seat-hr)``` | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_ 
+* (14) ```AOC per ASMs (USD$/ASM)``` | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_ 
+* (15) ```Unnormalized Fuel Costs (USD$)``` | _Fuel_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (16) ```Unnormalized Maintenance Costs (USD$)``` | _Maintenance_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (17) ```Unnormalized Crew Costs (USD$)``` | _Crew_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (18) ```Unnormalized Ownership Costs (USD$)``` | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (19) ```Unnormalized Other Costs (USD$)``` | _Other_Costs_by_Aircraft_and_Airline.xlsx_ 
 
 [Aggregated Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables): <br />
 
