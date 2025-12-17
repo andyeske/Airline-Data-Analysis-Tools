@@ -15,38 +15,38 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 <a name="APAT"></a>
 ### Airline Peformance Analysis Tool (APAT)
 
-**Tool Purpose:** ```APAT``` can be used to compute a variety of performance metrics, including: . The outputs from APAT are displayed below:
+**Tool Purpose:** ```APAT``` can be used to compute 19 different system-wide performance metrics, to the aircraft and airline level of granularity. As a result, the outputs from APAT consist of 19 excel datatables, which are displayed below (alongside links to sample tables):
 
 [Overview Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables):
-* (1) Total Revenue Passenger Miles (RPMs) | _RPMs_by_Aircraft_and_Airline.xlsx_
-* (2) Total Available Seat Miles (ASMs) | _ASMs_by_Aircraft_and_Airline.xlsx_
-* (3) Average Load Factor (RPMs/ASMs) | _LFs_by_Aircraft_and_Airline.xlsx_
-* (4) Total Departures (# departures) | _Departures_by_Aircraft_and_Airline.xlsx_
+(1) Total Revenue Passenger Miles (RPMs) | _RPMs_by_Aircraft_and_Airline.xlsx_
+(2) Total Available Seat Miles (ASMs) | _ASMs_by_Aircraft_and_Airline.xlsx_
+(3) Average Load Factor (RPMs/ASMs) | _LFs_by_Aircraft_and_Airline.xlsx_
+(4) Total Departures (# departures) | _Departures_by_Aircraft_and_Airline.xlsx_
 
 [Utilization Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Utilization%20Metrics%20Tables):
-* (5) Average Number of Departures per Day (# departures/day assigned) - Excel Name: Departures_per_Day_by_Aircraft_and_Airline.xlsx
-* (6) Average Number ASMs per Day (ASMs/day assigned) - Excel Name: ASMs_per_Day_by_Aircraft_and_Airline.xlsx
-* (7) Average Aircraft Utilization per Day (block-hr/day assigned) - Excel Name: Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx
-* (8) Average Number of Seats per Departure (# seats/# departures) - Excel Name: Seats_per_Departures_by_Aircraft_and_Airline.xlsx
-* (9) Average Stage Length (mi) - Excel Name: ASL_by_Aircraft_and_Airline.xlsx
+(5) Average Number of Departures per Day (# departures/day assigned) | _Departures_per_Day_by_Aircraft_and_Airline.xlsx_
+(6) Average Number ASMs per Day (ASMs/day assigned) | _ASMs_per_Day_by_Aircraft_and_Airline.xlsx_
+(7) Average Aircraft Utilization per Day (block-hr/day assigned) | _Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx_
+(8) Average Number of Seats per Departure (# seats/# departures) | _Seats_per_Departures_by_Aircraft_and_Airline.xlsx_
+(9) Average Stage Length (mi) | _ASL_by_Aircraft_and_Airline.xlsx_
 
 [Fuel Consumption](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Fuel%20Consumption%20Tables):
-* (10) Average Fuel Intensity per ASMs (L/ASMs) - Excel Name: Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx
-* (11) Average Fuel Intensity per Distance (L/mi) - Excel Name: Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx
+(10) Average Fuel Intensity per ASMs (L/ASMs) | _Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx_
+(11) Average Fuel Intensity per Distance (L/mi) | _Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx_
 
 [Aircraft Operating Costs](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aircraft%20Operating%20Costs%20Tables):
-* (12) AOC per Block Hour (USD$/block-hr) - Excel Name: AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx
-* (13) AOC per Seat Hour (USD$/seat-hr) - Excel Name: AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx
-* (14) AOC per ASMs (USD$/ASM) - Excel Name: AOC_per_ASMs_by_Aircraft_and_Airline.xlsx
-* (15) Unnormalized Fuel Costs (USD$) - Excel Name: Fuel_Costs_by_Aircraft_and_Airline.xlsx
-* (16) Unnormalized Maintenance Costs (USD$) - Excel Name: Maintenance_Costs_by_Aircraft_and_Airline.xlsx
-* (17) Unnormalized Crew Costs (USD$) - Excel Name: Crew_Costs_by_Aircraft_and_Airline.xlsx
-* (18) Unnormalized Ownership Costs (USD$) - Excel Name: Ownership_Costs_by_Aircraft_and_Airline.xlsx
-* (19) Unnormalized Other Costs (USD$) - Excel Name: Other_Costs_by_Aircraft_and_Airline.xlsx
+(12) AOC per Block Hour (USD$/block-hr) | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_
+(13) AOC per Seat Hour (USD$/seat-hr) | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_
+(14) AOC per ASMs (USD$/ASM) | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_
+(15) Unnormalized Fuel Costs (USD$) | _Fuel_Costs_by_Aircraft_and_Airline.xlsx_
+(16) Unnormalized Maintenance Costs (USD$) | _Maintenance_Costs_by_Aircraft_and_Airline.xlsx_
+(17) Unnormalized Crew Costs (USD$) | _Crew_Costs_by_Aircraft_and_Airline.xlsx_
+(18) Unnormalized Ownership Costs (USD$) | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_
+(19) Unnormalized Other Costs (USD$) | _Other_Costs_by_Aircraft_and_Airline.xlsx_
 
 [Aggregated Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables):
 
-In terms of temporal resolution, each of these metrics can be 
+These datatables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:**
 
