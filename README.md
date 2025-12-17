@@ -35,14 +35,14 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 * (11) ```Average Fuel Intensity per Distance (L/mi)``` | _Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx_ 
 
 [Aircraft Operating Costs](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aircraft%20Operating%20Costs%20Tables): 
-* (12) ```AOC per Block Hour (USD$/block-hr)``` | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_ 
-* (13) ```AOC per Seat Hour (USD$/seat-hr)``` | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_ 
-* (14) ```AOC per ASMs (USD$/ASM)``` | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_ 
-* (15) ```Unnormalized Fuel Costs (USD$)``` | _Fuel_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (16) ```Unnormalized Maintenance Costs (USD$)``` | _Maintenance_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (17) ```Unnormalized Crew Costs (USD$)``` | _Crew_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (18) ```Unnormalized Ownership Costs (USD$)``` | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (19) ```Unnormalized Other Costs (USD$)``` | _Other_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (12) ```AOC per Block Hour ($USD/block-hr)``` | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_ 
+* (13) ```AOC per Seat Hour ($USD/seat-hr)``` | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_ 
+* (14) ```AOC per ASMs ($USD/ASM)``` | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_ 
+* (15) ```Unnormalized Fuel Costs ($USD)``` | _Fuel_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (16) ```Unnormalized Maintenance Costs ($USD)``` | _Maintenance_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (17) ```Unnormalized Crew Costs ($USD)``` | _Crew_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (18) ```Unnormalized Ownership Costs ($USD)``` | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
+* (19) ```Unnormalized Other Costs ($USD)``` | _Other_Costs_by_Aircraft_and_Airline.xlsx_ 
 
 [Aggregated Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables):
 * (20)  ```Aircraft-specific Statistics ``` | _Aircraft_Cumulative_Statistics.xlsx_
