@@ -6,7 +6,7 @@
 % APAT leverages open-source data from the US Bureau of Transportation
 % Statistics (BTS), namely the T-100 Domestic Segment (US Carriers Only)
 % dataset and the Form 41 Schedule P-5.2 dataset. Before using APAT, please
-% make sure to follow the instructions outlined in: 
+% make sure to follow the instructions outlined in: https://github.com/andyeske/Airline-Data-Project
 
 % APAT outputs a total of 21 tables, 19 of which are standard, and 2 of 
 % which could be customized using user-defined inputs. These include:
