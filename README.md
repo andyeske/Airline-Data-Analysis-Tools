@@ -44,9 +44,12 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 * (18) ```Unnormalized Ownership Costs (USD$)``` | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
 * (19) ```Unnormalized Other Costs (USD$)``` | _Other_Costs_by_Aircraft_and_Airline.xlsx_ 
 
-[Aggregated Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables): <br />
+[Aggregated Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables):
+* (20)  ```Aircraft-specific Statistics ``` | _Aircraft_Cumulative_Statistics.xlsx_
+* (21)  ```Airline-specific Statistics ``` | _Airline_Cumulative_Statistics.xlsx_
+Here, Tables (20) and (21) contain a summary of (1), (2), (6), (8), (4), (5), (7), (3), (9), (12), (13), and (14), specific to an aircraft type (20) or an airline (21). See "User Actions" for more details on how to select the desired aircraft type or airline.
 
-These datatables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: These datatables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:**
 
