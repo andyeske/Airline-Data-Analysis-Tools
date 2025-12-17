@@ -1,7 +1,7 @@
 <a name="back_to_top"></a>
 # MIT Airline Data Project
 
-Description
+Welcome to the revamped MIT Airline Data Project (ADP)! This repository serves as a continuation of the original [MIT Airline Data Project](https://web.mit.edu/airlinedata/www/default.html) (which ended in 2021), and contains three tools that can be used to easily compute similar airline industry metrics to those found in the original ADP. Each of these tools can support the visualization and subsequent analysis of the operational performance, market trends, and route statistics for 23 different airlines in the United States, as well as 36 different aircraft types.
 
 ## Data Analysis Tools
 
@@ -37,5 +37,5 @@ Coming Soon!
 
 ## Author
 
-Andy Eskenazi, Department of Aeronautics and Astronautics,
+Andy Eskenazi, Department of Aeronautics and Astronautics, <br />
 Massachusetts Institute of Technology, 2025 <br />
