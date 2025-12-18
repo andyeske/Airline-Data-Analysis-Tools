@@ -88,7 +88,7 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 % d) APAT can be easily modified to produce more outputs than (1) - (21).
 ```
 
-Lastly, the user can opt to save the tables (1) through (21). For this, it must modify the ```Save_Tables``` field to include the desired table numbers. In the example, all 21 tables would be saved.
+Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
 
 ([ back to top ](#back_to_top))
 
