@@ -1,6 +1,7 @@
-% ---------------------------------------- %
-% Airline Performance Analysis Tool (APAT) - v1
-% ---------------------------------------- %
+% ----------------------------------------------------------------------- %
+% ------------ AIRLINE PERFORMANCE ANALYSIS TOOL (APAT) - v1 ------------ %
+% ----------------------------------------------------------------------- %
+
 % The following tool (APAT) can be used to compute a variety of performance
 % metrics specific to aircraft and airlines in the US airline industry.
 % APAT leverages open-source data from the US Bureau of Transportation
@@ -45,31 +46,35 @@
 % (7), (3), (9), (12), (13), and (14), specific to an aircraft (20) or an
 % airline (21).
 
+% ----------------------------------------------------------------------- %
+% ------------------------- USER DEFINED INPUTS ------------------------- %
+% ----------------------------------------------------------------------- %
+
 % To generate (20) and (21), using the "Aircraft Codes" and "Airline Codes" 
-% tables in (), the USER must select the desired aircraft and airline:
-%Desired_Aircraft = 'All_Aircraft';
-%Desired_Airline = 'All_Airlines';
+% tables in (https://github.com/andyeske/Airline-Data-Project), the USER 
+% must select the desired aircraft and airline:
 Desired_Aircraft = 'A320';
 Desired_Airline = 'American';
 
-% To save the tables under the USER's directoty, the USER must select the 
+% To save the tables under the USER's directory, the USER must select the 
 % desired table indeces:
 Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 
 % Notes:
-% a) Writing 'All_Aircaft' in Desired_Aircraft or 'All_Airlines' in 
-% Desired_Airline returns the aggregated results for all aircraft and 
-% airlines in the US, respectively
+% a) Writing Desired_Aircraft = 'All_Aircaft' or 
+% Desired_Airline = 'All_Airlines' returns the aggregated results for all 
+% aircraft and airlines in the US, respectively.
 % b) The aggregated results are also returned whenever a non-existing 
 % airline or aircraft are inputted in Desired_Aircraft or Desired_Airline.
 % c) Writing [] in Save_Tables will not save any tables, and will simply
 % generate these on MATLAB.
 % d) APAT can be easily modified to produce more outputs than (1) - (21).
-% ---------------------------------------- %
 
-% ---------------------------------------- %
-% Step 1: Importing the datasets
-% ---------------------------------------- %
+% ----------------------------------------------------------------------- %
+% ----------------- DO NOT MODIFY CODE FROM HERE ONWARDS ---------------- %
+% ----------------------------------------------------------------------- %
+
+%% -------------------- Step 1: Importing the datasets ------------------ %
 
 % Importing the datasets
 T100 = readtable('T100 Data.csv'); 
@@ -110,12 +115,9 @@ else
     table_name_airline = [Desired_Airline,'_Aircraft_Cumulative_Statistics','.xlsx'];
 end
 
-%% ---------------------------------------- %
-% Step 2: Computing the metrics
-% ---------------------------------------- %
+%% ------------------- Step 2: Computing the metrics -------------------- %
 
-% ---------------------------------------- %
-% From the T100 Data
+% ------------------------- From the T100 Data -------------------------- %
 ASMs = T100{:,2}.*T100{:,4}; % Seats * Distance
 RPMs = T100{:,3}.*T100{:,4}; % Passengers * Distance
 Distance = T100{:,1}.*T100{:,4}; % Departures * Distance
@@ -183,8 +185,7 @@ Aircraft_Airline_LFs(isnan(Aircraft_Airline_LFs)) = 0;
 Aircraft_Airline_ASLs(isnan(Aircraft_Airline_ASLs)) = 0;
 Aircraft_Airline_Seats_per_Departure(isnan(Aircraft_Airline_Seats_per_Departure)) = 0;
 
-%% ---------------------------------------- %
-% From the F41 Data
+% -------------------------- From the F41 Data -------------------------- %
 Days_Assigned = F41{:,48};
 Fuel_Consumed = F41{:,49};
 % Aircraft Operating Cost breakdown, using the categorization from Table 4-3 of
@@ -252,8 +253,7 @@ Aircraft_Airline_Ownership_Costs(isnan(Aircraft_Airline_Ownership_Costs)) = 0;
 Aircraft_Airline_Other_Costs(isnan(Aircraft_Airline_Other_Costs)) = 0;
 Aircraft_Airline_AOC(isnan(Aircraft_Airline_AOC)) = 0;
 
-%% ---------------------------------------- %
-% From the T100 Data and F41 Data
+% ------------------- From the T100 Data and F41 Data ------------------- %
 Aircraft_Airline_Departures_per_Day = round(Aircraft_Airline_Departures./Aircraft_Airline_Days_Assigned,2); % Departures / Days Assigned
 Aircraft_Airline_ASMs_per_Day = round(Aircraft_Airline_ASMs./Aircraft_Airline_Days_Assigned); % Departures / Days Assigned
 Aircraft_Airline_Block_Hours_per_Day = round(Aircraft_Airline_Block_Hours./Aircraft_Airline_Days_Assigned,2); % Block Hours / Days Assigned
@@ -325,9 +325,9 @@ Airline_Aggregated_v3 = [Aircraft_Airline_ASLs(Desired_Aircraft_In,:)',... % (9)
                          Aircraft_Airline_AOC_per_Seat_Hours(Desired_Aircraft_In,:)',... % (13)
                          Aircraft_Airline_AOC_per_ASMs(Desired_Aircraft_In,:)']; % (14)
 
-%% ---------------------------------------- %
-% Step 3: Creating the output tables
-% ---------------------------------------- %
+%% ----------------- Step 3: Creating the output tables ----------------- %
+
+% Creating the table labels
 airline_names = [AirlineCodes{:,2};'All Airlines'];
 aircraft_names = [AircraftCodes{:,2};'All Aircraft'];
 aggregated_names = {'RPMs';'ASMs';'ASMs per Day';'Seats per Departure';'Departures';'Departures per Day';...
@@ -387,7 +387,7 @@ Airline_Table = array2table(Airline_Aggregated); % Airline Cumulative Statistics
 Airline_Table.Properties.VariableNames = aggregated_names; Airline_Table.Properties.RowNames = airline_names;
 Airline_Table = Airline_Table(find(Airline_Table{:,1} > 0),:); % Non-zero entries
 
-% Aggregated Tables - V2 (Non-Output)
+% Aggregated Tables - V2 (Non-Output Tables)
 Aircraft_Table_v2 = array2table(Aircraft_Aggregated_v2); % Aircraft Cumulative Statistics - V2
 Aircraft_Table_v2.Properties.VariableNames = {'Seats per Departure';'AOC per Block Hours';'AOC per Seat Hours';'AOC per ASMs';'ASLs';'Block Hours per Day'};
 Aircraft_Table_v2.Properties.RowNames = aircraft_names;
