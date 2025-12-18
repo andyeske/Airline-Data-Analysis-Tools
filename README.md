@@ -60,7 +60,7 @@ Note: These data tables are by default computed at the yearly level (in the samp
 
 Note: After downloading the two BTS datasets, unzip them, and rename them to "T100 Data.csv" and "F41 Data.csv", respectively. Place all four datasets under the same folder, alongside the ```APAT```, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
 
-**User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Data tables (1) - (19) are generated with any user input, while (20) - (21) can be customized to display results specific to a single aircraft type in (20) (see an [A320 example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/A320_Airline_Cumulative_Statistics.xlsx)) or a single airline in (21) (see an [American example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/American_Aircraft_Cumulative_Statistics.xlsx)).
+**User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Data tables (1) - (19) are generated with any user input, while (20) - (21) can be customized to display results specific to a single airline in (20) (see an [American example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/American_Aircraft_Cumulative_Statistics.xlsx)), or specific to a single aircraft type in (21) (see an [A320 example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/A320_Airline_Cumulative_Statistics.xlsx)). To do so, the user must modify the ```Desired_Aircraft``` and ```Desired_Airline``` fields in the "USER DEFINED INPUTS" section of ```APAT```, which is copied below. For example, setting ```Desired_Aircraft == 'A320'``` will generate a Table (21) whose results will be specific to the A320, as opposed to the average in the US fleet of aircraft.
 
 ```
 % ----------------------------------------------------------------------- %
@@ -87,6 +87,8 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 % generate these on MATLAB.
 % d) APAT can be easily modified to produce more outputs than (1) - (21).
 ```
+
+Lastly, the user can opt to save the tables (1) through (21). For this, it must modify the ```Save_Tables``` field to include the desired table numbers. In the example, all 21 tables would be saved.
 
 ([ back to top ](#back_to_top))
 
