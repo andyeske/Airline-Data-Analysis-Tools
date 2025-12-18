@@ -50,7 +50,7 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 
 Here, Tables (20) and (21) contain a summary of (1), (2), (6), (8), (4), (5), (7), (3), (9), (12), (13), and (14), specific to each of the 36 aircraft types (20) and 23 airlines (21) in the US. By default, Tables (20) and (21) show average results for the entirety of the US airline industry. However, Table (20) can be customized to show the aircraft metrics specific to a single airline, while Table (21) can be modified to show the airline metrics specific to a single aircraft type, as shown in "User Action".
 
-Note: These data tables are by default computed at the yearly level (in the sample tables, for the entirety of 2024), although ```APAT``` can be modified to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: By default, these data tables are computed at the yearly level. In the sample tables provided in this repository, the selected year is 2024. ```APAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```APAT```, the user must first download four open-source datasets, which include:
 * [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) data. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Unique Carrier Name | h) Origin | i) Destinaiton | j) Aircraft | k) Month.
