@@ -1,5 +1,5 @@
 % ----------------------------------------------------------------------- %
-% -------------- AIRLINE  MARKET ANALYSIS TOOL (AMAT) - v1 -------------- %
+% -------------- AIRLINE MARKET ANALYSIS TOOL (AMAT) - v1 --------------- %
 % ----------------------------------------------------------------------- %
 
 % The following tool (APAT) can be used to compute a variety of market
@@ -52,7 +52,7 @@ Desired_Sorting = 2;
 % US airlines available for selection.
 Desired_Airline = 'United';
 
-% Please select the desired table indeces to save:
+% Finally, please select the desired table indeces to save:
 Save_Tables = [1,2,3,4,5,6,7,8];
 
 % Notes:
