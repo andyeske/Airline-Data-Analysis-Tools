@@ -96,27 +96,25 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 <a name="AMAT"></a>
 ### Airline Market Analysis Tool (AMAT)
 
-**Tool Purpose:** ```AMAT``` can be used to compute 5 different origin-destination (OD) market metrics, to the route and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables,  and vary according to whether the routes are in or out of a desired airport, as displayed below,:
+**Tool Purpose:** ```AMAT``` can be used to compute 5 different market analysis metrics, to the origin-destination (OD) pair and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables,  and vary according to whether the ODs are in or out of a desired airport, as displayed below,:
 
-[Out of Desired Airport Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Airport):
-* (1) ```Daily Revenue by Route and Airline out of a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_Out.xlsx_
-* (2) ```PDEW by Route and Airline out of a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_Out.xlsx_
-* (3) ```Daily RPMs by Route and Airline out of a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_Out.xlsx_
-* (4) ```Average Fare by Route and Airline out of a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_Out.xlsx_
-* (5) ```Average Yield by Route and Airline out of a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_Out.xlsx_  
+[Out of Desired Origin Airport Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Airport):
+* (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
+* (2) ```PDEW by OD and Airline out of a Desired Origin Airport (# of people)``` | _PDEW_by_OD_and_Airline_Out.xlsx_
+* (3) ```Daily RPMs by OD and Airline out of a Desired Origin Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_Out.xlsx_
+* (4) ```Average Fare by OD and Airline out of a Desired Origin Airport ($)``` | _Average_Fare_by_OD_and_Airline_Out.xlsx_
+* (5) ```Average Yield by OD and Airline out of a Desired Origin Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_Out.xlsx_  
 
-[Into Desired Airport Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Into%20a%20Desired%20Airport):
-* (6) ```Daily Revenue by Route and Airline into a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_In.xlsx_  
-* (7) ```PDEW by Route and Airline into a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_In.xlsx_
-* (8) ```Daily RPMs by Route and Airline into a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_In.xlsx_
-* (9) ```Average Fare by Route and Airline into a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_In.xlsx_
-* (10) ```Average Yield by Route and Airline into a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_In.xlsx_
+[Into Desired Destination Airport Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Into%20a%20Desired%20Airport):
+* (6) ```Daily Revenue by OD and Airline into a Desired Destination Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_In.xlsx_  
+* (7) ```PDEW by OD and Airline into a Desired Destination Airport (# of people)``` | _PDEW_by_OD_and_Airline_In.xlsx_
+* (8) ```Daily RPMs by OD and Airline into a Desired Destination Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_In.xlsx_
+* (9) ```Average Fare by OD and Airline into a Desired Destination Airport ($)``` | _Average_Fare_by_OD_and_Airline_In.xlsx_
+* (10) ```Average Yield by OD and Airline into a Desired Destination Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_In.xlsx_
 
 Sample data tables can be found [here](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs). The data corresponds to 2025 Q1.
 
-Notes: 
-* The difference between Tables (1) - (5) and (6) - (10) is that the routes correspond to departing routes and arriving routes, respectively, out of a desired airport (e.g., BOS). This is an entry that the user can modify, as shown in "User Action".
-* By default, these data tables are computed using quarterly data, but then collapsed to indicate daily and average metrics. ```AMAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: By default, these data tables are computed using quarterly data, but then collapsed to indicate daily and average metrics. ```AMAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```AMAT```, the user must first download three open-source datasets, which include:
 * [BTS Origin and Destination Survey (DB1B - Market)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FHK) dataset. Select the desired state for _Filter Geography_ (e.g., Massachusetts), the desired year for _Filter Year_ (e.g., 2025), and the desired quarter for _Filter Quarter_ (e.g., Quarter 1). For the entries to download, only select a) Quarter | b) Origin | c) Dest | d) RPCarrier | e) Passengers | f) MktFare | g) MktMilesFlown.
@@ -125,7 +123,7 @@ Notes:
 
 After downloading the BTS datasets, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
 
-**User Actions:** ```AMAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AMAT``` to generate custom data tables. For example, setting ```Desired_Airport = 'BOS'```, ```Number_Markets = 20```, ```Desired_Sorting = 2``` and ```Desired_Airline = 'United'``` will generate tables (1) - (5) showing the top 20 routes out of Boston by PDEW, tables (6) - (10) showing the top 20 routes into Boston. All of these tables also report revenue, RPMs, average fare, and yield for all other airlines, but the routes are sorted specifically for United.
+**User Actions:** ```AMAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AMAT``` to generate custom data tables. For example, setting ```Desired_Airport = 'BOS'```, ```Number_Markets = 20```, ```Desired_Sorting = 2``` and ```Desired_Airline = 'United'``` will generate tables (1) - (5) showing the top 20 ODs out of Boston (origin) by PDEW, tables (6) - (10) showing the top 20 ODs into Boston (destination). All of these tables also report revenue, RPMs, average fare, and yield for all other airlines, but the ODs are sorted specifically for United.
 
 ```
 % ----------------------------------------------------------------------- %
