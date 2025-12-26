@@ -58,9 +58,9 @@ Note: By default, these data tables are computed at the yearly level. In the sam
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
-After downloading the two BTS datasets, unzip them, and rename them to "T100 Data.csv" and "F41 Data.csv", respectively. Place all four datasets under the same folder, alongside the ```APAT```, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+After downloading the two BTS datasets, unzip them, and rename them to "T100 Data.csv" and "F41 Data.csv", respectively. Place all four datasets under the same folder, alongside the ```APAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
 
-**User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Data tables (1) - (19) are generated with any user input, while (20) - (21) can be customized to display results specific to a single airline in (20) (see an [American example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/American_Aircraft_Cumulative_Statistics.xlsx)), or specific to a single aircraft type in (21) (see an [A320 example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/A320_Airline_Cumulative_Statistics.xlsx)). To do so, the user must modify the ```Desired_Aircraft``` and ```Desired_Airline``` fields in the "USER DEFINED INPUTS" section of ```APAT```, which is copied below. For example, setting ```Desired_Aircraft == 'A320'``` will generate a Table (21) whose results will be specific to the A320, as opposed to the average in the US fleet of aircraft.
+**User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Data tables (1) - (19) are generated with any user input, while (20) - (21) can be customized to display results specific to a single airline in (20) (see an [American example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/American_Aircraft_Cumulative_Statistics.xlsx)), or specific to a single aircraft type in (21) (see an [A320 example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/A320_Airline_Cumulative_Statistics.xlsx)). To do so, the user must modify the ```Desired_Aircraft``` and ```Desired_Airline``` fields in the "USER DEFINED INPUTS" section of ```APAT```, which is copied below. For example, setting ```Desired_Aircraft = 'A320'``` will generate a Table (21) whose results will be specific to the A320, as opposed to the average in the US fleet of aircraft.
 
 ```
 % ----------------------------------------------------------------------- %
@@ -96,7 +96,74 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 <a name="AMAT"></a>
 ### Airline Market Analysis Tool (AMAT)
 
-Coming Soon!
+**Tool Purpose:** ```AMAT``` can be used to compute 5 different origin-destination (OD) market metrics, to the route and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables, which are displayed below:
+
+* (1) ```Daily Revenue by Route and Airline out of a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_Out.xlsx_
+* (2) ```PDEW by Route and Airline out of a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_Out.xlsx_
+* (3) ```Daily RPMs by Route and Airline out of a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_Out.xlsx_
+* (4) ```Average Fare by Route and Airline out of a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_Out.xlsx_
+* (5) ```Average Yield by Route and Airline out of a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_Out.xlsx_
+
+* (6) ```Daily Revenue by Route and Airline into a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_In.xlsx_
+* (7) ```PDEW by Route and Airline into a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_In.xlsx_
+* (8) ```Daily RPMs by Route and Airline into a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_In.xlsx_
+* (9) ```Average Fare by Route and Airline into a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_In.xlsx_
+* (10) ```Average Yield by Route and Airline into a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_In.xlsx_
+
+Sample data tables can be found [here](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs). The data corresponds to 2025 Q1.
+
+Note: 
+* The difference between Tables (1) - (5) and (6) - (10) is that the routes correspond to departing routes and arriving routes, respectively, out of a desired airport (e.g., BOS). This is an entry that the user can modify, as shown in "User Action".
+* By default, these data tables are computed using quarterly data, but then collapsed to indicate daily and average metrics. ```AMAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+
+**Data Inputs:** To use ```AMAT```, the user must first download three open-source datasets, which include:
+* [BTS Origin and Destination Survey (DB1B - Market)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FHK) dataset. Select the desired state for _Filter Geography_ (e.g., Massachusetts), the desired year for _Filter Year_ (e.g., 2025), and the desired quarter for _Filter Quarter_ (e.g., Quarter 1). For the entries to download, only select a) Quarter | b) Origin | c) Dest | d) RPCarrier | e) Passengers | f) MktFare | g) MktMilesFlown.
+* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+
+After downloading the BTS datasets, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+
+**User Actions:** ```AMAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AMAT``` to generate custom data tables. For example, setting ```Desired_Airport = 'BOS'```, ```Number_Markets = 20```, ```Desired_Sorting = 2``` and ```Desired_Airline = 'United'``` will generate tables (1) - (5) showing the top 20 routes out of Boston by PDEW, tables (6) - (10) showing the top 20 routes into Boston. All of these tables also report revenue, RPMs, average fare, and yield for all other airlines, but the routes are sorted specifically for United.
+
+```
+% ----------------------------------------------------------------------- %
+% ------------------------- USER DEFINED INPUTS ------------------------- %
+% ----------------------------------------------------------------------- %
+
+% To generate (1) through (10), the USER must specify four parameters, which
+% include:
+
+% Please input the Desired Airport: 
+Desired_Airport = 'BOS';
+
+% Please select the Number of Markets:
+% --> This corresponds to the number of markets that will be displayed on
+% tables.
+Number_Markets = 20;
+
+% Plase select the Desired Sorting preference:
+% --> Here, select: Revenue (1) | Passengers (2) | RPM (3) | Fare (4) | 
+% Yield (5) to sort the tables according to each of these metrics.
+Desired_Sorting = 2;
+
+% Please input the Desired Airline: 
+% --> This is the airline that will be used to sort the rows of the output
+% table. You can use the table "Airline Codes" available in 
+% https://github.com/andyeske/Airline-Data-Project to find the set of 23 
+% US airlines available for selection.
+Desired_Airline = 'United';
+
+% Finally, please select the desired table indeces to save:
+Save_Tables = [1,2,3,4,5,6,7,8,9,10];
+
+% Notes:
+% a) Desired_Airline = 'All_Airlines' will sort the tables using the
+% aggregate column for all airlines in the US.
+% b) Writing [] in Save_Tables will not save any tables, and will simply
+% generate these on MATLAB.
+```
+
+Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
 
 ([ back to top ](#back_to_top))
 
