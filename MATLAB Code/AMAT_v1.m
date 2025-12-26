@@ -14,13 +14,13 @@
 
 % (1) Daily Revenue by Route and Airline out of a Desired Airport ($): Daily_Revenue_by_Route_and_Airline_Out.xlsx
 % (2) PDEW by Route and Airline out of a Desired Airport (# of people): PDEW_by_Route_and_Airline_Out.xlsx
-% (3) RPMs by Route and Airline out of a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_Out.xlsx
+% (3) Daily RPMs by Route and Airline out of a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_Out.xlsx
 % (4) Average Fare by Route and Airline out of a Desired Airport ($): Average_Fare_by_Route_and_Airline_Out.xlsx
 % (5) Average Yield by Route and Airline out of a Desired Airport ($/RPM): Average_Yield_by_Route_and_Airline_Out.xlsx
 
 % (6) Daily Revenue by Route and Airline into a Desired Airport ($): Daily_Revenue_by_Route_and_Airline_In.xlsx
 % (7) PDEW by Route and Airline into a Desired Airport (# of people): PDEW_by_Route_and_Airline_In.xlsx
-% (8) RPMs by Route and Airline into a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_In.xlsx
+% (8) Daily RPMs by Route and Airline into a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_In.xlsx
 % (9) Average Fare by Route and Airline into a Desired Airport ($): Average_Fare_by_Route_and_Airline_In.xlsx
 % (10) Average Yield by Route and Airline into a Desired Airport ($/RPM): Average_Yield_by_Route_and_Airline_In.xlsx
 
