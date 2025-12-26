@@ -9,18 +9,20 @@
 % (DB1B - Market). Before using APAT, please make sure to follow the 
 % instructions outlined in: https://github.com/andyeske/Airline-Data-Project
 
-% AMAT outputs a total of 8 tables, all of which can be customized using 
+% AMAT outputs a total of 10 tables, all of which can be customized using 
 % user-defined inputs. These include:
 
 % (1) Daily Revenue by Route and Airline out of a Desired Airport ($): Daily_Revenue_by_Route_and_Airline_Out.xlsx
 % (2) PDEW by Route and Airline out of a Desired Airport (# of people): PDEW_by_Route_and_Airline_Out.xlsx
 % (3) RPMs by Route and Airline out of a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_Out.xlsx
-% (4) Average Yield by Route and Airline out of a Desired Airport ($/RPM): Average_Yield_by_Route_and_Airline_Out.xlsx
+% (4) Average Fare by Route and Airline out of a Desired Airport ($): Average_Fare_by_Route_and_Airline_Out.xlsx
+% (5) Average Yield by Route and Airline out of a Desired Airport ($/RPM): Average_Yield_by_Route_and_Airline_Out.xlsx
 
-% (5) Daily Revenue by Route and Airline into a Desired Airport ($): Daily_Revenue_by_Route_and_Airline_In.xlsx
-% (6) PDEW by Route and Airline into a Desired Airport (# of people): PDEW_by_Route_and_Airline_In.xlsx
-% (7) RPMs by Route and Airline into a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_In.xlsx
-% (8) Average Yield by Route and Airline into a Desired Airport ($/RPM): Average_Yield_by_Route_and_Airline_In.xlsx
+% (6) Daily Revenue by Route and Airline into a Desired Airport ($): Daily_Revenue_by_Route_and_Airline_In.xlsx
+% (7) PDEW by Route and Airline into a Desired Airport (# of people): PDEW_by_Route_and_Airline_In.xlsx
+% (8) RPMs by Route and Airline into a Desired Airport (RPMs): Daily_RPM_by_Route_and_Airline_In.xlsx
+% (9) Average Fare by Route and Airline into a Desired Airport ($): Average_Fare_by_Route_and_Airline_In.xlsx
+% (10) Average Yield by Route and Airline into a Desired Airport ($/RPM): Average_Yield_by_Route_and_Airline_In.xlsx
 
 % These tables are sorted in descending order, showing the top routes
 % first, according to the sorting preference.
@@ -29,7 +31,7 @@
 % ------------------------- USER DEFINED INPUTS ------------------------- %
 % ----------------------------------------------------------------------- %
 
-% To generate (1) through (8), the USER must specify four parameters, which
+% To generate (1) through (10), the USER must specify four parameters, which
 % include:
 
 % Please input the Desired Airport: 
@@ -41,8 +43,8 @@ Desired_Airport = 'BOS';
 Number_Markets = 20;
 
 % Plase select the Desired Sorting preference:
-% --> Here, select: Revenue (1) | Passengers (2) | RPM (3) | Yield (4) to
-% sort the tables according to each of these metrics.
+% --> Here, select: Revenue (1) | Passengers (2) | RPM (3) | Fare (4) | 
+% Yield (5) to sort the tables according to each of these metrics.
 Desired_Sorting = 2;
 
 % Please input the Desired Airline: 
@@ -53,7 +55,7 @@ Desired_Sorting = 2;
 Desired_Airline = 'United';
 
 % Finally, please select the desired table indeces to save:
-Save_Tables = [1,2,3,4,5,6,7,8];
+Save_Tables = [1,2,3,4,5,6,7,8,9,10];
 
 % Notes:
 % a) Desired_Airline = 'All_Airlines' will sort the tables using the
@@ -148,11 +150,17 @@ in_Revenue(:,end) = sum(in_Revenue,2);
 in_Passengers(:,end) = sum(in_Passengers,2);
 in_RPM(:,end) = sum(in_RPM,2);
 
-% Computing the yields
-out_Yield = out_Revenue./out_RPM;  % Yield out of desired airport ($/RPM)
-in_Yield = in_Revenue./in_RPM; % Yield into desired airport ($/RPM)
+% Computing the average fares
+out_Fare = out_Revenue./out_Passengers;  % Average fare out of desired airport ($)
+in_Fare = in_Revenue./in_Passengers; % Average fare into desired airport ($)
+
+% Computing the average yields
+out_Yield = out_Revenue./out_RPM;  % Average yield out of desired airport ($/RPM)
+in_Yield = in_Revenue./in_RPM; % Average yield into desired airport ($/RPM)
 
 % Eliminating NaN entries
+out_Fare(isnan(out_Fare)) = 0;
+in_Fare(isnan(in_Fare)) = 0;
 out_Yield(isnan(out_Yield)) = 0;
 in_Yield(isnan(in_Yield)) = 0;
 
@@ -169,13 +177,16 @@ in_RPM = in_RPM.*10/90;
 out_Revenue(1:end,end+1) = 1:length(Unique_D); 
 out_Passengers(1:end,end+1) = 1:length(Unique_D); 
 out_RPM(1:end,end+1) = 1:length(Unique_D); 
+out_Fare(1:end,end+1) = 1:length(Unique_D); 
 out_Yield(1:end,end+1) = 1:length(Unique_D); 
 in_Revenue(1:end,end+1) = 1:length(Unique_O); 
 in_Passengers(1:end,end+1) = 1:length(Unique_O); 
 in_RPM(1:end,end+1) = 1:length(Unique_O); 
+in_Fare(1:end,end+1) = 1:length(Unique_O); 
 in_Yield(1:end,end+1) = 1:length(Unique_O); 
 
-% Sorting according to Revenue (1), Passengers (2), RPM (3), or Yield (4)
+% Sorting according to Revenue (1), Passengers (2), RPM (3), 
+% Average Fare (4) or Average Yield (5)
 if Desired_Sorting == 1 % Sort routes by Revenue
 
     % Out of desired airport
@@ -183,6 +194,7 @@ if Desired_Sorting == 1 % Sort routes by Revenue
     sorted_rows_out = out_Revenue_Sorted(:,end);
     out_Passengers_Sorted = out_Passengers(sorted_rows_out,:);
     out_RPM_Sorted = out_RPM(sorted_rows_out,:);
+    out_Fare_Sorted = out_Fare(sorted_rows_out,:);
     out_Yield_Sorted = out_Yield(sorted_rows_out,:);
 
     % Into desired airport
@@ -190,6 +202,7 @@ if Desired_Sorting == 1 % Sort routes by Revenue
     sorted_rows_in = in_Revenue_Sorted(:,end);
     in_Passengers_Sorted = in_Passengers(sorted_rows_in,:);
     in_RPM_Sorted = in_RPM(sorted_rows_in,:);
+    in_Fare_Sorted = in_Fare(sorted_rows_in,:);
     in_Yield_Sorted = in_Yield(sorted_rows_in,:);
 
 elseif Desired_Sorting == 2 % Sort routes by Passengers
@@ -199,6 +212,7 @@ elseif Desired_Sorting == 2 % Sort routes by Passengers
     sorted_rows_out = out_Passengers_Sorted(:,end);
     out_Revenue_Sorted = out_Revenue(sorted_rows_out,:);
     out_RPM_Sorted = out_RPM(sorted_rows_out,:);
+    out_Fare_Sorted = out_Fare(sorted_rows_out,:);
     out_Yield_Sorted = out_Yield(sorted_rows_out,:);
 
     % Into desired airport
@@ -206,6 +220,7 @@ elseif Desired_Sorting == 2 % Sort routes by Passengers
     sorted_rows_in = in_Passengers_Sorted(:,end);
     in_Revenue_Sorted = in_Revenue(sorted_rows_in,:);
     in_RPM_Sorted = in_RPM(sorted_rows_in,:);
+    in_Fare_Sorted = in_Fare(sorted_rows_in,:);
     in_Yield_Sorted = in_Yield(sorted_rows_in,:);
 
 elseif Desired_Sorting == 3 % Sort routes by RPM
@@ -215,6 +230,7 @@ elseif Desired_Sorting == 3 % Sort routes by RPM
     sorted_rows_out = out_RPM_Sorted(:,end);
     out_Passengers_Sorted = out_Passengers(sorted_rows_out,:);
     out_Revenue_Sorted = out_Revenue(sorted_rows_out,:);
+    out_Fare_Sorted = out_Fare(sorted_rows_out,:);
     out_Yield_Sorted = out_Yield(sorted_rows_out,:);
 
     % Into desired airport
@@ -222,9 +238,28 @@ elseif Desired_Sorting == 3 % Sort routes by RPM
     sorted_rows_in = in_RPM_Sorted(:,end);
     in_Passengers_Sorted = in_Passengers(sorted_rows_in,:);
     in_Revenue_Sorted = in_Revenue(sorted_rows_in,:);
+    in_Fare_Sorted = in_Fare(sorted_rows_in,:);
     in_Yield_Sorted = in_Yield(sorted_rows_in,:);
 
-else % Sort routes by Yield
+elseif Desired_Sorting == 4 % Sort routes by Average Fare
+
+    % Out of desired airport
+    out_Fare_Sorted = sortrows(out_Fare,Desired_Airline_In,'descend'); out_Fare_Sorted = out_Fare_Sorted(1:Number_Markets,:);
+    sorted_rows_out = out_Fare_Sorted(:,end);
+    out_Passengers_Sorted = out_Passengers(sorted_rows_out,:);
+    out_Revenue_Sorted = out_Revenue(sorted_rows_out,:);
+    out_RPM_Sorted = out_RPM(sorted_rows_out,:);
+    out_Yield_Sorted = out_Yield(sorted_rows_out,:);
+
+    % Into desired airport
+    in_Fare_Sorted = sortrows(in_Fare,Desired_Airline_In,'descend'); in_Fare_Sorted = in_Fare_Sorted(1:Number_Markets,:);
+    sorted_rows_in = in_Fare_Sorted(:,end);
+    in_Passengers_Sorted = in_Passengers(sorted_rows_in,:);
+    in_Revenue_Sorted = in_Revenue(sorted_rows_in,:);
+    in_RPM_Sorted = in_RPM(sorted_rows_in,:);
+    in_Yield_Sorted = in_Yield(sorted_rows_in,:);
+
+else % Sort routes by Average Yield
 
     % Out of desired airport
     out_Yield_Sorted = sortrows(out_Yield,Desired_Airline_In,'descend'); out_Yield_Sorted = out_Yield_Sorted(1:Number_Markets,:);
@@ -232,6 +267,7 @@ else % Sort routes by Yield
     out_Passengers_Sorted = out_Passengers(sorted_rows_out,:);
     out_RPM_Sorted = out_RPM(sorted_rows_out,:);
     out_Revenue_Sorted = out_Revenue(sorted_rows_out,:);
+    out_Fare_Sorted = out_Fare(sorted_rows_out,:);
 
     % Into desired airport
     in_Yield_Sorted = sortrows(in_Yield,Desired_Airline_In,'descend'); in_Yield_Sorted = in_Yield_Sorted(1:Number_Markets,:);
@@ -239,23 +275,28 @@ else % Sort routes by Yield
     in_Passengers_Sorted = in_Passengers(sorted_rows_in,:);
     in_RPM_Sorted = in_RPM(sorted_rows_in,:);
     in_Revenue_Sorted = in_Revenue(sorted_rows_in,:);
+    in_Fare_Sorted = in_Fare(sorted_rows_in,:);
 
 end
 
 % Adding the last row to each table to show the total for each airline
 % Out of desired airport
-out_Revenue_Sorted(end+1,:) = sum(out_Revenue,1); out_Revenue_Sorted = out_Revenue_Sorted(:,1:(end-1));
+out_Revenue_Sorted(end+1,:) = sum(out_Revenue,1); out_Revenue_Sorted = round(out_Revenue_Sorted(:,1:(end-1)));
 out_Passengers_Sorted(end+1,:) = sum(out_Passengers,1); out_Passengers_Sorted = out_Passengers_Sorted(:,1:(end-1));
 out_RPM_Sorted(end+1,:) = sum(out_RPM,1); out_RPM_Sorted = out_RPM_Sorted(:,1:(end-1));
+out_Fare_Sorted(end+1,1:(end-1)) = out_Revenue_Sorted(end,:)./out_Passengers_Sorted(end,:); out_Fare_Sorted = out_Fare_Sorted(:,1:(end-1));
+out_Fare_Sorted(isnan(out_Fare_Sorted)) = 0; out_Fare_Sorted = round(out_Fare_Sorted);
 out_Yield_Sorted(end+1,1:(end-1)) = out_Revenue_Sorted(end,:)./out_RPM_Sorted(end,:); out_Yield_Sorted = out_Yield_Sorted(:,1:(end-1));
-out_Yield_Sorted(isnan(out_Yield_Sorted)) = 0;
+out_Yield_Sorted(isnan(out_Yield_Sorted)) = 0; out_Yield_Sorted = round(out_Yield_Sorted,3);
 
 % Into desired airport
-in_Revenue_Sorted(end+1,:) = sum(in_Revenue,1); in_Revenue_Sorted = in_Revenue_Sorted(:,1:(end-1));
+in_Revenue_Sorted(end+1,:) = sum(in_Revenue,1); in_Revenue_Sorted = round(in_Revenue_Sorted(:,1:(end-1)));
 in_Passengers_Sorted(end+1,:) = sum(in_Passengers,1); in_Passengers_Sorted = in_Passengers_Sorted(:,1:(end-1));
 in_RPM_Sorted(end+1,:) = sum(in_RPM,1); in_RPM_Sorted = in_RPM_Sorted(:,1:(end-1));
+in_Fare_Sorted(end+1,1:(end-1)) = in_Revenue_Sorted(end,:)./in_Passengers_Sorted(end,:); in_Fare_Sorted = in_Fare_Sorted(:,1:(end-1));
+in_Fare_Sorted(isnan(in_Fare_Sorted)) = 0; in_Fare_Sorted = round(in_Fare_Sorted);
 in_Yield_Sorted(end+1,1:(end-1)) = in_Revenue_Sorted(end,:)./in_RPM_Sorted(end,:); in_Yield_Sorted = in_Yield_Sorted(:,1:(end-1));
-in_Yield_Sorted(isnan(in_Yield_Sorted)) = 0;
+in_Yield_Sorted(isnan(in_Yield_Sorted)) = 0; in_Yield_Sorted = round(in_Yield_Sorted,3);
 
 %% ----------------- Step 3: Creating the output tables ----------------- %
 
@@ -272,17 +313,21 @@ Passengers_Out_Table = array2table(out_Passengers_Sorted); % (2)
 Passengers_Out_Table.Properties.VariableNames = airline_names; Passengers_Out_Table.Properties.RowNames = route_names_D;
 RPM_Out_Table = array2table(out_RPM_Sorted); % (3)
 RPM_Out_Table.Properties.VariableNames = airline_names; RPM_Out_Table.Properties.RowNames = route_names_D;
-Yield_Out_Table = array2table(out_Yield_Sorted); % (4)
+Fare_Out_Table = array2table(out_Fare_Sorted); % (5)
+Fare_Out_Table.Properties.VariableNames = airline_names; Fare_Out_Table.Properties.RowNames = route_names_D;
+Yield_Out_Table = array2table(out_Yield_Sorted); % (5)
 Yield_Out_Table.Properties.VariableNames = airline_names; Yield_Out_Table.Properties.RowNames = route_names_D;
 
 % Into desired airport
-Revenue_In_Table = array2table(in_Revenue_Sorted); % (5)
+Revenue_In_Table = array2table(in_Revenue_Sorted); % (6)
 Revenue_In_Table.Properties.VariableNames = airline_names; Revenue_In_Table.Properties.RowNames = route_names_O;
-Passengers_In_Table = array2table(in_Passengers_Sorted); % (6)
+Passengers_In_Table = array2table(in_Passengers_Sorted); % (7)
 Passengers_In_Table.Properties.VariableNames = airline_names; Passengers_In_Table.Properties.RowNames = route_names_O;
-RPM_In_Table = array2table(in_RPM_Sorted); % (7)
+RPM_In_Table = array2table(in_RPM_Sorted); % (8)
 RPM_In_Table.Properties.VariableNames = airline_names; RPM_In_Table.Properties.RowNames = route_names_O;
-Yield_In_Table = array2table(in_Yield_Sorted); % (8)
+Fare_In_Table = array2table(in_Fare_Sorted); % (9)
+Fare_In_Table.Properties.VariableNames = airline_names; Fare_In_Table.Properties.RowNames = route_names_O;
+Yield_In_Table = array2table(in_Yield_Sorted); % (10)
 Yield_In_Table.Properties.VariableNames = airline_names; Yield_In_Table.Properties.RowNames = route_names_O;
 
 % Saving the output tables
@@ -290,10 +335,12 @@ Yield_In_Table.Properties.VariableNames = airline_names; Yield_In_Table.Properti
 if sum(Save_Tables == 1) > 0, writetable(Revenue_Out_Table,'Daily_Revenue_by_Route_and_Airline_Out.xlsx','Sheet',1,'WriteRowNames',true), end % (1)
 if sum(Save_Tables == 2) > 0, writetable(Passengers_Out_Table,'PDEW_by_Route_and_Airline_Out.xlsx','Sheet',1,'WriteRowNames',true), end % (2)
 if sum(Save_Tables == 3) > 0, writetable(RPM_Out_Table,'Daily_RPM_by_Route_and_Airline_Out.xlsx','Sheet',1,'WriteRowNames',true), end % (3)
-if sum(Save_Tables == 4) > 0, writetable(Yield_Out_Table,'Average_Yield_by_Route_and_Airline_Out.xlsx','Sheet',1,'WriteRowNames',true), end % (4)
+if sum(Save_Tables == 4) > 0, writetable(Fare_Out_Table,'Average_Fare_by_Route_and_Airline_Out.xlsx','Sheet',1,'WriteRowNames',true), end % (4)
+if sum(Save_Tables == 5) > 0, writetable(Yield_Out_Table,'Average_Yield_by_Route_and_Airline_Out.xlsx','Sheet',1,'WriteRowNames',true), end % (5)
 
 % Into desired airport
-if sum(Save_Tables == 5) > 0, writetable(Revenue_In_Table,'Daily_Revenue_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (5)
-if sum(Save_Tables == 6) > 0, writetable(Passengers_In_Table,'PDEW_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (6)
-if sum(Save_Tables == 7) > 0, writetable(RPM_In_Table,'Daily_RPM_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (7)
-if sum(Save_Tables == 8) > 0, writetable(Yield_In_Table,'Average_Yield_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (8)
+if sum(Save_Tables == 6) > 0, writetable(Revenue_In_Table,'Daily_Revenue_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (6)
+if sum(Save_Tables == 7) > 0, writetable(Passengers_In_Table,'PDEW_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (7)
+if sum(Save_Tables == 8) > 0, writetable(RPM_In_Table,'Daily_RPM_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (8)
+if sum(Save_Tables == 9) > 0, writetable(Fare_In_Table,'Average_Fare_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (9)
+if sum(Save_Tables == 10) > 0, writetable(Yield_In_Table,'Average_Yield_by_Route_and_Airline_In.xlsx','Sheet',1,'WriteRowNames',true), end % (10)
