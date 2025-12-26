@@ -96,14 +96,16 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 <a name="AMAT"></a>
 ### Airline Market Analysis Tool (AMAT)
 
-**Tool Purpose:** ```AMAT``` can be used to compute 5 different origin-destination (OD) market metrics, to the route and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables, which are displayed below:
+**Tool Purpose:** ```AMAT``` can be used to compute 5 different origin-destination (OD) market metrics, to the route and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables,  and vary according to whether the routes are in or out of a desired airport, as displayed below,:
 
+Out of a Desired Airport:
 * (1) ```Daily Revenue by Route and Airline out of a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_Out.xlsx_
 * (2) ```PDEW by Route and Airline out of a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_Out.xlsx_
 * (3) ```Daily RPMs by Route and Airline out of a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_Out.xlsx_
 * (4) ```Average Fare by Route and Airline out of a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_Out.xlsx_
 * (5) ```Average Yield by Route and Airline out of a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_Out.xlsx_  
-<br />
+
+Into a Desired Airport:
 * (6) ```Daily Revenue by Route and Airline into a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_In.xlsx_  
 * (7) ```PDEW by Route and Airline into a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_In.xlsx_
 * (8) ```Daily RPMs by Route and Airline into a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_In.xlsx_
