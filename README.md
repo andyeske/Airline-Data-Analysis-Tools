@@ -17,24 +17,24 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 
 **Tool Purpose:** ```APAT``` can be used to compute 19 different system-wide performance metrics, to the aircraft and airline level of granularity, largely grouped under overview, utilization, fuel consumption, and aircraft operating cost metrics. The outputs from ```APAT``` consist of 21 excel data tables, which are displayed below (alongside links to sample tables):
 
-[Overview Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables): 
+[Overview Metrics Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables): 
 * (1) ```Total Revenue Passenger Miles (RPMs)``` | _RPMs_by_Aircraft_and_Airline.xlsx_
 * (2) ```Total Available Seat Miles (ASMs)``` | _ASMs_by_Aircraft_and_Airline.xlsx_ 
 * (3) ```Average Load Factor (RPMs/ASMs)``` | _LFs_by_Aircraft_and_Airline.xlsx_ 
 * (4) ```Total Departures (# departures)``` | _Departures_by_Aircraft_and_Airline.xlsx_ 
 
-[Utilization Metrics](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Utilization%20Metrics%20Tables):
+[Utilization Metrics Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Utilization%20Metrics%20Tables):
 * (5) ```Average Number of Departures per Day (# departures/day assigned)``` | _Departures_per_Day_by_Aircraft_and_Airline.xlsx_ 
 * (6) ```Average Number ASMs per Day (ASMs/day assigned)``` | _ASMs_per_Day_by_Aircraft_and_Airline.xlsx_ 
 * (7) ```Average Aircraft Utilization per Day (block-hr/day assigned)``` | _Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx_
 * (8) ```Average Number of Seats per Departure (# seats/# departures)``` | _Seats_per_Departures_by_Aircraft_and_Airline.xlsx_ 
 * (9) ```Average Stage Length (mi)``` | _ASL_by_Aircraft_and_Airline.xlsx_ 
 
-[Fuel Consumption](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Fuel%20Consumption%20Tables): 
+[Fuel Consumption Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Fuel%20Consumption%20Tables): 
 * (10) ```Average Fuel Intensity per ASMs (L/ASMs)``` | _Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx_ 
 * (11) ```Average Fuel Intensity per Distance (L/mi)``` | _Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx_ 
 
-[Aircraft Operating Costs](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aircraft%20Operating%20Costs%20Tables): 
+[Aircraft Operating Costs Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aircraft%20Operating%20Costs%20Tables): 
 * (12) ```AOC per Block Hour ($USD/block-hr)``` | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_ 
 * (13) ```AOC per Seat Hour ($USD/seat-hr)``` | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_ 
 * (14) ```AOC per ASMs ($USD/ASM)``` | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_ 
@@ -98,14 +98,14 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 **Tool Purpose:** ```AMAT``` can be used to compute 5 different origin-destination (OD) market metrics, to the route and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables,  and vary according to whether the routes are in or out of a desired airport, as displayed below,:
 
-Out of a Desired Airport:
+[Out of Desired Airport Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Airport):
 * (1) ```Daily Revenue by Route and Airline out of a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_Out.xlsx_
 * (2) ```PDEW by Route and Airline out of a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_Out.xlsx_
 * (3) ```Daily RPMs by Route and Airline out of a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_Out.xlsx_
 * (4) ```Average Fare by Route and Airline out of a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_Out.xlsx_
 * (5) ```Average Yield by Route and Airline out of a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_Out.xlsx_  
 
-Into a Desired Airport:
+[Into Desired Airport Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Into%20a%20Desired%20Airport):
 * (6) ```Daily Revenue by Route and Airline into a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_In.xlsx_  
 * (7) ```PDEW by Route and Airline into a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_In.xlsx_
 * (8) ```Daily RPMs by Route and Airline into a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_In.xlsx_
