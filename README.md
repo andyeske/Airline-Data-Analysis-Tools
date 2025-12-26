@@ -102,9 +102,9 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 * (2) ```PDEW by Route and Airline out of a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_Out.xlsx_
 * (3) ```Daily RPMs by Route and Airline out of a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_Out.xlsx_
 * (4) ```Average Fare by Route and Airline out of a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_Out.xlsx_
-* (5) ```Average Yield by Route and Airline out of a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_Out.xlsx_
+* (5) ```Average Yield by Route and Airline out of a Desired Airport ($/RPM)``` | _Average_Yield_by_Route_and_Airline_Out.xlsx_ 
 
-* (6) ```Daily Revenue by Route and Airline into a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_In.xlsx_
+* (6) ```Daily Revenue by Route and Airline into a Desired Airport ($)``` | _Daily_Revenue_by_Route_and_Airline_In.xlsx_  <br />
 * (7) ```PDEW by Route and Airline into a Desired Airport (# of people)``` | _PDEW_by_Route_and_Airline_In.xlsx_
 * (8) ```Daily RPMs by Route and Airline into a Desired Airport (RPMs)``` | _Daily_RPM_by_Route_and_Airline_In.xlsx_
 * (9) ```Average Fare by Route and Airline into a Desired Airport ($)``` | _Average_Fare_by_Route_and_Airline_In.xlsx_
@@ -112,7 +112,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 Sample data tables can be found [here](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs). The data corresponds to 2025 Q1.
 
-Note: 
+Notes: 
 * The difference between Tables (1) - (5) and (6) - (10) is that the routes correspond to departing routes and arriving routes, respectively, out of a desired airport (e.g., BOS). This is an entry that the user can modify, as shown in "User Action".
 * By default, these data tables are computed using quarterly data, but then collapsed to indicate daily and average metrics. ```AMAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
