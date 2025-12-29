@@ -60,8 +60,7 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10];
 % Notes:
 % a) Desired_Airline = 'All_Airlines' will sort the tables using the
 % aggregate column for all airlines in the US.
-% b) Writing [] in Save_Tables will not save any tables, and will simply
-% generate these on MATLAB.
+% b) Writing [] in Save_Tables will not save any tables.
 
 % ----------------------------------------------------------------------- %
 % ----------------- DO NOT MODIFY CODE FROM HERE ONWARDS ---------------- %

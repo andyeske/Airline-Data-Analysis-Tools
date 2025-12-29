@@ -47,8 +47,7 @@ Destination_Airport = 'MIA';
 Save_Tables = [1,2,3,4,5,6,7,8];
 
 % Notes:
-% a) Writing [] in Save_Tables will not save any tables, and will simply
-% generate these on MATLAB.
+% a) Writing [] in Save_Tables will not save any tables.
 
 % ----------------------------------------------------------------------- %
 % ----------------- DO NOT MODIFY CODE FROM HERE ONWARDS ---------------- %

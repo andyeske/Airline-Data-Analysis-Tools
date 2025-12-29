@@ -76,8 +76,7 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 % aircraft and airlines in the US, respectively.
 % b) The aggregated results are also returned whenever a non-existing 
 % airline or aircraft are inputted in Desired_Aircraft or Desired_Airline.
-% c) Writing [] in Save_Tables will not save any tables, and will simply
-% generate these on MATLAB.
+% c) Writing [] in Save_Tables will not save any tables.
 % d) APAT can be easily modified to produce more outputs than (1) - (21).
 
 % ----------------------------------------------------------------------- %
@@ -103,7 +102,7 @@ T100 = T100(find(T100{:,2} > 0),:); % Non-zero seats
 T100 = T100(find(T100{:,4} > 0),:); % Non-zero distance
 in_T100 = [];
 for k_aircraft = 1:n_aircraft
-    in_T100 = [in_T100;find(T100{:,10} == AircraftCodes{k_aircraft,1})];      
+    in_T100 = [in_T100;find(T100{:,9} == AircraftCodes{k_aircraft,1})];      
 end
 T100 = T100(in_T100,:);
 n_T100 = length(T100{:,1});
@@ -147,7 +146,7 @@ for k = 1:n_T100
 
     % Finding the airline and aircraft
     Airline = char(T100{k,6}); Airline_In = find(strcmp(Airline,AirlineCodes{:,1}) == 1);
-    Aircraft = T100{k,10}; Aircraft_In = find(Aircraft == AircraftCodes{:,1});
+    Aircraft = T100{k,9}; Aircraft_In = find(Aircraft == AircraftCodes{:,1});
 
     % Only computing the metrics for those codes where there is data
     if isempty(Airline_In) == 0 && isempty(Aircraft_In) == 0
