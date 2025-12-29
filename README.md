@@ -83,8 +83,7 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 % aircraft and airlines in the US, respectively.
 % b) The aggregated results are also returned whenever a non-existing 
 % airline or aircraft are inputted in Desired_Aircraft or Desired_Airline.
-% c) Writing [] in Save_Tables will not save any tables, and will simply
-% generate these on MATLAB.
+% c) Writing [] in Save_Tables will not save any tables.
 % d) APAT can be easily modified to produce more outputs than (1) - (21).
 ```
 
@@ -159,8 +158,7 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10];
 % Notes:
 % a) Desired_Airline = 'All_Airlines' will sort the tables using the
 % aggregate column for all airlines in the US.
-% b) Writing [] in Save_Tables will not save any tables, and will simply
-% generate these on MATLAB.
+% b) Writing [] in Save_Tables will not save any tables.
 ```
 
 Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
@@ -224,8 +222,7 @@ Destination_Airport = 'MIA';
 Save_Tables = [1,2,3,4,5,6,7,8];
 
 % Notes:
-% a) Writing [] in Save_Tables will not save any tables, and will simply
-% generate these on MATLAB.
+% a) Writing [] in Save_Tables will not save any tables.
 ```
 
 Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
