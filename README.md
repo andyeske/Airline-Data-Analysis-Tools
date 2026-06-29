@@ -68,14 +68,24 @@ After downloading the two BTS datasets, unzip them, and rename them to "T100 Dat
 % ------------------------- USER DEFINED INPUTS ------------------------- %
 % ----------------------------------------------------------------------- %
 
-% To generate (20) and (21), using the "Aircraft Codes" and "Airline Codes" 
-% tables in (https://github.com/andyeske/Airline-Data-Project), the USER 
-% must select the desired aircraft and airline:
-Desired_Aircraft = 'A320';
+% To generate (20) and (21), the USER must specify two parameters, which
+% include:
+
+% Please input the Desired Airline: 
+% --> The aircraft-specific results (20) will correspond only to values of 
+% this airline. You can use the table "Airline Codes" available in 
+% https://github.com/andyeske/Airline-Data-Project to find the set of 23 
+% US airlines available for selection.
 Desired_Airline = 'American';
 
-% To save the tables under the USER's directory, the USER must select the 
-% desired table indeces:
+% Please input the Desired Aircraft: 
+% --> The airline-specific results (21) will correspond only to values of 
+% this aircraft type. You can use the table "Aircraft Codes" available in 
+% https://github.com/andyeske/Airline-Data-Project to find the set of 36 
+% aircraft types available for selection.
+Desired_Aircraft = 'A320';
+
+% Finally, please select the desired table indeces to save:
 Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 
 % Notes:
