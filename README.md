@@ -1,7 +1,7 @@
 <a name="back_to_top"></a>
 # MIT Airline Data Project
 
-Welcome to the revamped MIT Airline Data Project (ADP)! This open-source repository serves as a continuation of the original [MIT Airline Data Project](https://web.mit.edu/airlinedata/www/default.html) (which ended in 2021), and as such, contains three tools that can be used to compute similar airline industry metrics to those found in the original ADP. Each of the tools described below can support the analysis of the operational performance, as well as the visualization of market trends and route statistics, of [23 different airlines](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Airline%20Codes.xlsx) and [36 different aircraft types](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Aircraft%20Codes.xlsx) in the United States. These tools employ publicly available data from the US [Bureau of Transportation Statistics](https://www.transtats.bts.gov/databases.asp?Z1qr_VQ=E&Z1qr_Qr5p=N8vn6v10&f7owrp6_VQF=D) (BTS), and are only meant for educational purposes.
+Welcome to the revamped MIT Airline Data Project (ADP)! This open-source repository serves as a continuation of the original [MIT Airline Data Project](https://web.mit.edu/airlinedata/www/default.html) (which ended in 2021), and as such, contains four tools that can be used to compute similar airline industry metrics to those found in the original ADP. The first three tools support the analysis of the operational performance, as well as the visualization of market trends and route statistics, of [23 different airlines](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Airline%20Codes.xlsx) and [36 different aircraft types](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Aircraft%20Codes.xlsx) in the United States. The fourth tool can be used to visualize a variety of aircraft age and ownership metrics across sub-fleets, airlines, or the entire US air transportation system. These tools employ publicly available data from the US Department of Transportation (DoT) [Bureau of Transportation Statistics](https://www.transtats.bts.gov/databases.asp?Z1qr_VQ=E&Z1qr_Qr5p=N8vn6v10&f7owrp6_VQF=D) (BTS) and US Federal Aviation Administration (FAA) [Tail Registry](https://registry.faa.gov/aircraftinquiry/search/nnumberinquiry), and are only meant for educational purposes.
 
 ## Data Analysis Tools
 
@@ -9,7 +9,8 @@ Welcome to the revamped MIT Airline Data Project (ADP)! This open-source reposit
 
 1: [ Airline Performance Analysis Tool (APAT) ](#APAT) <br />
 2: [ Airline Market Analysis Tool (AMAT) ](#AMAT) <br />
-2: [ Airline Route Analysis Tool (ARAT) ](#ARAT) <br />
+3: [ Airline Route Analysis Tool (ARAT) ](#ARAT) <br />
+4: [ Aircraft Engine Analysis Tool (AEAT) ](#AEAT) <br />
 
 ---
 <a name="APAT"></a>
@@ -226,6 +227,99 @@ Save_Tables = [1,2,3,4,5,6,7,8];
 ```
 
 Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
+
+---
+<a name="AEAT"></a>
+### Aircraft Engine Analysis Tool (AEAT)
+
+**Tool Purpose:** ```AEAT``` can be used to compute 4 different capacity metrics, to the route and airline/aircraft level of granularity. These metrics include total revenue passenger-miles (RPM), total available seat-miles (ASMs), total passengers, and total departures. The outputs from ```APAT``` consist of 8 excel data tables, and vary according to whether the route metrics are disaggregated to the airline or aircraft level:
+
+["Route and Airline" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Airline%20Tables):
+* (1) ```Total Revenue Passenger Miles by Route and Airline out of a Desired Airport (RPMs)``` | _Total_RPMs_by_Route_and_Airline_Out.xlsx_
+* (2) ```Total Available Seat Miles by Route and Airline out of a Desired Airport (ASMs)``` | _Total_ASMs_by_Route_and_Airline_Out.xlsx_
+* (3) ```Total Passengers by Route and Airline out of a Desired Airport (# of passsengers)``` | _Total_Passengers_by_Route_and_Airline_Out.xlsx_
+* (4) ```Total Departures by Route and Airline out of a Desired Airport (# of departures)``` | _Total_Departures_by_Route_and_Airline_Out.xlsx_
+
+["Route and Aircraft" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Aircraft%20Tables):
+* (5) ```Total Revenue Passenger Miles by Route and Aircraft out of a Desired Airport (RPMs)``` | _Total_RPMs_by_Route_and_Aircraft_Out.xlsx_
+* (6) ```Total Available Seat Miles by Route and Aircraft out of a Desired Airport (ASMs)``` | _Total_ASMs_by_Route_and_Aircraft_Out.xlsx_
+* (7) ```Total Passengers by Route and Aircraft out of a Desired Airport (# of passsengers)``` | _Total_Passengers_by_Route_and_Aircraft_Out.xlsx_
+* (8) ```Total Departures by Route and Aircraft out of a Desired Airport (# of departures)``` | _Total_Departures_by_Route_and_Aircraft_Out.xlsx_
+
+Sample data tables can be found in the above-listed hyperlinks. The data in these tables corresponds to the entirety of 2024. The tables were generated using the user parameters shown below.
+
+Note: By default, these data tables are computed using annual T100 data. ```ARAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+
+**Data Inputs:** To use ```ARAT```, the user must first download three open-source datasets, which include:
+* [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destinaiton | i) Aircraft | j) Month.
+* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+
+After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```ARAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+
+**User Actions:** ```AEAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AEAT``` to generate custom plots. For example:
+
+Setting ```Desired_Aircraft = {'A319-100','A320-200','A321-200'}``` and ```Desired_Airline = {}``` will result in **Figure 1**, which displays
+
+
+
+```
+% ----------------------------------------------------------------------- %
+% ------------------------- USER DEFINED INPUTS ------------------------- %
+% ----------------------------------------------------------------------- %
+
+% The USER must specify the following three parameters, which include:
+
+% Please input the Registration Status
+% --> This choice influences whether the displayed data corresponds to
+% currently registered aircraft (1) or de-registered aircraft (2)
+Registration_Status = 1;
+
+% Please input the Desired Aircraft: 
+% --> This choice makes the displayed results aircraft-specific. 
+% --> It is possible to input multiple aircraft types, separated by a
+%     comma (e.g., Desired_Aircraft = {'B777-200','B777-200ER'})
+% --> Leaving this entry blank makes the results aircraft-agnostic.
+% --> Permissible aircraft typs include:
+%     B717-100 
+%     B737-300  | B737-400    | B737-500   | B737-600 | B737-600 | B737-700
+%     B737-800  | B737-900    | B737-900ER | B737-8   | B737-9
+%     B747-400  | B737-400F   | B747-8     | B747-8F
+%     B757-200  | B757-200ER  | B757-200F  | B757-300
+%     B767-200  | B767-200ER  | B767-200F  | B767-300 | B767-300ER 
+%     B767-300F | B767-400    | B767-400ER
+%     B777-200  | B777-200ER  | B777-200LR | B777-300 | B777-300ER | B777F
+%     B787-8    | B787-9      | B787-10
+%     A319-100  | A320-100    | A320-200   | A320NEO  
+%     A321-100  | A321-200    | A320NEO    | A321F
+%     A330-200  | A330-200F   | A330-300   | A330-900
+%     A340-200  | A340-300    | A340-500   | A340-600
+%     A350-900
+%     A220-300
+%     Q100      | Q200        | Q300       | Q400
+%     CRJ-200   | CRJ-550     | CRJ-700    | CRJ-900  | CRJ-1000
+%     E135      | E145        | E170       | E190
+%     DC-9      | DC-9F       | MD-80      | MD-90
+%     DC-10     | DC-10F      | MD-11      | MD-11F
+Desired_Aircraft = {'A319-100','A320-200','A321-200'};
+
+% Please input the Desired Airline: 
+% --> This choice will make the displayed results airline-specific.
+% --> It is possible to only input one airline.
+% --> Leaving this entry blank will make the results airline-agnostic.
+% --> Example airlines include and are not limited to:
+%     ALASKA AIRLINES INC            | AMERICAN AIRLINES INC
+%     DELTA AIR LINES INC            | JETBLUE AIRWAYS CORP
+%     HAWAIIAN AIRLINES INC          | SKYWEST AIRLINES INC
+%     SOUTHWEST AIRLINES CO          | SPIRIT AIRLINES LLC        
+%     UNITED AIRLINES INC 
+%     FEDERAL EXPRESS CORP           | UNITED PARCEL SERVICE CO
+Desired_Airline = {};
+
+% Notes:
+% a) The use can either leave "Desired_Aircraft" or "Desired_Airline"
+% empty, but not both. Otherwise, it will trigger an error.
+```
 
 ([ back to top ](#back_to_top))
 
