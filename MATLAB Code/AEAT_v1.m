@@ -36,7 +36,8 @@ Registration_Status = 1;
 % --> This choice makes the displayed results aircraft-specific. 
 % --> It is possible to input multiple aircraft types, separated by a
 %     comma (e.g., Desired_Aircraft = {'B777-200','B777-200ER'})
-% --> Leaving this entry blank makes the results aircraft-agnostic.
+% --> Leaving this entry blank will display results for all aircraft types 
+%     for the Desired Airline.
 % --> Permissible aircraft typs include:
 %     B717-100 
 %     B737-300  | B737-400    | B737-500   | B737-600 | B737-600 | B737-700
@@ -62,8 +63,10 @@ Desired_Aircraft = {'A319-100','A320-200','A321-200'};
 
 % Please input the Desired Airline: 
 % --> This choice will make the displayed results airline-specific.
-% --> It is possible to only input one airline.
-% --> Leaving this entry blank will make the results airline-agnostic.
+% --> It is possible to input multiple airlines, separated by a comma
+%     comma (e.g., Desired_Airline = {'DELTA AIR LINES INC','UNITED AIRLINES INC'})
+% --> Leaving this entry blank will display results for all US airlines for 
+%     the Desired Aircraft.
 % --> Example airlines include and are not limited to:
 %     ALASKA AIRLINES INC            | AMERICAN AIRLINES INC
 %     DELTA AIR LINES INC            | JETBLUE AIRWAYS CORP
@@ -71,7 +74,7 @@ Desired_Aircraft = {'A319-100','A320-200','A321-200'};
 %     SOUTHWEST AIRLINES CO          | SPIRIT AIRLINES LLC        
 %     UNITED AIRLINES INC 
 %     FEDERAL EXPRESS CORP           | UNITED PARCEL SERVICE CO
-Desired_Airline = {};
+Desired_Airline = {'DELTA AIR LINES INC','UNITED AIRLINES INC'};
 
 % Notes:
 % a) The use can either leave "Desired_Aircraft" or "Desired_Airline"
