@@ -114,13 +114,13 @@ Desired_Aircraft_In = find(strcmp(Desired_Aircraft,AircraftCodes{:,2}) == 1);
 % Default index if a wrong code is inputted
 if isempty(Desired_Airline_In)
     Desired_Airline_In = n_airlines + 1;
-    table_name_aircraft = ['Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
+    table_name_airline = ['Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
 else
     table_name_airline = [Desired_Aircraft,'_Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
 end
 if isempty(Desired_Aircraft_In)
     Desired_Aircraft_In = n_aircraft + 1;
-    table_name_airline = ['Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
+    table_name_aircraft = ['Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
 else
     table_name_aircraft = [Desired_Airline,'_Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
 end
