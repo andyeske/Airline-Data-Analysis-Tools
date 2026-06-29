@@ -1,7 +1,15 @@
 <a name="back_to_top"></a>
 # Airline Data Analysis Tools (ADAT)
 
-Welcome to the Airline Data Analysis Tools repository! This open-source repository serves as an unofficial continuation of the original [MIT Airline Data Project](https://web.mit.edu/airlinedata/www/default.html) (which ended in 2021), and as such, contains four tools that can be used to compute similar airline industry metrics to those found in the original ADP. The first three tools support the analysis of the operational performance, as well as the visualization of market trends and route statistics, of [23 different airlines](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Airline%20Codes.xlsx) and [36 different aircraft types](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Aircraft%20Codes.xlsx) in the United States. The fourth tool can be used to visualize a variety of aircraft age, engine type, and ownership metrics across sub-fleets, airlines, or the entire US air transportation system. These tools employ publicly available data from the US Department of Transportation (DoT) [Bureau of Transportation Statistics](https://www.transtats.bts.gov/databases.asp?Z1qr_VQ=E&Z1qr_Qr5p=N8vn6v10&f7owrp6_VQF=D) (BTS) and US Federal Aviation Administration (FAA) [Tail Registry](https://registry.faa.gov/aircraftinquiry/search/nnumberinquiry), and are only meant for educational purposes.
+Welcome to the Airline Data Analysis Tools repository! This open-source repository contains a set of tools that can be used to examine the US airline industry. 
+
+Three tools, the Airline Performance Analysis Tool (APAT), Airline Market Analysis Tool (AMAT), and Airline Route Analysis Tool (ARAT) support the analysis of the operational performance, as well as the visualization of market trends and route statistics, of [23 different airlines](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Airline%20Codes.xlsx) and [36 different aircraft types](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Aircraft%20Codes.xlsx) in the United States. 
+
+A fourth tool, the Aircraft Engine Analysis Tool (AEAT) can be used to visualize a variety of aircraft age, engine type, and ownership metrics across sub-fleets, airlines, or the entire US air transportation system. 
+
+These tools employ publicly available data from the US Department of Transportation (DoT) [Bureau of Transportation Statistics](https://www.transtats.bts.gov/databases.asp?Z1qr_VQ=E&Z1qr_Qr5p=N8vn6v10&f7owrp6_VQF=D) (BTS) and US Federal Aviation Administration (FAA) [Tail Registry](https://registry.faa.gov/aircraftinquiry/search/nnumberinquiry), and are only meant for educational purposes.
+
+This open-source repository serves as an unofficial continuation of the original [MIT Airline Data Project](https://web.mit.edu/airlinedata/www/default.html) (which ended in 2021).
 
 ## Data Analysis Tools
 
