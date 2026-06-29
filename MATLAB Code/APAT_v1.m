@@ -116,13 +116,13 @@ if isempty(Desired_Airline_In)
     Desired_Airline_In = n_airlines + 1;
     table_name_aircraft = ['Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
 else
-    table_name_aircraft = [Desired_Aircraft,'_Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
+    table_name_airline = [Desired_Aircraft,'_Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
 end
 if isempty(Desired_Aircraft_In)
     Desired_Aircraft_In = n_aircraft + 1;
     table_name_airline = ['Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
 else
-    table_name_airline = [Desired_Airline,'_Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
+    table_name_aircraft = [Desired_Airline,'_Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
 end
 
 %% ------------------- Step 2: Computing the metrics -------------------- %
@@ -267,10 +267,10 @@ Aircraft_Airline_AOC(isnan(Aircraft_Airline_AOC)) = 0;
 Aircraft_Airline_Departures_per_Day = round(Aircraft_Airline_Departures./Aircraft_Airline_Days_Assigned,2); % Departures / Days Assigned
 Aircraft_Airline_ASMs_per_Day = round(Aircraft_Airline_ASMs./Aircraft_Airline_Days_Assigned); % Departures / Days Assigned
 Aircraft_Airline_Block_Hours_per_Day = round(Aircraft_Airline_Block_Hours./Aircraft_Airline_Days_Assigned,2); % Block Hours / Days Assigned
-Aircraft_Airline_AOC_per_Block_Hours = round(Aircraft_Airline_AOC./Aircraft_Airline_Block_Hours); % AOC / Block Hours
-Aircraft_Airline_AOC_per_ASMs = round(Aircraft_Airline_AOC./Aircraft_Airline_ASMs,2); % AOC / ASMs
+Aircraft_Airline_AOC_per_Block_Hours = round(Aircraft_Airline_AOC./Aircraft_Airline_Block_Hours,2); % AOC / Block Hours
+Aircraft_Airline_AOC_per_ASMs = round(Aircraft_Airline_AOC./Aircraft_Airline_ASMs,3); % AOC / ASMs
 Aircraft_Airline_AOC_per_Seat_Hours = round(Aircraft_Airline_AOC./Aircraft_Airline_Seat_Hours,2); % AOC / Seat Hours
-Aircraft_Airline_Fuel_Consumed_per_ASMs = Aircraft_Airline_Fuel_Consumed./Aircraft_Airline_ASMs; % Fuel Consumed / ASMs
+Aircraft_Airline_Fuel_Consumed_per_ASMs = round(Aircraft_Airline_Fuel_Consumed./Aircraft_Airline_ASMs,3); % Fuel Consumed / ASMs
 Aircraft_Airline_Fuel_Consumed_per_Distance = round(Aircraft_Airline_Fuel_Consumed./Aircraft_Airline_Distance_Flown,2); % Fuel Consumed / Total Distance
 
 % Eliminating NaN entries
@@ -283,11 +283,23 @@ Aircraft_Airline_AOC_per_Seat_Hours(isnan(Aircraft_Airline_AOC_per_Seat_Hours)) 
 Aircraft_Airline_Fuel_Consumed_per_ASMs(isnan(Aircraft_Airline_Fuel_Consumed_per_ASMs)) = 0;
 Aircraft_Airline_Fuel_Consumed_per_Distance(isnan(Aircraft_Airline_Fuel_Consumed_per_Distance)) = 0;
 
+% Eliminating Inf entries
+Aircraft_Airline_Departures_per_Day(isinf(Aircraft_Airline_Departures_per_Day)) = 0;
+Aircraft_Airline_ASMs_per_Day(isinf(Aircraft_Airline_ASMs_per_Day)) = 0;
+Aircraft_Airline_Block_Hours_per_Day(isinf(Aircraft_Airline_Block_Hours_per_Day)) = 0;
+Aircraft_Airline_AOC_per_Block_Hours(isinf(Aircraft_Airline_AOC_per_Block_Hours)) = 0;
+Aircraft_Airline_AOC_per_ASMs(isinf(Aircraft_Airline_AOC_per_ASMs)) = 0;
+Aircraft_Airline_AOC_per_Seat_Hours(isinf(Aircraft_Airline_AOC_per_Seat_Hours)) = 0;
+Aircraft_Airline_Fuel_Consumed_per_ASMs(isinf(Aircraft_Airline_Fuel_Consumed_per_ASMs)) = 0;
+Aircraft_Airline_Fuel_Consumed_per_Distance(isinf(Aircraft_Airline_Fuel_Consumed_per_Distance)) = 0;
+
+
+
 % Creating the aggregated tables for each airline and aircraft
 Aircraft_Aggregated = [Aircraft_Airline_RPMs(:,Desired_Airline_In),... % (1)
                        Aircraft_Airline_ASMs(:,Desired_Airline_In),... % (2)
                        Aircraft_Airline_ASMs_per_Day(:,Desired_Airline_In),... % (6)
-                       round(Aircraft_Airline_Seats_per_Departure(:,Desired_Airline_In)),... % (8)
+                       Aircraft_Airline_Seats_per_Departure(:,Desired_Airline_In),... % (8)
                        Aircraft_Airline_Departures(:,Desired_Airline_In),... % (4)
                        Aircraft_Airline_Departures_per_Day(:,Desired_Airline_In),... % (5)
                        Aircraft_Airline_Block_Hours_per_Day(:,Desired_Airline_In),... % (7)
@@ -311,7 +323,7 @@ Airline_Aggregated = [Aircraft_Airline_RPMs(Desired_Aircraft_In,:)',... % (1)
                        Aircraft_Airline_AOC_per_ASMs(Desired_Aircraft_In,:)']; % (14)
 
 % Additional Datasets (Non-Output)
-Aircraft_Aggregated_v2 = [round(Aircraft_Airline_Seats_per_Departure(:,Desired_Airline_In)),... % (8)
+Aircraft_Aggregated_v2 = [Aircraft_Airline_Seats_per_Departure(:,Desired_Airline_In),... % (8)
                           Aircraft_Airline_AOC_per_Block_Hours(:,Desired_Airline_In),... % (12)
                           Aircraft_Airline_AOC_per_Seat_Hours(:,Desired_Airline_In),... % (13)
                           Aircraft_Airline_AOC_per_ASMs(:,Desired_Airline_In),... % (14)
@@ -324,7 +336,7 @@ Airline_Aggregated_v2 = [Aircraft_Airline_Crew_Costs(Desired_Aircraft_In,:)'./Ai
                          Aircraft_Airline_Ownership_Costs(Desired_Aircraft_In,:)'./Aircraft_Airline_Block_Hours(Desired_Aircraft_In,:)',... % (18)
                          Aircraft_Airline_Other_Costs(Desired_Aircraft_In,:)'./Aircraft_Airline_Block_Hours(Desired_Aircraft_In,:)',... % (19)
                          Aircraft_Airline_AOC(Desired_Aircraft_In,:)'./Aircraft_Airline_Block_Hours(Desired_Aircraft_In,:)'];
-Airline_Aggregated_v2(isnan(Airline_Aggregated_v2)) = 0; Airline_Aggregated_v2 = round(Airline_Aggregated_v2);
+Airline_Aggregated_v2(isnan(Airline_Aggregated_v2)) = 0; 
 
 Airline_Aggregated_v3 = [Aircraft_Airline_ASLs(Desired_Aircraft_In,:)',... % (9)
                          Aircraft_Airline_Seats_per_Departure(Desired_Aircraft_In,:)',... % (8)
@@ -348,35 +360,35 @@ RPMs_Table = array2table(Aircraft_Airline_RPMs); % Aircraft/Airline Total RPMs (
 RPMs_Table.Properties.VariableNames = airline_names; RPMs_Table.Properties.RowNames = aircraft_names;
 ASMs_Table = array2table(Aircraft_Airline_ASMs); % Aircraft/Airline Total ASMs (2)
 ASMs_Table.Properties.VariableNames = airline_names; ASMs_Table.Properties.RowNames = aircraft_names;
-LFs_Table = array2table(round(Aircraft_Airline_LFs)); % Aircraft/Airline Total LFs (3)
+LFs_Table = array2table(Aircraft_Airline_LFs); % Aircraft/Airline Total LFs (3)
 LFs_Table.Properties.VariableNames = airline_names; LFs_Table.Properties.RowNames = aircraft_names;
 Departures_Table = array2table(Aircraft_Airline_Departures); % Aircraft/Airline Total Departures (4)
 Departures_Table.Properties.VariableNames = airline_names; Departures_Table.Properties.RowNames = aircraft_names;
 
 % Utilization Metrics Tables
-Departures_per_Day_Table = array2table(round(Aircraft_Airline_Departures_per_Day)); % Aircraft/Airline Departures per Day (5)
+Departures_per_Day_Table = array2table(Aircraft_Airline_Departures_per_Day); % Aircraft/Airline Departures per Day (5)
 Departures_per_Day_Table.Properties.VariableNames = airline_names; Departures_per_Day_Table.Properties.RowNames = aircraft_names;
-ASMs_per_Day_Table = array2table(round(Aircraft_Airline_ASMs_per_Day)); % Aircraft/Airline ASMs per Day (6)
+ASMs_per_Day_Table = array2table(Aircraft_Airline_ASMs_per_Day); % Aircraft/Airline ASMs per Day (6)
 ASMs_per_Day_Table.Properties.VariableNames = airline_names; ASMs_per_Day_Table.Properties.RowNames = aircraft_names;
-Block_Hours_per_Day_Table = array2table(round(Aircraft_Airline_Block_Hours_per_Day)); % Aircraft/Airline Block Hours per Day (7)
+Block_Hours_per_Day_Table = array2table(Aircraft_Airline_Block_Hours_per_Day); % Aircraft/Airline Block Hours per Day (7)
 Block_Hours_per_Day_Table.Properties.VariableNames = airline_names; Block_Hours_per_Day_Table.Properties.RowNames = aircraft_names;
-Seats_per_Departure_Table = array2table(round(Aircraft_Airline_Seats_per_Departure)); % Aircraft/Airline Total Block Hours (8)
+Seats_per_Departure_Table = array2table(Aircraft_Airline_Seats_per_Departure); % Aircraft/Airline Total Block Hours (8)
 Seats_per_Departure_Table.Properties.VariableNames = airline_names; Seats_per_Departure_Table.Properties.RowNames = aircraft_names;
 ASLs_Table = array2table(round(Aircraft_Airline_ASLs)); % Aircraft/Airline Total Block Hours (9)
 ASLs_Table.Properties.VariableNames = airline_names; ASLs_Table.Properties.RowNames = aircraft_names;
 
 % Fuel Consumption Tables
-Fuel_Consumed_per_ASMs_Table = array2table(round(Aircraft_Airline_Fuel_Consumed_per_ASMs,3)); % Aircraft/Airline Fuel Consumed per ASMs (10)
+Fuel_Consumed_per_ASMs_Table = array2table(Aircraft_Airline_Fuel_Consumed_per_ASMs); % Aircraft/Airline Fuel Consumed per ASMs (10)
 Fuel_Consumed_per_ASMs_Table.Properties.VariableNames = airline_names; Fuel_Consumed_per_ASMs_Table.Properties.RowNames = aircraft_names;
-Fuel_Consumed_per_Distance_Table = array2table(round(Aircraft_Airline_Fuel_Consumed_per_Distance,3)); % Aircraft/Airline Fuel Consumed per Distance (11)
+Fuel_Consumed_per_Distance_Table = array2table(Aircraft_Airline_Fuel_Consumed_per_Distance); % Aircraft/Airline Fuel Consumed per Distance (11)
 Fuel_Consumed_per_Distance_Table.Properties.VariableNames = airline_names; Fuel_Consumed_per_Distance_Table.Properties.RowNames = aircraft_names;
 
 % Aircraft Operating Cost Tables 
-AOC_per_Block_Hours_Table = array2table(round(Aircraft_Airline_AOC_per_Block_Hours)); % Aircraft/Airline AOC per Block Hours (12)
+AOC_per_Block_Hours_Table = array2table(Aircraft_Airline_AOC_per_Block_Hours); % Aircraft/Airline AOC per Block Hours (12)
 AOC_per_Block_Hours_Table.Properties.VariableNames = airline_names; AOC_per_Block_Hours_Table.Properties.RowNames = aircraft_names;
-AOC_per_Seat_Hour_Table = array2table(round(Aircraft_Airline_AOC_per_Seat_Hours)); % Aircraft/Airline AOC per Seat Hours (13)
+AOC_per_Seat_Hour_Table = array2table(Aircraft_Airline_AOC_per_Seat_Hours); % Aircraft/Airline AOC per Seat Hours (13)
 AOC_per_Seat_Hour_Table.Properties.VariableNames = airline_names; AOC_per_Seat_Hour_Table.Properties.RowNames = aircraft_names;
-AOC_per_ASMs_Table = array2table(round(Aircraft_Airline_AOC_per_ASMs)); % Aircraft/Airline AOC per ASMs (14)
+AOC_per_ASMs_Table = array2table(Aircraft_Airline_AOC_per_ASMs); % Aircraft/Airline AOC per ASMs (14)
 AOC_per_ASMs_Table.Properties.VariableNames = airline_names; AOC_per_ASMs_Table.Properties.RowNames = aircraft_names;
 Fuel_Costs_Table = array2table(round(Aircraft_Airline_Fuel_Costs)); % Aircraft/Airline Fuel Costs (15)
 Fuel_Costs_Table.Properties.VariableNames = airline_names; Fuel_Costs_Table.Properties.RowNames = aircraft_names;
