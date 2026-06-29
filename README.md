@@ -240,7 +240,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "DEREG.txt" files. Place these two text files, as well as the excel file, under the same folder, alongside the ```AEAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
 
-**User Actions:** ```AEAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AEAT``` to generate custom plots. For example:
+**User Actions:** ```AEAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AEAT``` to generate custom plots. For example:
 
 * Setting ```Desired_Aircraft = {'A319-100','A320-200','A321-200'}``` and ```Desired_Airline = {}``` will result in **Figure 1**, which displays metrics specific to the A320 family, across all US airlines.
 
