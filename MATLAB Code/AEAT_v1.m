@@ -91,21 +91,21 @@ end
 % Importing the FAA tail registry data
 warning('off','all'); % Turning off import warnings 
 if Registration_Status == 1
-    opts = detectImportOptions('/Users/andyeske/Desktop/MASTER.txt');
+    opts = detectImportOptions('MASTER.txt');
     opts = setvartype(opts, 'string');
-    tail_registry = readtable('/Users/andyeske/Desktop/MASTER.txt',opts); 
+    tail_registry = readtable('MASTER.txt',opts); 
     tail_registry = tail_registry(:,[1,2,3,4,5,7]);
 else
-    opts = detectImportOptions('/Users/andyeske/Desktop/DEREG.txt');
+    opts = detectImportOptions('DEREG.txt');
     opts = setvartype(opts, 'string');
-    tail_registry = readtable('/Users/andyeske/Desktop/DEREG.txt',opts); 
+    tail_registry = readtable('DEREG.txt',opts); 
     tail_registry = tail_registry(:,[1,2,3,11,5,18,23]);
 end
 
 % Importing the aircraft and engine codes
-codes = sheetnames('/Users/andyeske/Desktop/Tail Registry Aircraft Engine Codes.xlsx');
-aircraft_codes = readtable('/Users/andyeske/Desktop/Tail Registry Aircraft Engine Codes.xlsx','Sheet',codes(1));
-engine_codes = readtable('/Users/andyeske/Desktop/Tail Registry Aircraft Engine Codes.xlsx','Sheet',codes(2));
+codes = sheetnames('Tail Registry Aircraft Engine Codes.xlsx');
+aircraft_codes = readtable('Tail Registry Aircraft Engine Codes.xlsx','Sheet',codes(1));
+engine_codes = readtable('Tail Registry Aircraft Engine Codes.xlsx','Sheet',codes(2));
 warning ('on','all'); % Turning on again warnings
 
 %% -------------------- Step 2: Computing the table --------------------- %
