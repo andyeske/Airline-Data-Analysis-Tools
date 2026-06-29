@@ -95,6 +95,7 @@ AirlineCodes = readtable('Airline Codes.xlsx');
 n_aircraft = length(AircraftCodes{:,1});
 n_airlines = length(AirlineCodes{:,1});
 n_F41 = length(F41{:,1});
+year = T100{1,10};
 
 % Eliminating unnecessary entries on T100
 T100 = T100(find(T100{:,1} > 0),:); % Non-zero departures
@@ -113,15 +114,15 @@ Desired_Aircraft_In = find(strcmp(Desired_Aircraft,AircraftCodes{:,2}) == 1);
 % Default index if a wrong code is inputted
 if isempty(Desired_Airline_In)
     Desired_Airline_In = n_airlines + 1;
-    table_name_aircraft = 'Airline_Cumulative_Statistics.xlsx';
+    table_name_aircraft = ['Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
 else
-    table_name_aircraft = [Desired_Aircraft,'_Airline_Cumulative_Statistics','.xlsx'];
+    table_name_aircraft = [Desired_Aircraft,'_Airline_Cumulative_Statistics_',num2str(year),'.xlsx'];
 end
 if isempty(Desired_Aircraft_In)
     Desired_Aircraft_In = n_aircraft + 1;
-    table_name_airline = 'Aircraft_Cumulative_Statistics.xlsx';
+    table_name_airline = ['Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
 else
-    table_name_airline = [Desired_Airline,'_Aircraft_Cumulative_Statistics','.xlsx'];
+    table_name_airline = [Desired_Airline,'_Aircraft_Cumulative_Statistics_',num2str(year),'.xlsx'];
 end
 
 %% ------------------- Step 2: Computing the metrics -------------------- %
@@ -365,9 +366,9 @@ ASLs_Table = array2table(round(Aircraft_Airline_ASLs)); % Aircraft/Airline Total
 ASLs_Table.Properties.VariableNames = airline_names; ASLs_Table.Properties.RowNames = aircraft_names;
 
 % Fuel Consumption Tables
-Fuel_Consumed_per_ASMs_Table = array2table(round(Aircraft_Airline_Fuel_Consumed_per_ASMs)); % Aircraft/Airline Fuel Consumed per ASMs (10)
+Fuel_Consumed_per_ASMs_Table = array2table(round(Aircraft_Airline_Fuel_Consumed_per_ASMs,3)); % Aircraft/Airline Fuel Consumed per ASMs (10)
 Fuel_Consumed_per_ASMs_Table.Properties.VariableNames = airline_names; Fuel_Consumed_per_ASMs_Table.Properties.RowNames = aircraft_names;
-Fuel_Consumed_per_Distance_Table = array2table(round(Aircraft_Airline_Fuel_Consumed_per_Distance)); % Aircraft/Airline Fuel Consumed per Distance (11)
+Fuel_Consumed_per_Distance_Table = array2table(round(Aircraft_Airline_Fuel_Consumed_per_Distance,3)); % Aircraft/Airline Fuel Consumed per Distance (11)
 Fuel_Consumed_per_Distance_Table.Properties.VariableNames = airline_names; Fuel_Consumed_per_Distance_Table.Properties.RowNames = aircraft_names;
 
 % Aircraft Operating Cost Tables 
@@ -411,28 +412,28 @@ Airline_Table_v3.Properties.RowNames = airline_names;
 Airline_Table_v3 = Airline_Table_v3(find(Airline_Table_v3{:,1} > 0),:); % Non-zero entries
 
 % Saving the output tables
-if sum(Save_Tables == 1) > 0, writetable(RPMs_Table,'RPMs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (1)
-if sum(Save_Tables == 2) > 0, writetable(ASMs_Table,'ASMs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (2)
-if sum(Save_Tables == 3) > 0, writetable(LFs_Table,'LFs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (3)
-if sum(Save_Tables == 4) > 0, writetable(Departures_Table,'Departures_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (4)
+if sum(Save_Tables == 1) > 0, writetable(RPMs_Table,['RPMs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (1)
+if sum(Save_Tables == 2) > 0, writetable(ASMs_Table,['ASMs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (2)
+if sum(Save_Tables == 3) > 0, writetable(LFs_Table,['LFs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (3)
+if sum(Save_Tables == 4) > 0, writetable(Departures_Table,['Departures_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (4)
 
-if sum(Save_Tables == 5) > 0, writetable(Departures_per_Day_Table,'Departures_per_Day_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (5)
-if sum(Save_Tables == 6) > 0, writetable(ASMs_per_Day_Table,'ASMs_per_Day_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (6)
-if sum(Save_Tables == 7) > 0, writetable(Block_Hours_per_Day_Table,'Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (7)
-if sum(Save_Tables == 8) > 0, writetable(Seats_per_Departure_Table,'Seats_per_Departures_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (8)
-if sum(Save_Tables == 9) > 0, writetable(ASLs_Table,'ASL_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (9)
+if sum(Save_Tables == 5) > 0, writetable(Departures_per_Day_Table,['Departures_per_Day_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (5)
+if sum(Save_Tables == 6) > 0, writetable(ASMs_per_Day_Table,['ASMs_per_Day_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (6)
+if sum(Save_Tables == 7) > 0, writetable(Block_Hours_per_Day_Table,['Block_Hours_per_Day_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (7)
+if sum(Save_Tables == 8) > 0, writetable(Seats_per_Departure_Table,['Seats_per_Departures_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (8)
+if sum(Save_Tables == 9) > 0, writetable(ASLs_Table,['ASL_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (9)
 
-if sum(Save_Tables == 10) > 0, writetable(Fuel_Consumed_per_ASMs_Table,'Fuel_Consumed_per_ASMs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (10)
-if sum(Save_Tables == 11) > 0, writetable(Fuel_Consumed_per_Distance_Table,'Fuel_Consumed_per_Distance_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (11)
+if sum(Save_Tables == 10) > 0, writetable(Fuel_Consumed_per_ASMs_Table,['Fuel_Consumed_per_ASMs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (10)
+if sum(Save_Tables == 11) > 0, writetable(Fuel_Consumed_per_Distance_Table,['Fuel_Consumed_per_Distance_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (11)
 
-if sum(Save_Tables == 12) > 0, writetable(AOC_per_Block_Hours_Table,'AOC_per_Block_Hours_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (12)
-if sum(Save_Tables == 13) > 0, writetable(AOC_per_Seat_Hour_Table,'AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (13)
-if sum(Save_Tables == 14) > 0, writetable(AOC_per_ASMs_Table,'AOC_per_ASMs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (14)
-if sum(Save_Tables == 15) > 0, writetable(Fuel_Costs_Table,'Fuel_Costs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (15)
-if sum(Save_Tables == 16) > 0, writetable(Maintenance_Costs_Table,'Maintenance_Costs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (16)
-if sum(Save_Tables == 17) > 0, writetable(Crew_Costs_Table,'Crew_Costs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (17)
-if sum(Save_Tables == 18) > 0, writetable(Ownership_Costs_Table,'Ownership_Costs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (18)
-if sum(Save_Tables == 19) > 0, writetable(Other_Costs_Table,'Other_Costs_by_Aircraft_and_Airline.xlsx','Sheet',1,'WriteRowNames',true), end % (19)
+if sum(Save_Tables == 12) > 0, writetable(AOC_per_Block_Hours_Table,['AOC_per_Block_Hours_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (12)
+if sum(Save_Tables == 13) > 0, writetable(AOC_per_Seat_Hour_Table,['AOC_per_Seat_Hour_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (13)
+if sum(Save_Tables == 14) > 0, writetable(AOC_per_ASMs_Table,['AOC_per_ASMs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (14)
+if sum(Save_Tables == 15) > 0, writetable(Fuel_Costs_Table,['Fuel_Costs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (15)
+if sum(Save_Tables == 16) > 0, writetable(Maintenance_Costs_Table,['Maintenance_Costs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (16)
+if sum(Save_Tables == 17) > 0, writetable(Crew_Costs_Table,['Crew_Costs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (17)
+if sum(Save_Tables == 18) > 0, writetable(Ownership_Costs_Table,['Ownership_Costs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (18)
+if sum(Save_Tables == 19) > 0, writetable(Other_Costs_Table,['Other_Costs_by_Aircraft_and_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (19)
 
 if sum(Save_Tables == 20) > 0, writetable(Aircraft_Table,table_name_aircraft,'Sheet',1,'WriteRowNames',true), end % (20)
 if sum(Save_Tables == 21) > 0, writetable(Airline_Table,table_name_airline,'Sheet',1,'WriteRowNames',true), end % (21)
