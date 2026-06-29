@@ -348,7 +348,7 @@ RPMs_Table = array2table(Aircraft_Airline_RPMs); % Aircraft/Airline Total RPMs (
 RPMs_Table.Properties.VariableNames = airline_names; RPMs_Table.Properties.RowNames = aircraft_names;
 ASMs_Table = array2table(Aircraft_Airline_ASMs); % Aircraft/Airline Total ASMs (2)
 ASMs_Table.Properties.VariableNames = airline_names; ASMs_Table.Properties.RowNames = aircraft_names;
-LFs_Table = array2table(round(100.*Aircraft_Airline_LFs)); % Aircraft/Airline Total LFs (3)
+LFs_Table = array2table(round(Aircraft_Airline_LFs)); % Aircraft/Airline Total LFs (3)
 LFs_Table.Properties.VariableNames = airline_names; LFs_Table.Properties.RowNames = aircraft_names;
 Departures_Table = array2table(Aircraft_Airline_Departures); % Aircraft/Airline Total Departures (4)
 Departures_Table.Properties.VariableNames = airline_names; Departures_Table.Properties.RowNames = aircraft_names;
