@@ -247,7 +247,7 @@ After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "D
 <p align="left">
 <img src="https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/AEAT%20Outputs/A320%20Family.jpg" width="500"> 
 
-**Figure 1:** _A320 Family Age and Ownership Metrics_.
+**Figure 1:** _A320 Family Age and Ownership Metrics (as of June 2026)_.
 </p>
 
 * Setting ```Desired_Aircraft = {'A319-100','A320-200','A321-200'}``` and ```Desired_Airline = {'AMERICAN AIRLINES INC'}``` will result in **Figure 2**, which displays the same information as before, but specific to American. The difference is in the lower bottom plot, which now displays the number of aircraft of the A320 family within American's fleet.
@@ -255,7 +255,7 @@ After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "D
 <p align="left">
 <img src="https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines%20-%20A320%20Family.jpg" width="500"> 
 
-**Figure 2:** _A320 Family Age and Ownership Metrics specific for American_.
+**Figure 2:** _A320 Family Age and Ownership Metrics specific for American (as of June 2026)_.
 </p>
 
 * Setting ```Desired_Aircraft = {}``` and ```Desired_Airline = {'AMERICAN AIRLINES INC'}``` will result in **Figure 3**, which displays fleet-wide information specific to American. 
@@ -263,10 +263,8 @@ After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "D
 <p align="left">
 <img src="https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines.jpg" width="500"> 
 
-**Figure 3:** _A320 Family Age and Ownership Metrics specific for American_.
+**Figure 3:** _A320 Family Age and Ownership Metrics specific for American (as of June 2026)_.
 </p>
-
-Note: The data in these plots corresponds to the tail registry as of June 2026. 
 
 ```
 % ----------------------------------------------------------------------- %
