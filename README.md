@@ -24,7 +24,7 @@ This open-source repository serves as an unofficial continuation of the original
 <a name="APAT"></a>
 ### Airline Peformance Analysis Tool (APAT)
 
-**Tool Purpose:** ```APAT``` can be used to compute 19 different system-wide performance metrics, to the aircraft and airline level of granularity, largely grouped under overview, utilization, fuel consumption, and aircraft operating cost metrics. The outputs from ```APAT``` consist of 27 excel data tables, which are displayed below (alongside links to sample tables):
+**Tool Purpose:** ```APAT``` can be used to compute +20 different system-wide performance metrics, to the aircraft and airline level of granularity, largely grouped under overview, utilization, fuel consumption, and aircraft operating cost metrics. The outputs from ```APAT``` consist of 27 excel data tables, which are displayed below (alongside links to sample tables):
 
 ["Overview Metrics" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables): 
 * (1) ```Total Revenue Passenger Miles (RPMs)``` | _RPMs_by_Aircraft_and_Airline.xlsx_
@@ -66,7 +66,7 @@ This open-source repository serves as an unofficial continuation of the original
 * (26)  ```Aircraft-specific Statistics ``` | _Aircraft_Cumulative_Statistics.xlsx_
 * (27)  ```Airline-specific Statistics ``` | _Airline_Cumulative_Statistics.xlsx_
 
-Here, Tables (20) and (21) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 24 airlines (27) in the US. By default, Tables (20) and (21) show average results for the entirety of the US airline industry. However, Table (26) can be customized to show the aircraft metrics specific to a single airline, while Table (27) can be modified to show the airline metrics specific to a single aircraft type, as shown in "User Action".
+Here, Tables (26) and (27) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 24 airlines (27) in the US. By default, Tables (26) and (27) show average results for the entirety of the US airline industry. However, Table (26) can be customized to show the aircraft metrics specific to a single airline, while Table (27) can be modified to show the airline metrics specific to a single aircraft type, as shown in "User Action".
 
 Note: By default, these data tables are computed at the yearly level. The sample tables provided in this repository are computed for each year between 2015 and 2025. ```APAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
