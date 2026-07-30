@@ -57,7 +57,7 @@ This open-source repository serves as an unofficial continuation of the original
 * (21) ```Unnormalized Ownership Costs ($USD)``` | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
 * (22) ```Unnormalized Other Costs ($USD)``` | _Other_Costs_by_Aircraft_and_Airline.xlsx_
 
-"Miscellaneous" Tables
+["Miscellaneous" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/APAT%20Outputs/Miscellaneous%20Tables):
 * (23) ```Total Block Hours (hrs)``` | _Block_Hours_by_Aircraft_and_Airline.xlsx_
 * (24) ```Total Distance Flown (mi)``` | _Distance_Flown_by_Aircraft_and_Airline.xlsx_
 * (25) ```Total Days Assigned (daus)``` | _Days_Assigned_by_Aircraft_and_Airline.xlsx_
