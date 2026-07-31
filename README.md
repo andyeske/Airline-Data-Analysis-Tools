@@ -126,7 +126,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 **Tool Purpose:** ```AFAT``` can be used to compute +15 different financial metrics, to the airline level of granularity, largely grouped under costs, revenue, employees, and aggregated metrics. The outputs from ```AFAT``` consist of 17 excel data tables, which are displayed below (alongside links to sample tables):
 
-["Cost" Tables]():
+["Cost" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Cost%20Tables):
 * (1) ```Unnormalized Decomposed Administrative Cost (USD$)``` | _Administrative_Cost_by_Airline.xlsx_
 * (2) ```Decomposed Administrative Cost per Available Seat Miles (USD$/ASM) | _Administrative_CASM_by_Airline.xlsx_
 * (3) ```Decomposed Administrative Cost per Seat (USD$)``` | _Administrative_Cost_per_Seat_by_Airline.xlsx_
@@ -134,14 +134,14 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 _Administrative_Cost_per_RPM_by_Airline.xlsx_
 * (5) ```Decomposed Administrative Cost per Passenger (USD$)``` | _Administrative_Cost_per_Passenger_by_Airline.xlsx_
 
-["Revenue" Tables]():
+["Revenue" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Revenue%20Tables):
 * (6) ```Unnormalized Decomposed Revenue (USD$)``` | _Revenue_by_Airline.xlsx_
 * (7) ```Decomposed Revenue per Available Seat Miles (USD$/ASM)``` | _RASM_by_Airline.xlsx_
 * (8) ```Decomposed Revenue per Seat (USD$)``` | _Revenue_per_Seat_by_Airline.xlsx_
 * (9) ```Decomposed Revenue per Revenue Passenger Miles (USD$/RPM)``` | _Yield_by_Airline.xlsx_
 * (10) ```Decomposed Revenue per Passenger (USD$)``` | _Revenue_per_Passenger_by_Airline.xlsx_
 
-["Employee" Tables]():
+["Employee" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Employee%20Tables):
 * (11) ```Employee Breakdown``` | _Employees_by_Airline.xlsx_
 * (12) ```Available Seat Miles per Employee (ASMs)``` | _ASMs_per_Employee_by_Airline.xlsx_
 * (13) ```Labor Cost per Employee (USD$)``` | _Labor_Cost_per_Employee_by_Airline.xlsx_
@@ -149,7 +149,7 @@ _Administrative_Cost_per_RPM_by_Airline.xlsx_
 * (15) ```Available Seat Miles per Labor Cost (ASMs/USD$)``` 
 _ASMs_per_Labor_Cost_by_Airline.xlsx_
 
-["Aggregated" Tables]():
+["Aggregated" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Aggregated%20Tables):
 * (16) ```Airline Cumulative Financial Statistics``` | _Airline_Cumulative_Financial_Statistics.xlsx_
 * (17) ```Airline Profitability Statistics``` | _Airline_Profitability_Statistics.xlsx_
 
