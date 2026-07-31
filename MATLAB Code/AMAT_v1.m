@@ -7,10 +7,11 @@
 % US airline industry. AMAT leverages open-source data from the US Bureau 
 % of Transportation Statistics (BTS), namely the Origin and Destination Survey 
 % (DB1B - Market). Before using APAT, please make sure to follow the 
-% instructions outlined in: https://github.com/andyeske/Airline-Data-Project
+% instructions outlined in: 
+% https://github.com/andyeske/Airline-Data-Analysis-Tools
 
 % AMAT outputs a total of 10 tables, all of which can be customized using 
-% user-defined inputs. These include:
+% user-defined inputs. These tables include:
 
 % (1) Daily Revenue by od and Airline out of a Desired Airport ($): Daily_Revenue_by_OD_and_Airline_Out.xlsx
 % (2) PDEW by OD and Airline out of a Desired Airport (# of people): PDEW_by_OD_and_Airline_Out.xlsx
@@ -50,8 +51,8 @@ Desired_Sorting = 2;
 % Please input the Desired Airline: 
 % --> This is the airline that will be used to sort the rows of the output
 % table. You can use the table "Airline Codes" available in 
-% https://github.com/andyeske/Airline-Data-Project to find the set of 23 
-% US airlines available for selection.
+% https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set 
+% of 24 US airlines available for selection.
 Desired_Airline = 'United';
 
 % Finally, please select the desired table indeces to save:

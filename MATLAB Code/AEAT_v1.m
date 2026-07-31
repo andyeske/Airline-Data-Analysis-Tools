@@ -6,8 +6,8 @@
 % age and ownership metrics across sub-fleets, airlines, or the entire US
 % air transportation system. AEAT leverages open-source data from the US 
 % Federal Aviation Administration (FAA), namely the FAA Tail Registry.
-% Before using AEAT, please make sure to follow the 
-% instructions outlined in: https://github.com/andyeske/Airline-Data-Project
+% Before using AEAT, please make sure to follow the instructions outlined 
+% in: https://github.com/andyeske/Airline-Data-Analysis-Tools
 
 % AEAT outputs a 2-by-2 plot, which includes:
 
@@ -59,7 +59,7 @@ Registration_Status = 1;
 %     E135      | E145        | E170       | E190
 %     DC-9      | DC-9F       | MD-80      | MD-90
 %     DC-10     | DC-10F      | MD-11      | MD-11F
-Desired_Aircraft = {'A319-100','A320-200','A321-200'};
+Desired_Aircraft = {};
 
 % Please input the Desired Airline: 
 % --> This choice will make the displayed results airline-specific.
@@ -74,7 +74,7 @@ Desired_Aircraft = {'A319-100','A320-200','A321-200'};
 %     SOUTHWEST AIRLINES CO          | SPIRIT AIRLINES LLC        
 %     UNITED AIRLINES INC 
 %     FEDERAL EXPRESS CORP           | UNITED PARCEL SERVICE CO
-Desired_Airline = {'DELTA AIR LINES INC','UNITED AIRLINES INC'};
+Desired_Airline = {'SPIRIT AIRLINES LLC'};
 
 % Notes:
 % a) The use can either leave "Desired_Aircraft" or "Desired_Airline"

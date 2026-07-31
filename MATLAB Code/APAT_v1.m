@@ -5,14 +5,15 @@
 % The following tool (APAT) can be used to compute a variety of performance
 % metrics specific to aircraft and airlines in the US airline industry.
 % APAT leverages open-source data from the US Bureau of Transportation
-% Statistics (BTS), namely the Form 41 Traffic - T-100 Domestic Segment (US Carriers Only)
-% dataset and the Form 41 Financial - Schedule P-5.2 dataset. Before using APAT, please
-% make sure to follow the instructions outlined in: https://github.com/andyeske/Airline-Data-Project
+% Statistics (BTS), namely the Form 41 Traffic - T-100 Segment 
+% (US Carriers Only) dataset and the Form 41 Financial - Schedule P-5.2 
+% dataset. Before using APAT, please make sure to follow the instructions 
+% outlined in: https://github.com/andyeske/Airline-Data-Analysis-Tools
 
 % APAT outputs a total of 27 tables, 25 of which are standard, and 2 of 
-% which can be customized using user-defined inputs. These include:
+% which can be customized using user-defined inputs. These tables include:
 
-% Overview Tables (Standard Tables)
+% Overview Tables (Standard Tables):
 % (1) Total Revenue Passenger Miles (RPMs): RPMs_by_Aircraft_and_Airline.xlsx
 % (2) Total Available Seat Miles (ASMs): ASMs_by_Aircraft_and_Airline.xlsx
 % (3) Total Number of Passengers: Passengers_by_Aircraft_and_Airline.xlsx
@@ -20,7 +21,7 @@
 % (5) Average Load Factor (RPMs/ASMs): LFs_by_Aircraft_and_Airline.xlsx
 % (6) Total Departures (# departures): Departures_by_Aircraft_and_Airline.xlsx
 
-% Utilization Metrics Tables (Standard Tables)
+% Utilization Metrics Tables (Standard Tables):
 % (7) Average Number of Departures per Day (# departures/day assigned): Departures_per_Day_by_Aircraft_and_Airline.xlsx
 % (8) Average Number ASMs per Day (ASMs/day assigned): ASMs_per_Day_by_Aircraft_and_Airline.xlsx
 % (9) Average Aircraft Utilization per Day (block-hr/day assigned): Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx
@@ -28,11 +29,11 @@
 % (11) Average Stage Length (mi): ASL_by_Aircraft_and_Airline.xlsx
 % (12) Average Passenger Trip Length (mi): APTL_by_Aircraft_and_Airline.xlsx
 
-% Fuel Consumption Tables (Standard Tables)
+% Fuel Consumption Tables (Standard Tables):
 % (13) Average Fuel Intensity per ASMs (L/ASMs): Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx
 % (14) Average Fuel Intensity per Distance (L/mi): Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx
 
-% Aircraft Operating Costs (AOC) Tables (Standard Tables)
+% Aircraft Operating Costs (AOC) Tables (Standard Tables):
 % (15) AOC per Block Hour (USD$/block-hr): AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx
 % (16) AOC per Seat Hour (USD$/seat-hr): AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx
 % (17) AOC per ASMs (USD$/ASM): AOC_per_ASMs_by_Aircraft_and_Airline.xlsx
@@ -42,12 +43,12 @@
 % (21) Unnormalized Ownership Costs (USD$): Ownership_Costs_by_Aircraft_and_Airline.xlsx
 % (22) Unnormalized Other Costs (USD$): Other_Costs_by_Aircraft_and_Airline.xlsx
 
-% Miscellaenous Tables (Standard Tables)
+% Miscellaneous Tables (Standard Tables):
 % (23) Total Block Hours (hrs): Block_Hours_by_Aircraft_and_Airline.xlsx
-% (24) Total Distance Flown (mi):fo Distance_Flown_by_Aircraft_and_Airline.xlsx
+% (24) Total Distance Flown (mi): Distance_Flown_by_Aircraft_and_Airline.xlsx
 % (25) Total Days Assigned (daus): Days_Assigned_by_Aircraft_and_Airline.xlsx
 
-% Aggregated Tables (User-Defined Tables)
+% Aggregated Tables (User-Defined Tables):
 % (26) Aircraft-specific Statistics: Aircraft_Cumulative_Statistics.xlsx
 % (27) Airline-specific Statistics: Airline_Cumulative_Statistics.xlsx
 
@@ -65,16 +66,16 @@
 % Please input the Desired Airline: 
 % --> The aircraft-specific results (26) will correspond only to values of 
 % this airline. You can use the table "Airline Codes" available in 
-% https://github.com/andyeske/Airline-Data-Project to find the set of 24 
-% US airlines available for selection.
+% https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set 
+% of 24 US airlines available for selection.
 % Desired_Airline = 'American';
 Desired_Airline = 'All Airlines';
 
 % Please input the Desired Aircraft: 
 % --> The airline-specific results (27) will correspond only to values of 
 % this aircraft type. You can use the table "Aircraft Codes" available in 
-% https://github.com/andyeske/Airline-Data-Project to find the set of 46 
-% aircraft types available for selection.
+% https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set 
+% of 46 aircraft types available for selection.
 % Desired_Aircraft = 'A320';
 Desired_Aircraft = 'All Aircraft';
 

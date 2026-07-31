@@ -5,12 +5,13 @@
 % The following tool (ARAT) can be used to compute a variety of capacity
 % metrics specific to the route segment and airline/aircraft in the 
 % US airline industry. ARAT leverages open-source data from the US Bureau 
-% of Transportation Statistics (BTS), namely the T-100 Domestic Segment 
-% (US Carriers Only) dataset. Before using ARAT, please make sure to follow the 
-% instructions outlined in: https://github.com/andyeske/Airline-Data-Project
+% of Transportation Statistics (BTS), namely the Form 41 Traffic - T-100 
+% Segment (US Carriers Only) dataset. Before using ARAT, please make sure 
+% to follow the instructions outlined in: 
+% https://github.com/andyeske/Airline-Data-Analysis-Tools
 
 % ARAT outputs a total of 8 tables, all of which can be customized using 
-% user-defined inputs. These include:
+% user-defined inputs. These tables include:
 
 % (1) Total Revenue Passenger Miles by Route and Airline out of a Desired Airport (RPMs): Total_RPMs_by_Route_and_Airline_Out.xlsx
 % (2) Total Available Seat Miles by Route and Airline out of a Desired Airport (ASMs): Total_ASMs_by_Route_and_Airline_Out.xlsx
