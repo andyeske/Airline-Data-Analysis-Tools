@@ -16,9 +16,10 @@ This open-source repository serves as an unofficial continuation of the original
 ### Table of Contents
 
 1: [ Airline Performance Analysis Tool (APAT) ](#APAT) <br />
-2: [ Airline Market Analysis Tool (AMAT) ](#AMAT) <br />
-3: [ Airline Route Analysis Tool (ARAT) ](#ARAT) <br />
-4: [ Aircraft Engine Analysis Tool (AEAT) ](#AEAT) <br />
+2: [ Airline Financial Analysis Tool (AFAT) ](#AFAT) <br />
+3: [ Airline Market Analysis Tool (AMAT) ](#AMAT) <br />
+4: [ Airline Route Analysis Tool (ARAT) ](#ARAT) <br />
+5: [ Aircraft Engine Analysis Tool (AEAT) ](#AEAT) <br />
 
 ---
 <a name="APAT"></a>
@@ -72,7 +73,7 @@ Note: By default, these data tables are computed at the yearly level. The sample
 
 **Data Inputs:** To use ```APAT```, the user must first download four open-source datasets, which include:
 * [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
-* [BTS Form 41 Financial - Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
+* [BTS Form 41 Financial - Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all fields.
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
@@ -113,6 +114,59 @@ Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 % airline or aircraft are inputted in Desired_Aircraft or Desired_Airline.
 % c) Writing [] in Save_Tables will not save any tables.
 % d) APAT can be easily modified to produce more outputs than (1) - (27).
+```
+
+Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
+
+([ back to top ](#back_to_top))
+
+---
+<a name="AFAT"></a>
+### Airline Financial Analysis Tool (AFAT)
+
+**Tool Purpose:** ```AFAT``` can be used to compute +15 different financial metrics, to the airline level of granularity, largely grouped under costs, revenue, employees, and aggregated metrics. The outputs from ```AFAT``` consist of 17 excel data tables, which are displayed below (alongside links to sample tables):
+
+["Out of Desired Origin Airport" Tables]():
+* (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
+* (2) ```PDEW by OD and Airline out of a Desired Origin Airport (# of people)``` | _PDEW_by_OD_and_Airline_Out.xlsx_
+* (3) ```Daily RPMs by OD and Airline out of a Desired Origin Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_Out.xlsx_
+* (4) ```Average Fare by OD and Airline out of a Desired Origin Airport ($)``` | _Average_Fare_by_OD_and_Airline_Out.xlsx_
+* (5) ```Average Yield by OD and Airline out of a Desired Origin Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_Out.xlsx_  
+
+["Into Desired Destination Airport" Tables]():
+* (6) ```Daily Revenue by OD and Airline into a Desired Destination Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_In.xlsx_  
+* (7) ```PDEW by OD and Airline into a Desired Destination Airport (# of people)``` | _PDEW_by_OD_and_Airline_In.xlsx_
+* (8) ```Daily RPMs by OD and Airline into a Desired Destination Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_In.xlsx_
+* (9) ```Average Fare by OD and Airline into a Desired Destination Airport ($)``` | _Average_Fare_by_OD_and_Airline_In.xlsx_
+* (10) ```Average Yield by OD and Airline into a Desired Destination Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_In.xlsx_
+
+Sample data tables can be found in the above-listed hyperlinks. The data in these tables correspond to 2025 Q1. The tables were generated using the user parameters shown below.
+
+Note: By default, these data tables are computed using quarterly data, but then collapsed to indicate daily and average metrics. ```AMAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+
+**Data Inputs:** To use ```AFAT```, the user must first download six open-source datasets, which include:
+* [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
+* [BTS Form 41 Financial - Schedule P-1.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMI) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
+* [BTS Form 41 Financial - Schedule P-6](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FME) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
+* [BTS Form 41 Financial - Schedule P-10](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDF) dataset. Select the same year as above for _Filter Year_. For the entries to download, select all fields.
+* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+
+After downloading the BTS datasets, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+
+**User Actions:** ```AFAT``` can be run as a MATLAB script, with minimal user action. 
+
+```
+% ----------------------------------------------------------------------- %
+% ------------------------- USER DEFINED INPUTS ------------------------- %
+% ----------------------------------------------------------------------- %
+
+% Please select the desired table indeces to save:
+Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+
+% Notes:
+% a) Writing [] in Save_Tables will not save any tables.
+% b) AFAT can be easily modified to produce more outputs than (1) - (17).
 ```
 
 Lastly, the user can specify which tables to save locally by modifying the ```Save_Tables``` field, as shown above.
