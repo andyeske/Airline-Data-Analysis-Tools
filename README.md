@@ -3,7 +3,7 @@
 
 Welcome to the Airline Data Analysis Tools repository! This open-source repository contains a set of tools that can be used to examine the US airline industry. 
 
-Three tools, the Airline Performance Analysis Tool (APAT), Airline Market Analysis Tool (AMAT), and Airline Route Analysis Tool (ARAT) support the analysis of the operational performance, as well as the visualization of market trends and route statistics, of [24 different airlines](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Airline%20Codes.xlsx) and [46 different aircraft types](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Aircraft%20Codes.xlsx) in the United States. 
+Three tools, the Airline Performance Analysis Tool (APAT), Airline Market Analysis Tool (AMAT), and Airline Route Analysis Tool (ARAT) support the analysis of the operational performance, as well as the visualization of market trends and route statistics, of [23 different airlines](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Airline%20Codes.xlsx) and [46 different aircraft types](https://github.com/andyeske/Airline-Data-Project/blob/main/Input%20Data%20Tables/Aircraft%20Codes.xlsx) in the United States. 
 
 A fourth tool, the Aircraft Engine Analysis Tool (AEAT) can be used to visualize a variety of aircraft age, engine type, and ownership metrics across sub-fleets, airlines, or the entire US air transportation system. 
 
@@ -66,13 +66,13 @@ This open-source repository serves as an unofficial continuation of the original
 * (26)  ```Aircraft-specific Statistics ``` | _Aircraft_Cumulative_Statistics.xlsx_
 * (27)  ```Airline-specific Statistics ``` | _Airline_Cumulative_Statistics.xlsx_
 
-Here, Tables (26) and (27) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 24 airlines (27) in the US. By default, Tables (26) and (27) show average results for the entirety of the US airline industry. However, Table (26) can be customized to show the aircraft metrics specific to a single airline, while Table (27) can be modified to show the airline metrics specific to a single aircraft type, as shown in "User Action".
+Here, Tables (26) and (27) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 23 airlines (27) in the US. By default, Tables (26) and (27) show average results for the entirety of the US airline industry. However, Table (26) can be customized to show the aircraft metrics specific to a single airline, while Table (27) can be modified to show the airline metrics specific to a single aircraft type, as shown in "User Action".
 
 Note: By default, these data tables are computed at the yearly level. The sample tables provided in this repository are computed for each year between 2015 and 2025. ```APAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```APAT```, the user must first download four open-source datasets, which include:
-* [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
-* [BTS Form 41 Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
+* [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
+* [BTS Form 41 Financial - Schedule P-5.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMK) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
@@ -91,14 +91,14 @@ After downloading the two BTS datasets, unzip them, and rename them to "T100 Dat
 % Please input the Desired Airline: 
 % --> The aircraft-specific results (26) will correspond only to values of 
 % this airline. You can use the table "Airline Codes" available in 
-% https://github.com/andyeske/Airline-Data-Project to find the set of 23 
+% https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set of 23 
 % US airlines available for selection.
 Desired_Airline = 'American';
 
 % Please input the Desired Aircraft: 
 % --> The airline-specific results (27) will correspond only to values of 
 % this aircraft type. You can use the table "Aircraft Codes" available in 
-% https://github.com/andyeske/Airline-Data-Project to find the set of 36 
+% https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set of 46 
 % aircraft types available for selection.
 Desired_Aircraft = 'A320';
 
@@ -123,7 +123,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 <a name="AMAT"></a>
 ### Airline Market Analysis Tool (AMAT)
 
-**Tool Purpose:** ```AMAT``` can be used to compute 5 different market analysis metrics, to the origin-destination (OD) pair and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```APAT``` consist of 10 excel data tables, and vary according to whether the ODs are in or out of a desired airport, as displayed below:
+**Tool Purpose:** ```AMAT``` can be used to compute 5 different market analysis metrics, to the origin-destination (OD) pair and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```AMAT``` consist of 10 excel data tables, and vary according to whether the ODs are in or out of a desired airport, as displayed below:
 
 ["Out of Desired Origin Airport" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Origin%20Airport):
 * (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
@@ -176,7 +176,7 @@ Desired_Sorting = 2;
 % Please input the Desired Airline: 
 % --> This is the airline that will be used to sort the rows of the output
 % table. You can use the table "Airline Codes" available in 
-% https://github.com/andyeske/Airline-Data-Project to find the set of 23 
+% https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set of 23 
 % US airlines available for selection.
 Desired_Airline = 'United';
 
@@ -197,7 +197,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 <a name="ARAT"></a>
 ### Airline Route Analysis Tool (ARAT)
 
-**Tool Purpose:** ```ARAT``` can be used to compute 4 different capacity metrics, to the route and airline/aircraft level of granularity. These metrics include total revenue passenger-miles (RPM), total available seat-miles (ASMs), total passengers, and total departures. The outputs from ```APAT``` consist of 8 excel data tables, and vary according to whether the route metrics are disaggregated to the airline or aircraft level:
+**Tool Purpose:** ```ARAT``` can be used to compute 4 different capacity metrics, to the route and airline/aircraft level of granularity. These metrics include total revenue passenger-miles (RPM), total available seat-miles (ASMs), total passengers, and total departures. The outputs from ```ARAT``` consist of 8 excel data tables, and vary according to whether the route metrics are disaggregated to the airline or aircraft level:
 
 ["Route and Airline" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Airline%20Tables):
 * (1) ```Total Revenue Passenger Miles by Route and Airline out of a Desired Airport (RPMs)``` | _Total_RPMs_by_Route_and_Airline_Out.xlsx_
@@ -216,7 +216,7 @@ Sample data tables can be found in the above-listed hyperlinks. The data in thes
 Note: By default, these data tables are computed using annual T100 data. ```ARAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```ARAT```, the user must first download three open-source datasets, which include:
-* [BTS T-100 Domestic Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destinaiton | i) Aircraft | j) Month.
+* [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destinaiton | i) Aircraft | j) Month.
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
