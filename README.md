@@ -126,21 +126,34 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 **Tool Purpose:** ```AFAT``` can be used to compute +15 different financial metrics, to the airline level of granularity, largely grouped under costs, revenue, employees, and aggregated metrics. The outputs from ```AFAT``` consist of 17 excel data tables, which are displayed below (alongside links to sample tables):
 
-["Out of Desired Origin Airport" Tables]():
-* (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
-* (2) ```PDEW by OD and Airline out of a Desired Origin Airport (# of people)``` | _PDEW_by_OD_and_Airline_Out.xlsx_
-* (3) ```Daily RPMs by OD and Airline out of a Desired Origin Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_Out.xlsx_
-* (4) ```Average Fare by OD and Airline out of a Desired Origin Airport ($)``` | _Average_Fare_by_OD_and_Airline_Out.xlsx_
-* (5) ```Average Yield by OD and Airline out of a Desired Origin Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_Out.xlsx_  
+["Cost" Tables]():
+* (1) ```Unnormalized Decomposed Administrative Cost (USD$)``` | _Administrative_Cost_by_Airline.xlsx_
+* (2) ```Decomposed Administrative Cost per Available Seat Miles (USD$/ASM) | _Administrative_CASM_by_Airline.xlsx_
+* (3) ```Decomposed Administrative Cost per Seat (USD$)``` | _Administrative_Cost_per_Seat_by_Airline.xlsx_
+* (4) ```Decomposed Administrative Cost per Revenue Passenger Miles (USD$/RPM)``` |
+_Administrative_Cost_per_RPM_by_Airline.xlsx_
+* (5) ```Decomposed Administrative Cost per Passenger (USD$)``` | _Administrative_Cost_per_Passenger_by_Airline.xlsx_
 
-["Into Desired Destination Airport" Tables]():
-* (6) ```Daily Revenue by OD and Airline into a Desired Destination Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_In.xlsx_  
-* (7) ```PDEW by OD and Airline into a Desired Destination Airport (# of people)``` | _PDEW_by_OD_and_Airline_In.xlsx_
-* (8) ```Daily RPMs by OD and Airline into a Desired Destination Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_In.xlsx_
-* (9) ```Average Fare by OD and Airline into a Desired Destination Airport ($)``` | _Average_Fare_by_OD_and_Airline_In.xlsx_
-* (10) ```Average Yield by OD and Airline into a Desired Destination Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_In.xlsx_
+["Revenue" Tables]():
+* (6) ```Unnormalized Decomposed Revenue (USD$)``` | _Revenue_by_Airline.xlsx_
+* (7) ```Decomposed Revenue per Available Seat Miles (USD$/ASM)``` | _RASM_by_Airline.xlsx_
+* (8) ```Decomposed Revenue per Seat (USD$)``` | _Revenue_per_Seat_by_Airline.xlsx_
+* (9) ```Decomposed Revenue per Revenue Passenger Miles (USD$/RPM)``` | _Yield_by_Airline.xlsx_
+* (10) ```Decomposed Revenue per Passenger (USD$)``` | _Revenue_per_Passenger_by_Airline.xlsx_
 
-Here, Tables (26) and (27) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 23 airlines (27) in the US. 
+["Employee" Tables]():
+* (11) ```Employee Breakdown``` | _Employees_by_Airline.xlsx_
+* (12) ```Available Seat Miles per Employee (ASMs)``` | _ASMs_per_Employee_by_Airline.xlsx_
+* (13) ```Labor Cost per Employee (USD$)``` | _Labor_Cost_per_Employee_by_Airline.xlsx_
+* (14) ```Revenue per Employee (USD$)``` | _Revenue_per_Employee_by_Airline.xlsx_
+* (15) ```Available Seat Miles per Labor Cost (ASMs/USD$)``` 
+_ASMs_per_Labor_Cost_by_Airline.xlsx_
+
+["Aggregated" Tables]():
+* (16) ```Airline Cumulative Financial Statistics``` | _Airline_Cumulative_Financial_Statistics.xlsx_
+* (17) ```Airline Profitability Statistics``` | _Airline_Profitability_Statistics.xlsx_
+
+Here, Table (16) contains a summary of (1) - (15), focusing on the total Cost (excl. transport-related expenses) and total Revenue (excl. transport-related expenses too). Table (17) computes the unnormalized profitability of an airline (excl. transport-related Cost and Revenue), and normalized by ASMs, seats, RPMs, and passengers.
 
 Note: By default, these data tables are computed at the yearly level. The sample tables provided in this repository are computed for each year between 2015 and 2025. ```AFAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
@@ -180,18 +193,18 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 **Tool Purpose:** ```AMAT``` can be used to compute 5 different market analysis metrics, to the origin-destination (OD) pair and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```AMAT``` consist of 10 excel data tables, and vary according to whether the ODs are in or out of a desired airport, as displayed below:
 
 ["Out of Desired Origin Airport" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Origin%20Airport):
-* (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
+* (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport (USD$)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
 * (2) ```PDEW by OD and Airline out of a Desired Origin Airport (# of people)``` | _PDEW_by_OD_and_Airline_Out.xlsx_
 * (3) ```Daily RPMs by OD and Airline out of a Desired Origin Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_Out.xlsx_
-* (4) ```Average Fare by OD and Airline out of a Desired Origin Airport ($)``` | _Average_Fare_by_OD_and_Airline_Out.xlsx_
-* (5) ```Average Yield by OD and Airline out of a Desired Origin Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_Out.xlsx_  
+* (4) ```Average Fare by OD and Airline out of a Desired Origin Airport (USD$)``` | _Average_Fare_by_OD_and_Airline_Out.xlsx_
+* (5) ```Average Yield by OD and Airline out of a Desired Origin Airport (USD$/RPM)``` | _Average_Yield_by_OD_and_Airline_Out.xlsx_  
 
 ["Into Desired Destination Airport" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Into%20Desired%20Destination%20Airport):
-* (6) ```Daily Revenue by OD and Airline into a Desired Destination Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_In.xlsx_  
+* (6) ```Daily Revenue by OD and Airline into a Desired Destination Airport (USD$)``` | _Daily_Revenue_by_OD_and_Airline_In.xlsx_  
 * (7) ```PDEW by OD and Airline into a Desired Destination Airport (# of people)``` | _PDEW_by_OD_and_Airline_In.xlsx_
 * (8) ```Daily RPMs by OD and Airline into a Desired Destination Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_In.xlsx_
-* (9) ```Average Fare by OD and Airline into a Desired Destination Airport ($)``` | _Average_Fare_by_OD_and_Airline_In.xlsx_
-* (10) ```Average Yield by OD and Airline into a Desired Destination Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_In.xlsx_
+* (9) ```Average Fare by OD and Airline into a Desired Destination Airport (USD$)``` | _Average_Fare_by_OD_and_Airline_In.xlsx_
+* (10) ```Average Yield by OD and Airline into a Desired Destination Airport (USD$/RPM)``` | _Average_Yield_by_OD_and_Airline_In.xlsx_
 
 Sample data tables can be found in the above-listed hyperlinks. The data in these tables correspond to 2025 Q1. The tables were generated using the user parameters shown below.
 
