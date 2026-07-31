@@ -140,19 +140,19 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 * (9) ```Average Fare by OD and Airline into a Desired Destination Airport ($)``` | _Average_Fare_by_OD_and_Airline_In.xlsx_
 * (10) ```Average Yield by OD and Airline into a Desired Destination Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_In.xlsx_
 
-Sample data tables can be found in the above-listed hyperlinks. The data in these tables correspond to 2025 Q1. The tables were generated using the user parameters shown below.
+Here, Tables (26) and (27) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 23 airlines (27) in the US. 
 
-Note: By default, these data tables are computed using quarterly data, but then collapsed to indicate daily and average metrics. ```AMAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: By default, these data tables are computed at the yearly level. The sample tables provided in this repository are computed for each year between 2015 and 2025. ```AFAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```AFAT```, the user must first download six open-source datasets, which include:
 * [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
-* [BTS Form 41 Financial - Schedule P-1.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMI) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
-* [BTS Form 41 Financial - Schedule P-6](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FME) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, select all.
+* [BTS Form 41 Financial - Schedule P-1.2](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FMI) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, only select a) Transport Revenues (39010) | b) Mail (39050) | c) Property - Freight (39061) | d) Property - Passenger Baggage Fees (39062) | e) Charter - Passenger (39071) | f) Charter - Property (39072) | g) Reservation Cancellation Fees (39191) | h) Miscellaneous Operating Revenues (39192) | i) Public Service Revenues Subsidy (48080) | j) Transport Related Revenues (48980) | k) Total Operating Revenues (49990) | l) Unique Carrier | m) Year | n) Quarter.
+* [BTS Form 41 Financial - Schedule P-6](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FME) dataset. Select the same year as above for _Filter Year_, and "All Quarters" for _Filter Period_. For the entries to download, only select a) Salaries and Benefits (00140) | b) Aircraft Fuel (00160) | c) Materials Total (00200) | d) Services Total (00300) | e) Landing Fees (00300) | f) Rentals (00310) | g) Depreciation (00320) | h) Amortization (00330) | i) Other (00340) | j) Transport Related Expenses (00350) | k) Total Operating Expenses (00360) | l) Unique Carrier | m) Year | n) Quarter.
 * [BTS Form 41 Financial - Schedule P-10](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDF) dataset. Select the same year as above for _Filter Year_. For the entries to download, select all fields.
-* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
-* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
+* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the BTS datasets, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+After downloading the BTS datasets, unzip them, and rename them to "T100 Data.csv", "P1.2 Data.csv", "P6 Data.csv" and "P10 Data.csv", respectively. Place all six datasets under the same folder, alongside the ```AFAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
 
 **User Actions:** ```AFAT``` can be run as a MATLAB script, with minimal user action. 
 
@@ -179,14 +179,14 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 **Tool Purpose:** ```AMAT``` can be used to compute 5 different market analysis metrics, to the origin-destination (OD) pair and airline level of granularity. These metrics include revenue, passengers per day each way (PDEWs), revenue passenger-miles (RPMs), average fare, and average yield. The outputs from ```AMAT``` consist of 10 excel data tables, and vary according to whether the ODs are in or out of a desired airport, as displayed below:
 
-["Out of Desired Origin Airport" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Origin%20Airport):
+["Out of Desired Origin Airport" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Out%20of%20Desired%20Origin%20Airport):
 * (1) ```Daily Revenue by OD and Airline out of a Desired Origin Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_Out.xlsx_
 * (2) ```PDEW by OD and Airline out of a Desired Origin Airport (# of people)``` | _PDEW_by_OD_and_Airline_Out.xlsx_
 * (3) ```Daily RPMs by OD and Airline out of a Desired Origin Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_Out.xlsx_
 * (4) ```Average Fare by OD and Airline out of a Desired Origin Airport ($)``` | _Average_Fare_by_OD_and_Airline_Out.xlsx_
 * (5) ```Average Yield by OD and Airline out of a Desired Origin Airport ($/RPM)``` | _Average_Yield_by_OD_and_Airline_Out.xlsx_  
 
-["Into Desired Destination Airport" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Into%20Desired%20Destination%20Airport):
+["Into Desired Destination Airport" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AMAT%20Outputs/Into%20Desired%20Destination%20Airport):
 * (6) ```Daily Revenue by OD and Airline into a Desired Destination Airport ($)``` | _Daily_Revenue_by_OD_and_Airline_In.xlsx_  
 * (7) ```PDEW by OD and Airline into a Desired Destination Airport (# of people)``` | _PDEW_by_OD_and_Airline_In.xlsx_
 * (8) ```Daily RPMs by OD and Airline into a Desired Destination Airport (RPMs)``` | _Daily_RPM_by_OD_and_Airline_In.xlsx_
@@ -199,8 +199,8 @@ Note: By default, these data tables are computed using quarterly data, but then 
 
 **Data Inputs:** To use ```AMAT```, the user must first download three open-source datasets, which include:
 * [BTS Origin and Destination Survey (DB1B - Market)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FHK) dataset. Select the desired state for _Filter Geography_ (e.g., Massachusetts), the desired year for _Filter Year_ (e.g., 2025), and the desired quarter for _Filter Quarter_ (e.g., Quarter 1). For the entries to download, only select a) Quarter | b) Origin | c) Dest | d) RPCarrier | e) Passengers | f) MktFare | g) MktMilesFlown.
-* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
-* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
+* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
 After downloading the BTS dataset, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
 
@@ -253,13 +253,13 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 **Tool Purpose:** ```ARAT``` can be used to compute 4 different capacity metrics, to the route and airline/aircraft level of granularity. These metrics include total revenue passenger-miles (RPM), total available seat-miles (ASMs), total passengers, and total departures. The outputs from ```ARAT``` consist of 8 excel data tables, and vary according to whether the route metrics are disaggregated to the airline or aircraft level:
 
-["Route and Airline" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Airline%20Tables):
+["Route and Airline" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Airline%20Tables):
 * (1) ```Total Revenue Passenger Miles by Route and Airline out of a Desired Airport (RPMs)``` | _Total_RPMs_by_Route_and_Airline_Out.xlsx_
 * (2) ```Total Available Seat Miles by Route and Airline out of a Desired Airport (ASMs)``` | _Total_ASMs_by_Route_and_Airline_Out.xlsx_
 * (3) ```Total Passengers by Route and Airline out of a Desired Airport (# of passsengers)``` | _Total_Passengers_by_Route_and_Airline_Out.xlsx_
 * (4) ```Total Departures by Route and Airline out of a Desired Airport (# of departures)``` | _Total_Departures_by_Route_and_Airline_Out.xlsx_
 
-["Route and Aircraft" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Aircraft%20Tables):
+["Route and Aircraft" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/ARAT%20Outputs/Route%20and%20Aircraft%20Tables):
 * (5) ```Total Revenue Passenger Miles by Route and Aircraft out of a Desired Airport (RPMs)``` | _Total_RPMs_by_Route_and_Aircraft_Out.xlsx_
 * (6) ```Total Available Seat Miles by Route and Aircraft out of a Desired Airport (ASMs)``` | _Total_ASMs_by_Route_and_Aircraft_Out.xlsx_
 * (7) ```Total Passengers by Route and Aircraft out of a Desired Airport (# of passsengers)``` | _Total_Passengers_by_Route_and_Aircraft_Out.xlsx_
@@ -271,10 +271,10 @@ Note: By default, these data tables are computed using annual T100 data. ```ARAT
 
 **Data Inputs:** To use ```ARAT```, the user must first download three open-source datasets, which include:
 * [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destinaiton | i) Aircraft | j) Month.
-* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
-* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
+* Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```ARAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```ARAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
 
 **User Actions:** ```ARAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```ARAT``` to generate custom data tables. For example, setting ```Origin_Airport = 'BOS'``` will display the top routes out of that airport. Specifying ```Number_Routes = 20``` will generate tables that show only the top 20 routes. Finally, inputting ```Destination_Airport = 'MIA'``` will amend the route from ```Origin_Airport``` to ```Destination_Airport``` should it not be listed already in the top 20 routes.
 
@@ -317,16 +317,16 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 **Data Inputs:** To use ```AEAT```, the user must first download two open-source datasets, which include:
 * [FAA Aircraft Registration Database](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download).
-* Tail Registry Aircraft and Engines Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
+* Tail Registry Aircraft and Engines Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "DEREG.txt" files. Place these two text files, as well as the excel file, under the same folder, alongside the ```AEAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "DEREG.txt" files. Place these two text files, as well as the excel file, under the same folder, alongside the ```AEAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
 
 **User Actions:** ```AEAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AEAT``` to generate custom plots. For example:
 
 * Setting ```Desired_Aircraft = {'A319-100','A320-200','A321-200'}``` and ```Desired_Airline = {}``` will result in **Figure 1**, which displays metrics specific to the A320 family, across all US airlines.
 
 <p align="left">
-<img src="https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/AEAT%20Outputs/A320%20Family.jpg" width="500"> 
+<img src="https://github.com/andyeske/Airline-Data-Analysis-Tools/blob/main/Output%20Data%20Tables/AEAT%20Outputs/A320%20Family.jpg" width="500"> 
 
 **Figure 1:** _A320 Family Age and Ownership Metrics (as of June 2026)_.
 </p>
@@ -334,7 +334,7 @@ After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "D
 * Setting ```Desired_Aircraft = {'A319-100','A320-200','A321-200'}``` and ```Desired_Airline = {'AMERICAN AIRLINES INC'}``` will result in **Figure 2**, which displays the same information as before, but specific to American. The difference is in the lower bottom plot, which now displays the number of aircraft of the A320 family within American's fleet.
 
 <p align="left">
-<img src="https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines%20-%20A320%20Family.jpg" width="500"> 
+<img src="https://github.com/andyeske/Airline-Data-Analysis-Tools/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines%20-%20A320%20Family.jpg" width="500"> 
 
 **Figure 2:** _A320 Family Age and Ownership Metrics specific for American (as of June 2026)_.
 </p>
@@ -342,7 +342,7 @@ After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "D
 * Setting ```Desired_Aircraft = {}``` and ```Desired_Airline = {'AMERICAN AIRLINES INC'}``` will result in **Figure 3**, which displays fleet-wide information specific to American. 
 
 <p align="left">
-<img src="https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines.jpg" width="500"> 
+<img src="https://github.com/andyeske/Airline-Data-Analysis-Tools/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines.jpg" width="500"> 
 
 **Figure 3:** _A320 Family Age and Ownership Metrics specific for American (as of June 2026)_.
 </p>
