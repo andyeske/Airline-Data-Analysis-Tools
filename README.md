@@ -27,48 +27,48 @@ These tools employ publicly available data from the US Department of Transportat
 **Tool Purpose:** ```APAT``` can be used to compute +20 different system-wide performance metrics, to the aircraft and airline level of granularity, largely grouped under overview, utilization, fuel consumption, and aircraft operating cost metrics. The outputs from ```APAT``` consist of 27 excel data tables, which are displayed below (alongside links to sample tables):
 
 ["Overview Metrics" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Overview%20Tables): 
-* (1) ```Total Revenue Passenger Miles (RPMs)``` | _RPMs_by_Aircraft_and_Airline.xlsx_
-* (2) ```Total Available Seat Miles (ASMs)``` | _ASMs_by_Aircraft_and_Airline.xlsx_
-* (3) ```Total Number of Passengers``` | _Passengers_by_Aircraft_and_Airline.xlsx_
-% (4) ```Total Number of Seats``` | _Seats_by_Aircraft_and_Airline.xlsx_
-* (5) ```Average Load Factor (RPMs/ASMs)``` | _LFs_by_Aircraft_and_Airline.xlsx_ 
-* (6) ```Total Departures (# departures)``` | _Departures_by_Aircraft_and_Airline.xlsx_ 
+* (1) ```Total Revenue Passenger Miles (RPMs)``` | _RPMs_by_Aircraft_and_Airline_20XX.xlsx_
+* (2) ```Total Available Seat Miles (ASMs)``` | _ASMs_by_Aircraft_and_Airline_20XX.xlsx_
+* (3) ```Total Number of Passengers``` | _Passengers_by_Aircraft_and_Airline_20XX.xlsx_
+% (4) ```Total Number of Seats``` | _Seats_by_Aircraft_and_Airline_20XX.xlsx_
+* (5) ```Average Load Factor (RPMs/ASMs)``` | _LFs_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (6) ```Total Departures (# departures)``` | _Departures_by_Aircraft_and_Airline_20XX.xlsx_ 
 
 ["Utilization Metrics" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Utilization%20Metrics%20Tables):
-* (7) ```Average Number of Departures per Day (# departures/day assigned)``` | _Departures_per_Day_by_Aircraft_and_Airline.xlsx_ 
-* (8) ```Average Number ASMs per Day (ASMs/day assigned)``` | _ASMs_per_Day_by_Aircraft_and_Airline.xlsx_ 
-* (9) ```Average Aircraft Utilization per Day (block-hr/day assigned)``` | _Block_Hours_per_Day_by_Aircraft_and_Airline.xlsx_
-* (10) ```Average Number of Seats per Departure (# seats/# departures)``` | _Seats_per_Departures_by_Aircraft_and_Airline.xlsx_ 
-* (11) ```Average Stage Length (mi)``` | _ASL_by_Aircraft_and_Airline.xlsx_
-* (12) ```Average Passenger Trip Length (mi)``` | _APTL_by_Aircraft_and_Airline.xlsx_
+* (7) ```Average Number of Departures per Day (# departures/day assigned)``` | _Departures_per_Day_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (8) ```Average Number ASMs per Day (ASMs/day assigned)``` | _ASMs_per_Day_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (9) ```Average Aircraft Utilization per Day (block-hr/day assigned)``` | _Block_Hours_per_Day_by_Aircraft_and_Airline_20XX.xlsx_
+* (10) ```Average Number of Seats per Departure (# seats/# departures)``` | _Seats_per_Departures_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (11) ```Average Stage Length (mi)``` | _ASL_by_Aircraft_and_Airline_20XX.xlsx_
+* (12) ```Average Passenger Trip Length (mi)``` | _APTL_by_Aircraft_and_Airline_20XX.xlsx_
 
 
 ["Fuel Consumption" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Fuel%20Consumption%20Tables): 
-* (13) ```Average Fuel Intensity per ASMs (L/ASMs)``` | _Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx_ 
-* (14) ```Average Fuel Intensity per Distance (L/mi)``` | _Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx_ 
+* (13) ```Average Fuel Intensity per ASMs (L/ASMs)``` | _Fuel_Consumed_per_ASMs_Aircraft_and_Airline_20XX.xlsx_ 
+* (14) ```Average Fuel Intensity per Distance (L/mi)``` | _Fuel_Consumed_per_Distance_Aircraft_and_Airline_20XX.xlsx_ 
 
 ["Aircraft Operating Costs" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aircraft%20Operating%20Costs%20Tables): 
-* (15) ```AOC per Block Hour ($USD/block-hr)``` | _AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx_ 
-* (16) ```AOC per Seat Hour ($USD/seat-hr)``` | _AOC_per_Seat_Hour_by_Aircraft_and_Airline.xlsx_ 
-* (17) ```AOC per ASMs ($USD/ASM)``` | _AOC_per_ASMs_by_Aircraft_and_Airline.xlsx_ 
-* (18) ```Unnormalized Fuel Costs ($USD)``` | _Fuel_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (19) ```Unnormalized Maintenance Costs ($USD)``` | _Maintenance_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (20) ```Unnormalized Crew Costs ($USD)``` | _Crew_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (21) ```Unnormalized Ownership Costs ($USD)``` | _Ownership_Costs_by_Aircraft_and_Airline.xlsx_ 
-* (22) ```Unnormalized Other Costs ($USD)``` | _Other_Costs_by_Aircraft_and_Airline.xlsx_
+* (15) ```AOC per Block Hour ($USD/block-hr)``` | _AOC_per_Block_Hour_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (16) ```AOC per Seat Hour ($USD/seat-hr)``` | _AOC_per_Seat_Hour_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (17) ```AOC per ASMs ($USD/ASM)``` | _AOC_per_ASMs_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (18) ```Unnormalized Fuel Costs ($USD)``` | _Fuel_Costs_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (19) ```Unnormalized Maintenance Costs ($USD)``` | _Maintenance_Costs_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (20) ```Unnormalized Crew Costs ($USD)``` | _Crew_Costs_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (21) ```Unnormalized Ownership Costs ($USD)``` | _Ownership_Costs_by_Aircraft_and_Airline_20XX.xlsx_ 
+* (22) ```Unnormalized Other Costs ($USD)``` | _Other_Costs_by_Aircraft_and_Airline_20XX.xlsx_
 
 ["Miscellaneous" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/APAT%20Outputs/Miscellaneous%20Tables):
-* (23) ```Total Block Hours (hrs)``` | _Block_Hours_by_Aircraft_and_Airline.xlsx_
-* (24) ```Total Distance Flown (mi)``` | _Distance_Flown_by_Aircraft_and_Airline.xlsx_
-* (25) ```Total Days Assigned (days)``` | _Days_Assigned_by_Aircraft_and_Airline.xlsx_
+* (23) ```Total Block Hours (hrs)``` | _Block_Hours_by_Aircraft_and_Airline_20XX.xlsx_
+* (24) ```Total Distance Flown (mi)``` | _Distance_Flown_by_Aircraft_and_Airline_20XX.xlsx_
+* (25) ```Total Days Assigned (days)``` | _Days_Assigned_by_Aircraft_and_Airline_20XX.xlsx_
 
 ["Aggregated" Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables):
-* (26)  ```Aircraft-specific Statistics ``` | _Aircraft_Cumulative_Statistics.xlsx_
-* (27)  ```Airline-specific Statistics ``` | _Airline_Cumulative_Statistics.xlsx_
+* (26)  ```Aircraft-specific Statistics ``` | _Aircraft_Cumulative_Statistics_20XX.xlsx_
+* (27)  ```Airline-specific Statistics ``` | _Airline_Cumulative_Statistics_20XX.xlsx_
 
 Here, Tables (26) and (27) contain a summary of (1), (2), (8), (10), (6), (7), (9), (5), (11), (15), (16) and (17), specific to each of the 46 aircraft types (26) and 23 airlines (27) in the US. By default, Tables (26) and (27) show average results for the entirety of the US airline industry. However, Table (26) can be customized to show the aircraft metrics specific to a single airline, while Table (27) can be modified to show the airline metrics specific to a single aircraft type, as shown in "User Action".
 
-Note: By default, these data tables are computed at the yearly level. The sample tables provided in this repository are computed for each year between 2015 and 2025. ```APAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: By default, these data tables are computed at the yearly level (i.e., 20XX). The sample tables provided in this repository are computed for each year between 2015 and 2025. ```APAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```APAT```, the user must first download four open-source datasets, which include:
 * [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
@@ -126,35 +126,35 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 **Tool Purpose:** ```AFAT``` can be used to compute +15 different financial metrics, to the airline level of granularity, largely grouped under costs, revenue, employees, and aggregated metrics. The outputs from ```AFAT``` consist of 17 excel data tables, which are displayed below (alongside links to sample tables):
 
 ["Cost" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Cost%20Tables):
-* (1) ```Unnormalized Decomposed Administrative Cost (USD$)``` | _Administrative_Cost_by_Airline.xlsx_
-* (2) ```Decomposed Administrative Cost per Available Seat Miles (USD$/ASM) | _Administrative_CASM_by_Airline.xlsx_
-* (3) ```Decomposed Administrative Cost per Seat (USD$)``` | _Administrative_Cost_per_Seat_by_Airline.xlsx_
+* (1) ```Unnormalized Decomposed Administrative Cost (USD$)``` | _Administrative_Cost_by_Airline_20XX.xlsx_
+* (2) ```Decomposed Administrative Cost per Available Seat Miles (USD$/ASM) | _Administrative_CASM_by_Airline_20XX.xlsx_
+* (3) ```Decomposed Administrative Cost per Seat (USD$)``` | _Administrative_Cost_per_Seat_by_Airline_20XX.xlsx_
 * (4) ```Decomposed Administrative Cost per Revenue Passenger Miles (USD$/RPM)``` |
-_Administrative_Cost_per_RPM_by_Airline.xlsx_
-* (5) ```Decomposed Administrative Cost per Passenger (USD$)``` | _Administrative_Cost_per_Passenger_by_Airline.xlsx_
+_Administrative_Cost_per_RPM_by_Airline_20XX.xlsx_
+* (5) ```Decomposed Administrative Cost per Passenger (USD$)``` | _Administrative_Cost_per_Passenger_by_Airline_20XX.xlsx_
 
 ["Revenue" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Revenue%20Tables):
-* (6) ```Unnormalized Decomposed Revenue (USD$)``` | _Revenue_by_Airline.xlsx_
-* (7) ```Decomposed Revenue per Available Seat Miles (USD$/ASM)``` | _RASM_by_Airline.xlsx_
-* (8) ```Decomposed Revenue per Seat (USD$)``` | _Revenue_per_Seat_by_Airline.xlsx_
-* (9) ```Decomposed Revenue per Revenue Passenger Miles (USD$/RPM)``` | _Yield_by_Airline.xlsx_
-* (10) ```Decomposed Revenue per Passenger (USD$)``` | _Revenue_per_Passenger_by_Airline.xlsx_
+* (6) ```Unnormalized Decomposed Revenue (USD$)``` | _Revenue_by_Airline_20XX.xlsx_
+* (7) ```Decomposed Revenue per Available Seat Miles (USD$/ASM)``` | _RASM_by_Airline_20XX.xlsx_
+* (8) ```Decomposed Revenue per Seat (USD$)``` | _Revenue_per_Seat_by_Airline_20XX.xlsx_
+* (9) ```Decomposed Revenue per Revenue Passenger Miles (USD$/RPM)``` | _Yield_by_Airline_20XX.xlsx_
+* (10) ```Decomposed Revenue per Passenger (USD$)``` | _Revenue_per_Passenger_by_Airline_20XX.xlsx_
 
 ["Employee" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Employee%20Tables):
 * (11) ```Employee Breakdown``` | _Employees_by_Airline.xlsx_
-* (12) ```Available Seat Miles per Employee (ASMs)``` | _ASMs_per_Employee_by_Airline.xlsx_
-* (13) ```Labor Cost per Employee (USD$)``` | _Labor_Cost_per_Employee_by_Airline.xlsx_
-* (14) ```Revenue per Employee (USD$)``` | _Revenue_per_Employee_by_Airline.xlsx_
+* (12) ```Available Seat Miles per Employee (ASMs)``` | _ASMs_per_Employee_by_Airline_20XX.xlsx_
+* (13) ```Labor Cost per Employee (USD$)``` | _Labor_Cost_per_Employee_by_Airline_20XX.xlsx_
+* (14) ```Revenue per Employee (USD$)``` | _Revenue_per_Employee_by_Airline_20XX.xlsx_
 * (15) ```Available Seat Miles per Labor Cost (ASMs/USD$)``` 
-_ASMs_per_Labor_Cost_by_Airline.xlsx_
+_ASMs_per_Labor_Cost_by_Airline_20XX.xlsx_
 
 ["Aggregated" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Aggregated%20Tables):
-* (16) ```Airline Cumulative Financial Statistics``` | _Airline_Cumulative_Financial_Statistics.xlsx_
-* (17) ```Airline Profitability Statistics``` | _Airline_Profitability_Statistics.xlsx_
+* (16) ```Airline Cumulative Financial Statistics``` | _Airline_Cumulative_Financial_Statistics_20XX.xlsx_
+* (17) ```Airline Profitability Statistics``` | _Airline_Profitability_Statistics_20XX.xlsx_
 
 Here, Table (16) contains a summary of (1) - (15), focusing on the total Cost (excl. transport-related expenses) and total Revenue (excl. transport-related expenses too). Table (17) computes the unnormalized profitability of an airline (excl. transport-related Cost and Revenue), and normalized by ASMs, seats, RPMs, and passengers.
 
-Note: By default, these data tables are computed at the yearly level. The sample tables provided in this repository are computed for each year between 2015 and 2025. ```AFAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
+Note: By default, these data tables are computed at the yearly level (i.e., 20XX). The sample tables provided in this repository are computed for each year between 2015 and 2025. ```AFAT``` can be easily adapted to calculate the metrics at a different temporal resolution (e.g., the monthly level).
 
 **Data Inputs:** To use ```AFAT```, the user must first download six open-source datasets, which include:
 * [BTS Form 41 Traffic - T-100 Segment (US Carriers Only)](https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=GDM) dataset. Select "All" for _Filter Geography_, "2024" for _Filter Year_ (or any desired year), and "All Months" for _Filter Month_. For the entries to download, only select a) Departures Performed | b) Seats | c) Passengers | d) Distance | e) Ramp to Ramp Time | f) Unique Carrier | g) Origin | h) Destination | i) Aircraft Type | j) Year | k) Month.
