@@ -60,10 +60,10 @@
 % (15) Available Seat Miles per Labor Cost (ASMs/USD$)
 
 % Please input the Tool Name:
-Tool_Name = 'AFAT';
+Tool_Name = 'APAT';
 % Please input the Desired Tables corresponding to the selected tool:
 %Desired_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-Desired_Tables = [7.1,7.2];
+Desired_Tables = [11];
 
 % Please input the Desired Airline: 
 % --> The trends shown will correspond to this airline.
@@ -79,7 +79,7 @@ Desired_Tables = [7.1,7.2];
 % found on the "Airline Codes" table.
 % --> It it possible to visualize the results from more than one airline 
 % simultaneously, by writing their names in the vector below.
-Desired_Airline = {'American','United','Delta','Regional','All Airlines'};
+Desired_Airline = {'American','Delta','United','JetBlue','Spirit','All Airlines'};
 
 % Please input the Desired Aircraft: 
 % --> This is only applicable if Tool_Name = 'APAT' was selected.
@@ -88,7 +88,7 @@ Desired_Airline = {'American','United','Delta','Regional','All Airlines'};
 % of 46 aircraft types available for selection.
 % --> Writing Desired_Aircraft = 'All Aircaft' returns the aggregated 
 % results for all aircraft in the US.
-Desired_Aircraft = 'All Aircraft';
+Desired_Aircraft = 'A320';
 
 % Please select the range of years to visualize trends of:
 % --> The minimum year is 2015.
