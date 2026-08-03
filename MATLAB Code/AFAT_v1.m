@@ -51,6 +51,7 @@
 
 % Please select the desired table indeces to save:
 Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+%Save_Tables = [];
 
 % Notes:
 % a) Writing [] in Save_Tables will not save any tables.
@@ -90,10 +91,10 @@ ASMs = T100{:,2}.*T100{:,4}; % Seats * Distance
 RPMs = T100{:,3}.*T100{:,4}; % Passengers * Distance
 
 % Processed Airline datasets
-Airline_RPMs = zeros(n_airlines+1,1); % Aircraft/Airline Total RPMs
-Airline_ASMs = zeros(n_airlines+1,1); % Aircraft/Airline Total ASMs
-Airline_Passengers = zeros(n_airlines+1,1); % Aircraft/Airline Total Passengers
-Airline_Seats = zeros(n_airlines+1,1); % Aircraft/Airline Total Seats
+Airline_RPMs = zeros(n_airlines+5,1); % Aircraft/Airline Total RPMs
+Airline_ASMs = zeros(n_airlines+5,1); % Aircraft/Airline Total ASMs
+Airline_Passengers = zeros(n_airlines+5,1); % Aircraft/Airline Total Passengers
+Airline_Seats = zeros(n_airlines+5,1); % Aircraft/Airline Total Seats
 
 % Iterating through all entries of T100
 for k = 1:n_T100
@@ -118,11 +119,26 @@ for k = 1:n_T100
 
 end
 
-% Computing the cumulative metrics
+% Computing the cumulative metrics (all airlines)
 Airline_RPMs(end,1) = sum(Airline_RPMs); 
 Airline_ASMs(end,1) = sum(Airline_ASMs); 
 Airline_Passengers(end,1) = sum(Airline_Passengers);
 Airline_Seats(end,1) = sum(Airline_Seats); 
+
+% Computing the cumulative metrics (airline sub-class)
+airline_class = {'FSC','Hybrid','ULCC','Regional'};
+for k_airline_class = 1:4
+
+    % Identifying the airline class index
+    class_In = find(strcmp(char(airline_class(k_airline_class)),AirlineCodes{:,3}) == 1);
+    
+    % Populating the matrices
+    Airline_RPMs(n_airlines+k_airline_class,1) = sum(Airline_RPMs(class_In,1));
+    Airline_ASMs(n_airlines+k_airline_class,1) = sum(Airline_ASMs(class_In,1));
+    Airline_Passengers(n_airlines+k_airline_class,1) = sum(Airline_Passengers(class_In,1));
+    Airline_Seats(n_airlines+k_airline_class,1) = sum(Airline_Seats(class_In,1));
+    
+end
 
 % Eliminating NaN entries
 Airline_RPMs(isnan(Airline_RPMs)) = 0;
@@ -134,11 +150,11 @@ Airline_Seats(isnan(Airline_Seats)) = 0;
 % -------------------------- From the P1_2 Data -------------------------- %
 
 % Processed Airline datasets
-Airline_Unnormalized_Revenue = zeros(n_airlines+1,12); % Airline Unnormalized Decomposed Revenue
-Airline_Revenue_per_ASM = zeros(n_airlines+1,12); % Airline Decomposed Revenue per Available Seat Miles
-Airline_Revenue_per_Seat = zeros(n_airlines+1,12); % Airline Decomposed Revenue per Seat
-Airline_Revenue_per_RPM = zeros(n_airlines+1,12); % Airline Decomposed Revenue per Revenue Passenger Miles
-Airline_Revenue_per_Passenger = zeros(n_airlines+1,12); % Airline Decomposed Revenue per Passenger
+Airline_Unnormalized_Revenue = zeros(n_airlines+5,12); % Airline Unnormalized Decomposed Revenue
+Airline_Revenue_per_ASM = zeros(n_airlines+5,12); % Airline Decomposed Revenue per Available Seat Miles
+Airline_Revenue_per_Seat = zeros(n_airlines+5,12); % Airline Decomposed Revenue per Seat
+Airline_Revenue_per_RPM = zeros(n_airlines+5,12); % Airline Decomposed Revenue per Revenue Passenger Miles
+Airline_Revenue_per_Passenger = zeros(n_airlines+5,12); % Airline Decomposed Revenue per Passenger
 
 % Iterating through all entries of P1_2
 for k = 1:n_P1_2
@@ -162,9 +178,20 @@ for k = 1:n_P1_2
 
 end
 
-% Computing the cumulative metrics
+% Computing the cumulative metrics (all airlines)
 Airline_Unnormalized_Revenue(end,:) = sum(Airline_Unnormalized_Revenue,1); 
 Airline_Unnormalized_Revenue(:,11) = Airline_Unnormalized_Revenue(:,12) - Airline_Unnormalized_Revenue(:,10); % Excluding transport-related
+
+% Computing the cumulative metrics (airline sub-class)
+for k_airline_class = 1:4
+
+    % Identifying the airline class index
+    class_In = find(strcmp(char(airline_class(k_airline_class)),AirlineCodes{:,3}) == 1);
+    
+    % Populating the matrices
+    Airline_Unnormalized_Revenue(n_airlines+k_airline_class,:) = sum(Airline_Unnormalized_Revenue(class_In,:),1);
+    
+end
 
 % Computing the normalized metrics
 for k = 1:12
@@ -174,21 +201,21 @@ for k = 1:12
     Airline_Revenue_per_Passenger(:,k) =round(Airline_Unnormalized_Revenue(:,k)./Airline_Passengers,2);
 end
 
-% Eliminating NaN entries
-Airline_Revenue_per_ASM(isnan(Airline_Revenue_per_ASM)) = 0;
-Airline_Revenue_per_Seat(isnan(Airline_Revenue_per_Seat)) = 0;
-Airline_Revenue_per_RPM(isnan(Airline_Revenue_per_RPM)) = 0;
-Airline_Revenue_per_Passenger(isnan(Airline_Revenue_per_Passenger)) = 0;
+% Eliminating NaN and Inf entries
+Airline_Revenue_per_ASM(isnan(Airline_Revenue_per_ASM)) = 0; Airline_Revenue_per_ASM(isinf(Airline_Revenue_per_ASM)) = 0;
+Airline_Revenue_per_Seat(isnan(Airline_Revenue_per_Seat)) = 0; Airline_Revenue_per_Seat(isinf(Airline_Revenue_per_Seat)) = 0;
+Airline_Revenue_per_RPM(isnan(Airline_Revenue_per_RPM)) = 0; Airline_Revenue_per_RPM(isinf(Airline_Revenue_per_RPM)) = 0;
+Airline_Revenue_per_Passenger(isnan(Airline_Revenue_per_Passenger)) = 0; Airline_Revenue_per_Passenger(isinf(Airline_Revenue_per_Passenger)) = 0;
 
 
 % -------------------------- From the P6 Data -------------------------- %
 
 % Processed Airline datasets
-Airline_Unnormalized_Cost = zeros(n_airlines+1,12); % Airline Unnormalized Decomposed Administrative Cost
-Airline_Cost_per_ASM = zeros(n_airlines+1,12); % Airline Decomposed Administrative Cost per Available Seat Miles
-Airline_Cost_per_Seat = zeros(n_airlines+1,12); % Airline Decomposed Administrative Cost per Seat
-Airline_Cost_per_RPM = zeros(n_airlines+1,12); % Airline Decomposed Administrative Cost per Revenue Passenger Miles
-Airline_Cost_per_Passenger = zeros(n_airlines+1,12); % Airline Decomposed Administrative Cost per Passenger
+Airline_Unnormalized_Cost = zeros(n_airlines+5,12); % Airline Unnormalized Decomposed Administrative Cost
+Airline_Cost_per_ASM = zeros(n_airlines+5,12); % Airline Decomposed Administrative Cost per Available Seat Miles
+Airline_Cost_per_Seat = zeros(n_airlines+5,12); % Airline Decomposed Administrative Cost per Seat
+Airline_Cost_per_RPM = zeros(n_airlines+5,12); % Airline Decomposed Administrative Cost per Revenue Passenger Miles
+Airline_Cost_per_Passenger = zeros(n_airlines+5,12); % Airline Decomposed Administrative Cost per Passenger
 
 % Iterating through all entries of P6
 for k = 1:n_P6
@@ -212,10 +239,21 @@ for k = 1:n_P6
 
 end
 
-% Computing the cumulative metrics
+% Computing the cumulative metrics (all airlines)
 Airline_Unnormalized_Cost(end,:) = sum(Airline_Unnormalized_Cost,1); 
 Airline_Unnormalized_Cost(:,3) = Airline_Unnormalized_Cost(:,3) - Airline_Unnormalized_Cost(:,2); % Subtracting Fuels from Materials
 Airline_Unnormalized_Cost(:,11) = Airline_Unnormalized_Cost(:,12) - Airline_Unnormalized_Cost(:,10); % Excluding transport-related
+
+% Computing the cumulative metrics (airline sub-class)
+for k_airline_class = 1:4
+
+    % Identifying the airline class index
+    class_In = find(strcmp(char(airline_class(k_airline_class)),AirlineCodes{:,3}) == 1);
+    
+    % Populating the matrices
+    Airline_Unnormalized_Cost(n_airlines+k_airline_class,:) = sum(Airline_Unnormalized_Cost(class_In,:),1);
+    
+end
 
 % Computing the normalized metrics
 for k = 1:12
@@ -226,20 +264,20 @@ for k = 1:12
 end
 
 % Eliminating NaN entries
-Airline_Cost_per_ASM(isnan(Airline_Cost_per_ASM)) = 0;
-Airline_Cost_per_Seat(isnan(Airline_Cost_per_Seat)) = 0;
-Airline_Cost_per_RPM(isnan(Airline_Cost_per_RPM)) = 0;
-Airline_Cost_per_Passenger(isnan(Airline_Cost_per_Passenger)) = 0;
+Airline_Cost_per_ASM(isnan(Airline_Cost_per_ASM)) = 0; Airline_Cost_per_ASM(isinf(Airline_Cost_per_ASM)) = 0;
+Airline_Cost_per_Seat(isnan(Airline_Cost_per_Seat)) = 0; Airline_Cost_per_Seat(isinf(Airline_Cost_per_Seat)) = 0;
+Airline_Cost_per_RPM(isnan(Airline_Cost_per_RPM)) = 0; Airline_Cost_per_RPM(isinf(Airline_Cost_per_RPM)) = 0;
+Airline_Cost_per_Passenger(isnan(Airline_Cost_per_Passenger)) = 0; Airline_Cost_per_Passenger(isinf(Airline_Cost_per_Passenger)) = 0;
 
 
 % -------------------------- From the P10 Data -------------------------- %
 
 % Processed Airline datasets
-Airline_Employee_Breakdown = zeros(n_airlines+1,17); % Airline Employee Breakdown
-ASMs_per_Employee = zeros(n_airlines+1,1); % Available Seat Miles per Employee
-Labor_Cost_per_Employee = zeros(n_airlines+1,12); % Labor Cost per Employee
-Revenue_per_Employee = zeros(n_airlines+1,12); % Revenue per Employee
-ASMs_per_Labor_Cost = zeros(n_airlines+1,12); % Available Seat Miles per Labor Cost
+Airline_Employee_Breakdown = zeros(n_airlines+5,17); % Airline Employee Breakdown
+ASMs_per_Employee = zeros(n_airlines+5,1); % Available Seat Miles per Employee
+Labor_Cost_per_Employee = zeros(n_airlines+5,12); % Labor Cost per Employee
+Revenue_per_Employee = zeros(n_airlines+5,12); % Revenue per Employee
+ASMs_per_Labor_Cost = zeros(n_airlines+5,12); % Available Seat Miles per Labor Cost
 
 % Iterating through all entries of P6
 for k = 1:n_P10
@@ -263,9 +301,20 @@ for k = 1:n_P10
 
 end
 
-% Computing the cumulative metrics
+% Computing the cumulative metrics (all airlines)
 Airline_Employee_Breakdown(end,:) = sum(Airline_Employee_Breakdown,1); 
 Airline_Employee_Breakdown(:,16) = Airline_Employee_Breakdown(:,17) - Airline_Employee_Breakdown(:,15); % Excluding transport-related
+
+% Computing the cumulative metrics (airline sub-class)
+for k_airline_class = 1:4
+
+    % Identifying the airline class index
+    class_In = find(strcmp(char(airline_class(k_airline_class)),AirlineCodes{:,3}) == 1);
+    
+    % Populating the matrices
+    Airline_Employee_Breakdown(n_airlines+k_airline_class,:) = sum(Airline_Employee_Breakdown(class_In,:),1);
+    
+end
 
 % Computing the normalized metrics
 ASMs_per_Employee = round(Airline_ASMs./Airline_Employee_Breakdown(:,16));
@@ -309,7 +358,7 @@ Airline_Profitability_Aggregated = [Airline_Unnormalized_Revenue(:,11) - Airline
 %% ----------------- Step 3: Creating the output tables ----------------- %
 
 % Creating the table labels
-airline_names = [AirlineCodes{:,2};'All Airlines'];
+airline_names = [AirlineCodes{:,2};'FSC';'Hybrid';'ULCC';'Regional';'All Airlines'];
 names_Cost = {'Salaries & Benefits','Fuel','Materials (excl. Fuel)',...
                           'Services','Landing Fees','Rentals','Depreciation',...
                           'Amortization','Other Expenses','Transport-related Expenses',...
@@ -402,7 +451,7 @@ if sum(Save_Tables == 10) > 0, writetable(Revenue_Passengers_Table,['Revenue_per
 
 if sum(Save_Tables == 11) > 0, writetable(Employee_Breakdown_Table,['Employees_by_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (11)
 if sum(Save_Tables == 12) > 0, writetable(ASMs_Employee_Table,['ASMs_per_Employee_by_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (12)
-if sum(Save_Tables == 13) > 0, writetable(Costs_Employee_Table,['Labor_Cost_per_Employee_by_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (13)
+if sum(Save_Tables == 13) > 0, writetable(Cost_Employee_Table,['Labor_Cost_per_Employee_by_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (13)
 if sum(Save_Tables == 14) > 0, writetable(Revenue_Employee_Table,['Revenue_per_Employee_by_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (14)
 if sum(Save_Tables == 15) > 0, writetable(ASMs_Cost_Table,['ASMs_per_Labor_Cost_by_Airline_',num2str(year),'.xlsx'],'Sheet',1,'WriteRowNames',true), end % (15)
 

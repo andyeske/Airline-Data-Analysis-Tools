@@ -30,8 +30,8 @@
 % (12) Average Passenger Trip Length (mi): APTL_by_Aircraft_and_Airline.xlsx
 
 % Fuel Consumption Tables (Standard Tables):
-% (13) Average Fuel Intensity per ASMs (L/ASMs): Fuel_Consumed_per_ASMs_Aircraft_and_Airline.xlsx
-% (14) Average Fuel Intensity per Distance (L/mi): Fuel_Consumed_per_Distance_Aircraft_and_Airline.xlsx
+% (13) Average Fuel Intensity per ASMs (L/ASMs): Fuel_Consumed_per_ASMs_by_Aircraft_and_Airline.xlsx
+% (14) Average Fuel Intensity per Distance (L/mi): Fuel_Consumed_per_Distance_by_Aircraft_and_Airline.xlsx
 
 % Aircraft Operating Costs (AOC) Tables (Standard Tables):
 % (15) AOC per Block Hour (USD$/block-hr): AOC_per_Block_Hour_by_Aircraft_and_Airline.xlsx
@@ -60,39 +60,47 @@
 % ------------------------- USER DEFINED INPUTS ------------------------- %
 % ----------------------------------------------------------------------- %
 
-% To generate (26) and (27), the USER must specify two parameters, which
+% To generate (26) and (27), the USER must specify a few parameters, which
 % include:
 
 % Please input the Desired Airline: 
-% --> The aircraft-specific results (26) will correspond only to values of 
-% this airline. You can use the table "Airline Codes" available in 
+% --> The results of Table (26) will correspond only to values of 
+% this airline. 
+% --> You can use the table "Airline Codes" available in 
 % https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set 
-% of 24 US airlines available for selection.
+% of 23 US airlines available for selection.
+% --> Writing Desired_Airline = 'All_Airlines' returns the aggregated 
+% results for all airlines in the US.
+% --> Similarly, writing Desired_Airline = 'FSC', 'Hybrid', 'ULCC', or 
+% 'Regional' returns the aggregated results for the set of Full Service
+% Carriers, Hybrid Low-Cost Carriers, Ultra Low-Cost Carriers, and
+% Regional Airlines, respectively. The airline classification can be 
+% found on the "Airline Codes" table.
 % Desired_Airline = 'American';
 Desired_Airline = 'All Airlines';
 
 % Please input the Desired Aircraft: 
-% --> The airline-specific results (27) will correspond only to values of 
-% this aircraft type. You can use the table "Aircraft Codes" available in 
+% --> The results of Table (27) will correspond only to values of 
+% this aircraft type. 
+% --> You can use the table "Aircraft Codes" available in 
 % https://github.com/andyeske/Airline-Data-Analysis-Tools to find the set 
 % of 46 aircraft types available for selection.
+% --> Writing Desired_Aircraft = 'All_Aircaft' returns the aggregated 
+% results for all aircraft in the US.
 % Desired_Aircraft = 'A320';
 Desired_Aircraft = 'All Aircraft';
 
 % Finally, please select the desired table indeces to save:
-%Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
-Save_Tables = [23,24,25];
+Save_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27];
+%Save_Tables = [23,24,25];
 %Save_Tables = [20,21];
 %Save_Tables = [];
 
 % Notes:
-% a) Writing Desired_Aircraft = 'All_Aircaft' or 
-% Desired_Airline = 'All_Airlines' returns the aggregated results for all 
-% aircraft and airlines in the US, respectively.
-% b) The aggregated results are also returned whenever a non-existing 
+% a) The aggregated results are also returned whenever a non-existing 
 % airline or aircraft are inputted in Desired_Aircraft or Desired_Airline.
-% c) Writing [] in Save_Tables will not save any tables.
-% d) APAT can be easily modified to produce more outputs than (1) - (21).
+% b) Writing [] in Save_Tables will not save any tables.
+% c) APAT can be easily modified to produce more outputs than (1) - (21).
 
 % ----------------------------------------------------------------------- %
 % ----------------- DO NOT MODIFY CODE FROM HERE ONWARDS ---------------- %
@@ -149,14 +157,14 @@ Distance = T100{:,1}.*T100{:,4}; % Departures * Distance
 Seat_Hours = T100{:,2}.*T100{:,5}./T100{:,1}./60; % Seats * Ramp to Ramp Time / Departures / 60 (minutes)
 
 % Processed Aircraft/Airline datasets
-Aircraft_Airline_Block_Hours = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Block Hours
-Aircraft_Airline_RPMs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total RPMs
-Aircraft_Airline_ASMs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total ASMs
-Aircraft_Airline_Departures = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Departures
-Aircraft_Airline_Distance_Flown = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Distance Flown
-Aircraft_Airline_Passengers = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Passengers
-Aircraft_Airline_Seats = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Seats
-Aircraft_Airline_Seat_Hours = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Seat Hours
+Aircraft_Airline_Block_Hours = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Block Hours
+Aircraft_Airline_RPMs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total RPMs
+Aircraft_Airline_ASMs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total ASMs
+Aircraft_Airline_Departures = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Departures
+Aircraft_Airline_Distance_Flown = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Distance Flown
+Aircraft_Airline_Passengers = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Passengers
+Aircraft_Airline_Seats = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Seats
+Aircraft_Airline_Seat_Hours = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Seat Hours
 
 % Iterating through all entries of T100
 for k = 1:n_T100
@@ -186,7 +194,7 @@ for k = 1:n_T100
 
 end
 
-% Computing the cumulative metrics
+% Computing the cumulative metrics (all airlines)
 Aircraft_Airline_Block_Hours(end,:) = sum(Aircraft_Airline_Block_Hours,1); Aircraft_Airline_Block_Hours(:,end) = sum(Aircraft_Airline_Block_Hours,2);
 Aircraft_Airline_RPMs(end,:) = sum(Aircraft_Airline_RPMs,1); Aircraft_Airline_RPMs(:,end) = sum(Aircraft_Airline_RPMs,2);
 Aircraft_Airline_ASMs(end,:) = sum(Aircraft_Airline_ASMs,1); Aircraft_Airline_ASMs(:,end) = sum(Aircraft_Airline_ASMs,2);
@@ -195,6 +203,25 @@ Aircraft_Airline_Distance_Flown(end,:) = sum(Aircraft_Airline_Distance_Flown,1);
 Aircraft_Airline_Passengers(end,:) = sum(Aircraft_Airline_Passengers,1); Aircraft_Airline_Passengers(:,end) = sum(Aircraft_Airline_Passengers,2);
 Aircraft_Airline_Seats(end,:) = sum(Aircraft_Airline_Seats,1); Aircraft_Airline_Seats(:,end) = sum(Aircraft_Airline_Seats,2);
 Aircraft_Airline_Seat_Hours(end,:) = sum(Aircraft_Airline_Seat_Hours,1); Aircraft_Airline_Seat_Hours(:,end) = sum(Aircraft_Airline_Seat_Hours,2);
+
+% Computing the cumulative metrics (airline sub-class)
+airline_class = {'FSC','Hybrid','ULCC','Regional'};
+for k_airline_class = 1:4
+
+    % Identifying the airline class index
+    class_In = find(strcmp(char(airline_class(k_airline_class)),AirlineCodes{:,3}) == 1);
+    
+    % Populating the matrices
+    Aircraft_Airline_Block_Hours(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Block_Hours(:,class_In),2);
+    Aircraft_Airline_RPMs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_RPMs(:,class_In),2); 
+    Aircraft_Airline_ASMs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_ASMs(:,class_In),2); 
+    Aircraft_Airline_Departures(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Departures(:,class_In),2); 
+    Aircraft_Airline_Distance_Flown(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Distance_Flown(:,class_In),2); 
+    Aircraft_Airline_Passengers(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Passengers(:,class_In),2); 
+    Aircraft_Airline_Seats(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Seats(:,class_In),2); 
+    Aircraft_Airline_Seat_Hours(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Seat_Hours(:,class_In),2); 
+
+end
 
 % Computing the remainder of the Aircraft/Airline datasets
 Aircraft_Airline_LFs = round(100*Aircraft_Airline_RPMs./Aircraft_Airline_ASMs,2); % RPMs / ASMs
@@ -215,26 +242,26 @@ Aircraft_Airline_ASLs(isnan(Aircraft_Airline_ASLs)) = 0;
 Aircraft_Airline_Seats_per_Departure(isnan(Aircraft_Airline_Seats_per_Departure)) = 0;
 Aircraft_Airline_APTLs(isnan(Aircraft_Airline_APTLs)) = 0;
 
-% -------------------------- From the P5_2 Data -------------------------- %
-Days_Assigned = P5_2{:,48};
-Fuel_Consumed = P5_2{:,49};
+%% -------------------------- From the P5_2 Data -------------------------- %
+Days_Assigned = P5_2{:,48}; Days_Assigned(isnan(Days_Assigned)) = 0;
+Fuel_Consumed = P5_2{:,49}; Fuel_Consumed(isnan(Fuel_Consumed)) = 0;
 % Aircraft Operating Cost breakdown, using the categorization from Table 4-3 of
 % https://www.faa.gov/sites/faa.gov/files/regulations_policies/policy_guidance/benefit_cost/econ-value-section-4-op-costs.pdf
 P5_2_Data = P5_2{:,1:52}; P5_2_Data(isnan(P5_2_Data) == 1) = 0;
-Fuel_Vec = [7,8,15]; Fuel_Costs = sum(P5_2_Data(:,Fuel_Vec),2);
+Fuel_Vec = [7,8,15]; Fuel_Costs = sum(P5_2_Data(:,Fuel_Vec),2); Fuel_Costs(isnan(Fuel_Costs)) = 0;
 Maintenance_Vec = [18,19,20,21,22,23,24,25,26,27,28]; Maintenance_Costs = sum(P5_2_Data(:,Maintenance_Vec),2);
 Crew_Vec = [1,2,3,4,12,14]; Crew_Costs = sum(P5_2_Data(:,Crew_Vec),2);
 Ownership_Vec = [6,11,9,30,32,33,34,35,36,37,39,40]; Ownership_Costs = sum(P5_2_Data(:,Ownership_Vec),2);
 Other_Vec = [5,10,13,16]; Other_Costs = sum(P5_2_Data(:,Other_Vec),2);
 
 % Processed Aircraft/Airline datasets
-Aircraft_Airline_Days_Assigned = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Days Assigned
-Aircraft_Airline_Fuel_Consumed = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Fuel Consumed
-Aircraft_Airline_Fuel_Costs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Fuel Costs
-Aircraft_Airline_Maintenance_Costs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Maintenance Costs
-Aircraft_Airline_Crew_Costs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Crew Costs
-Aircraft_Airline_Ownership_Costs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Ownership Costs
-Aircraft_Airline_Other_Costs = zeros(n_aircraft+1,n_airlines+1); % Aircraft/Airline Total Other Costs
+Aircraft_Airline_Days_Assigned = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Days Assigned
+Aircraft_Airline_Fuel_Consumed = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Fuel Consumed
+Aircraft_Airline_Fuel_Costs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Fuel Costs
+Aircraft_Airline_Maintenance_Costs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Maintenance Costs
+Aircraft_Airline_Crew_Costs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Crew Costs
+Aircraft_Airline_Ownership_Costs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Ownership Costs
+Aircraft_Airline_Other_Costs = zeros(n_aircraft+1,n_airlines+5); % Aircraft/Airline Total Other Costs
 
 % Iterating through all entries of P5_2
 for k = 1:n_P5_2
@@ -263,7 +290,7 @@ for k = 1:n_P5_2
 
 end
 
-% Computing the cumulative metrics
+% Computing the cumulative metrics (all airlines)
 Aircraft_Airline_Days_Assigned(end,:) = sum(Aircraft_Airline_Days_Assigned,1); Aircraft_Airline_Days_Assigned(:,end) = sum(Aircraft_Airline_Days_Assigned,2);
 Aircraft_Airline_Fuel_Consumed(end,:) = sum(Aircraft_Airline_Fuel_Consumed,1); Aircraft_Airline_Fuel_Consumed(:,end) = sum(Aircraft_Airline_Fuel_Consumed,2);
 Aircraft_Airline_Fuel_Costs(end,:) = sum(Aircraft_Airline_Fuel_Costs,1); Aircraft_Airline_Fuel_Costs(:,end) = sum(Aircraft_Airline_Fuel_Costs,2);
@@ -272,6 +299,25 @@ Aircraft_Airline_Crew_Costs(end,:) = sum(Aircraft_Airline_Crew_Costs,1); Aircraf
 Aircraft_Airline_Ownership_Costs(end,:) = sum(Aircraft_Airline_Ownership_Costs,1); Aircraft_Airline_Ownership_Costs(:,end) = sum(Aircraft_Airline_Ownership_Costs,2);
 Aircraft_Airline_Other_Costs(end,:) = sum(Aircraft_Airline_Other_Costs,1); Aircraft_Airline_Other_Costs(:,end) = sum(Aircraft_Airline_Other_Costs,2);
 Aircraft_Airline_AOC = Aircraft_Airline_Fuel_Costs + Aircraft_Airline_Maintenance_Costs + Aircraft_Airline_Crew_Costs + Aircraft_Airline_Ownership_Costs + Aircraft_Airline_Other_Costs;
+
+% Computing the cumulative metrics (airline sub-class)
+for k_airline_class = 1:4
+
+    % Identifying the airline class index
+    class_In = find(strcmp(char(airline_class(k_airline_class)),AirlineCodes{:,3}) == 1);
+
+    % Populating the matrices
+    Aircraft_Airline_Days_Assigned(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Days_Assigned(:,class_In),2);
+    Aircraft_Airline_Fuel_Consumed(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Fuel_Consumed(:,class_In),2);
+    Aircraft_Airline_Fuel_Costs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Fuel_Costs(:,class_In),2);
+    Aircraft_Airline_Maintenance_Costs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Maintenance_Costs(:,class_In),2);
+    Aircraft_Airline_Crew_Costs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Crew_Costs(:,class_In),2);
+    Aircraft_Airline_Ownership_Costs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Ownership_Costs(:,class_In),2);
+    Aircraft_Airline_Other_Costs(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_Other_Costs(:,class_In),2);
+    Aircraft_Airline_AOC(:,n_airlines+k_airline_class) = sum(Aircraft_Airline_AOC(:,class_In),2);
+
+
+end
 
 % Eliminating NaN entries
 Aircraft_Airline_Days_Assigned(isnan(Aircraft_Airline_Days_Assigned)) = 0;
@@ -370,7 +416,7 @@ Airline_Aggregated_v3 = [Aircraft_Airline_ASLs(Desired_Aircraft_In,:)',... % (9)
 %% ----------------- Step 3: Creating the output tables ----------------- %
 
 % Creating the table labels
-airline_names = [AirlineCodes{:,2};'All Airlines'];
+airline_names = [AirlineCodes{:,2};'FSC';'Hybrid';'ULCC';'Regional';'All Airlines'];
 aircraft_names = [AircraftCodes{:,2};'All Aircraft'];
 aggregated_names = {'RPMs';'ASMs';'ASMs per Day';'Seats per Departure';'Departures';'Departures per Day';...
                     'Block Hours per Day';'LFs';'ASLs';'AOC per Block Hours';'AOC per Seat Hours';'AOC per ASMs'};
