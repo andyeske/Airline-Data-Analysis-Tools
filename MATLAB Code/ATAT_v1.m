@@ -14,12 +14,12 @@
 % To generate the plots, the USER must specify a few parameters, which
 % include:
 
-% Please input the Desired Tables: 
-% --> These correspond to the output tables from APAT and AFAT, which are 
-% listed below.
-% --> The inputs appear below this list.
+% Please input the desired variables to visualize: 
+% --> These correspond to the output variables/tables from APAT and AFAT, 
+% which are listed below.
+% --> The user inputs appear below this list.
 
-% APAT:
+% APAT (17 variables):
 % (1) Total Revenue Passenger Miles (RPMs)
 % (2) Total Available Seat Miles (ASMs)
 % (3) Total Number of Passengers
@@ -38,17 +38,21 @@
 % (16) AOC per Seat Hour (USD$/seat-hr)
 % (17) AOC per ASMs (USD$/ASM)
 
-% AFAT:
-% (1) Unnormalized Decomposed Administrative Cost (USD$)
-% (2) Decomposed Administrative Cost per Available Seat Miles (USD$/ASM)
-% (3) Decomposed Administrative Cost per Seat (USD$)
-% (4) Decomposed Administrative Cost per Revenue Passenger Miles (USD$/RPM)
-% (5) Decomposed Administrative Cost per Passenger (USD$)
-% (6) Unnormalized Decomposed Revenue (USD$)
-% (7) Decomposed Revenue per Available Seat Miles (USD$/ASM)
-% (8) Decomposed Revenue per Seat (USD$)
-% (9) Decomposed Revenue per Revenue Passenger Miles (USD$/RPM)
-% (10) Decomposed Revenue per Passenger (USD$)
+% AFAT (19 variables):
+% (1) Total (excl. Transport-related) Cost (USD$)
+% (2) Total (excl. Transport-related) Cost per Available Seat Miles (USD$/ASM)
+% (2.1) Labor Cost per Available Seat Miles (USD$/ASM)
+% (2.2) Fuel Cost per Available Seat Miles (USD$/ASM)
+% (3) Total (excl. Transport-related) Cost per Seat (USD$)
+% (4) Total (excl. Transport-related) Cost per Revenue Passenger Miles (USD$/RPM)
+% (5) Total (excl. Transport-related) Cost per Passenger (USD$)
+% (6) Total (excl. Transport-related) Revenue (USD$)
+% (7) Total (excl. Transport-related) Revenue per Available Seat Miles (USD$/ASM)
+% (7.1) Scheduled Passengers Revenue per Available Seat Miles (USD$/ASM)
+% (7.2) Baggage Fees Revenue per Available Seat Miles (USD$/ASM)
+% (8) Total (excl. Transport-related) Revenue per Seat (USD$)
+% (9) Total (excl. Transport-related) Revenue per Revenue Passenger Miles (USD$/RPM)
+% (10) Total (excl. Transport-related) Revenue per Passenger (USD$)
 % (11) Employee Breakdown
 % (12) Available Seat Miles per Employee (ASMs)
 % (13) Labor Cost per Employee (USD$)
@@ -56,10 +60,10 @@
 % (15) Available Seat Miles per Labor Cost (ASMs/USD$)
 
 % Please input the Tool Name:
-Tool_Name = 'APAT';
+Tool_Name = 'AFAT';
 % Please input the Desired Tables corresponding to the selected tool:
 %Desired_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-Desired_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+Desired_Tables = [7.1,7.2];
 
 % Please input the Desired Airline: 
 % --> The trends shown will correspond to this airline.
@@ -75,7 +79,7 @@ Desired_Tables = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 % found on the "Airline Codes" table.
 % --> It it possible to visualize the results from more than one airline 
 % simultaneously, by writing their names in the vector below.
-Desired_Airline = {'American','FSC','All Airlines'};
+Desired_Airline = {'American','United','Delta','Regional','All Airlines'};
 
 % Please input the Desired Aircraft: 
 % --> This is only applicable if Tool_Name = 'APAT' was selected.
@@ -226,43 +230,55 @@ for k_plot = 1:n_selected_tables
             % Importing the table
             if table_number == 1 % (1)
                 imported_results = readtable(['AFAT Outputs/Cost Tables/',num2str(k_year),'/Administrative_Cost_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Unnormalized Decomposed Administrative Cost';
-                y_str = {'Decomposed Administrative Cost','(USD$)'};
-            elseif table_number == 2 % (2)  
+                name_str = 'Total (excl. Transport-related) Cost';
+                y_str = {'Total (excl. Transport-related) Cost','(USD$)'};
+            elseif sum(table_number == [2,2.1,2.2]) > 0 % (2)  
                 imported_results = readtable(['AFAT Outputs/Cost Tables/',num2str(k_year),'/Administrative_CASM_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Administrative Cost per Available Seat Miles';
+                if table_number == 2
+                    name_str = 'Total (excl. Transport-related) Cost per Available Seat Miles';
+                elseif table_number == 2.1
+                    name_str = 'Labor Cost per Available Seat Miles';
+                elseif table_number == 2.2
+                    name_str = 'Fuel Cost per Available Seat Miles';
+                end
                 y_str = {'Cost per Available Seat Miles','(USD$/ASM)'};
             elseif table_number == 3 % (3)
                 imported_results = readtable(['AFAT Outputs/Cost Tables/',num2str(k_year),'/Administrative_Cost_per_Seat_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Administrative Cost per Seat';
+                name_str = 'Total (excl. Transport-related) Cost per Seat';
                 y_str = {'Cost per Seat','(USD$)'};
             elseif table_number == 4 % (4)
                 imported_results = readtable(['AFAT Outputs/Cost Tables/',num2str(k_year),'/Administrative_Cost_per_RPM_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Administrative Cost per Revenue Passenger Miles';
+                name_str = 'Total (excl. Transport-related) Cost per Revenue Passenger Miles';
                 y_str = {'Cost per Revenue Passenger Miles','(USD$/RPM)'};
             elseif table_number == 5 % (5)
                 imported_results = readtable(['AFAT Outputs/Cost Tables/',num2str(k_year),'/Administrative_Cost_per_Passenger_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Administrative Cost per Passenger';
+                name_str = 'Total (excl. Transport-related) Cost per Passenger';
                 y_str = {'Cost per Passenger','(USD$)'};
             elseif table_number == 6 % (6)
                 imported_results = readtable(['AFAT Outputs/Revenue Tables/',num2str(k_year),'/Revenue_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Unnormalized Decomposed Revenue';
+                name_str = 'Total (excl. Transport-related) Revenue';
                 y_str = {'Decomposed Revenue','(USD$)'};
-            elseif table_number == 7 % (7) 
+            elseif sum(table_number == [7,7.1,7.2]) > 0 % (7) 
                 imported_results = readtable(['AFAT Outputs/Revenue Tables/',num2str(k_year),'/RASM_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Revenue per Available Seat Miles';
+                if table_number == 7
+                    name_str = 'Total (excl. Transport-related) Revenue per Available Seat Miles';
+                elseif table_number == 7.1
+                    name_str = 'Scheduled Passengers Revenue per Available Seat Miles';
+                elseif table_number == 7.2
+                    name_str = 'Baggage Fees Revenue per Available Seat Miles';
+                end
                 y_str = {'Revenue per Available Seat Miles','(USD$/ASM)'};
             elseif table_number == 8 % (8)
                 imported_results = readtable(['AFAT Outputs/Revenue Tables/',num2str(k_year),'/Revenue_per_Seat_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Revenue per Seat';
+                name_str = 'Total (excl. Transport-related) Revenue per Seat';
                 y_str = {'Revenue per Seat','(USD$)'};
             elseif table_number == 9 % (9)
                 imported_results = readtable(['AFAT Outputs/Revenue Tables/',num2str(k_year),'/Revenue_per_RPM_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Revenue per Revenue Passenger Miles';
+                name_str = 'Total (excl. Transport-related) Revenue per Revenue Passenger Miles';
                 y_str = {'Revenue per Revenue Passenger Miles','(USD$/RPM)'};
             elseif table_number == 10 % (10)
                 imported_results = readtable(['AFAT Outputs/Revenue Tables/',num2str(k_year),'/Revenue_per_Passenger_by_Airline_',num2str(k_year),'.xlsx']);
-                name_str = 'Decomposed Revenue per Passenger';
+                name_str = 'Total (excl. Transport-related) Revenue per Passenger';
                 y_str = {'Revenue per Passenger','(USD$)'};
             elseif table_number == 11 % (11)
                 imported_results = readtable(['AFAT Outputs/Employee Tables/',num2str(k_year),'/Employees_by_Airline_',num2str(k_year),'.xlsx']);
@@ -296,7 +312,17 @@ for k_plot = 1:n_selected_tables
     
                 % Extracting the values from the table
                 if table_number < 12
-                    plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,end-1};
+                    if table_number == 2.1
+                        plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,2};
+                    elseif table_number == 2.2
+                        plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,3};
+                    elseif table_number == 7.1
+                        plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,2};
+                    elseif table_number == 7.2
+                        plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,5};
+                    else
+                        plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,end-1};
+                    end
                 else
                     plot_results(k_airline,year_counter) = imported_results{Desired_Airline_In,end};
                 end
@@ -309,6 +335,7 @@ for k_plot = 1:n_selected_tables
      
     end % End Year Iteration
 
+    % Creating the figure
     figure
     for k_airline = 1:n_selected_airlines
         plot(Desired_Years,plot_results(k_airline,:),'LineWidth',1)
