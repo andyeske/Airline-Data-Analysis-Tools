@@ -345,7 +345,7 @@ After downloading the folders, place them under the same folder, alongside the `
 * Setting ```Tool_Name = 'APAT'```, ```Desired_Tables = [11]```, ```Desired_Airline = {'American','Delta','United','JetBlue','Spirit','All Airlines'}```, ```Desired_Aircraft = 'A320'``` and ```Desired_Years = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025]``` will result in **Figure 2**, which displays the Average Stage Length (i.e., an APAT metric) for six airlines during the 2015 - 2025 period.
 
 <p align="left">
-<img src="https://github.com/andyeske/Airline-Data-Analysis-Tools/blob/main/Output%20Data%20Tables/AEAT%20Outputs/American%20Airlines%20-%20A320%20Family.jpg" width="500"> 
+<img src="https://github.com/andyeske/Airline-Data-Analysis-Tools/blob/main/Output%20Data%20Tables/ATAT%20Outputs/Average%20Stage%20Length%20-%20A320.jpg" width="500"> 
 
 **Figure 2:** _Average Stage Length of the A320 of six different airlines_.
 </p>
