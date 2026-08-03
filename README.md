@@ -30,7 +30,7 @@ These tools employ publicly available data from the US Department of Transportat
 * (1) ```Total Revenue Passenger Miles (RPMs)``` | _RPMs_by_Aircraft_and_Airline_20XX.xlsx_
 * (2) ```Total Available Seat Miles (ASMs)``` | _ASMs_by_Aircraft_and_Airline_20XX.xlsx_
 * (3) ```Total Number of Passengers``` | _Passengers_by_Aircraft_and_Airline_20XX.xlsx_
-% (4) ```Total Number of Seats``` | _Seats_by_Aircraft_and_Airline_20XX.xlsx_
+* (4) ```Total Number of Seats``` | _Seats_by_Aircraft_and_Airline_20XX.xlsx_
 * (5) ```Average Load Factor (RPMs/ASMs)``` | _LFs_by_Aircraft_and_Airline_20XX.xlsx_ 
 * (6) ```Total Departures (# departures)``` | _Departures_by_Aircraft_and_Airline_20XX.xlsx_ 
 
