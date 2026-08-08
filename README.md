@@ -469,7 +469,7 @@ Note: By default, these data tables are computed using annual T100 data. ```AAAT
 
 After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```AAAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
 
-**User Actions:** ```AAAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AAAT``` to generate custom data tables. For example, setting ```Desired_Airline = 'United'``` and ```Desired_Aircraft = 'B777-200'``` will display the set of routes operated by United's B777-200, alongside the above-listed metrics.
+**User Actions:** ```AAAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AAAT``` to generate custom data tables. For example, setting ```Desired_Airline = 'United'``` and ```Desired_Aircraft = 'B787-8'``` will display the set of routes operated by United's B787-8, alongside the above-listed metrics.
 
 ```
 % ----------------------------------------------------------------------- %
