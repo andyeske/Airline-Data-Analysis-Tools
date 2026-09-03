@@ -129,7 +129,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 
 ["Cost" Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs/Cost%20Tables):
 * (1) ```Unnormalized Decomposed Administrative Cost (USD$)``` | _Administrative_Cost_by_Airline_20XX.xlsx_
-* (2) ```Decomposed Administrative Cost per Available Seat Miles (USD$/ASM) | _Administrative_CASM_by_Airline_20XX.xlsx_
+* (2) ```Decomposed Administrative Cost per Available Seat Miles (USD$/ASM)``` | _Administrative_CASM_by_Airline_20XX.xlsx_
 * (3) ```Decomposed Administrative Cost per Seat (USD$)``` | _Administrative_Cost_per_Seat_by_Airline_20XX.xlsx_
 * (4) ```Decomposed Administrative Cost per Revenue Passenger Miles (USD$/RPM)``` |
 _Administrative_Cost_per_RPM_by_Airline_20XX.xlsx_
