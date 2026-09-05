@@ -80,7 +80,7 @@ Note: By default, these data tables are computed at the yearly level (i.e., 20XX
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Project/tree/main/Input%20Data%20Tables).
 
-After downloading the two BTS datasets, unzip them, and rename them to "T100 Data.csv" and "P5.2 Data.csv", respectively. Place all four datasets under the same folder, alongside the ```APAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+After downloading the two BTS datasets, unzip them, and rename them to "T100 Data.csv" and "P5.2 Data.csv", respectively. Place all four datasets under the same folder, alongside the ```APAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code) folder.
 
 **User Actions:** ```APAT``` can be run as a MATLAB script, with minimal user action. Data tables (1) - (25) are generated with any user input, while (26) - (27) can be customized to display results specific to a single airline in (27) (see an [American example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/American_Aircraft_Cumulative_Statistics.xlsx)), or specific to a single aircraft type in (26) (see an [A320 example](https://github.com/andyeske/Airline-Data-Project/blob/main/Output%20Data%20Tables/APAT%20Outputs/Aggregated%20Tables/A320_Airline_Cumulative_Statistics.xlsx)). To do so, the user must modify the ```Desired_Aircraft``` and ```Desired_Airline``` fields in the "USER DEFINED INPUTS" section of ```APAT```, which is copied below. For example, setting ```Desired_Aircraft = 'A320'``` will generate a Table (26) whose results will be specific to the A320, as opposed to the average in the US fleet of aircraft.
 
@@ -168,7 +168,7 @@ Note: By default, these data tables are computed at the yearly level (i.e., 20XX
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the BTS datasets, unzip them, and rename them to "T100 Data.csv", "P1.2 Data.csv", "P6 Data.csv" and "P10 Data.csv", respectively. Place all six datasets under the same folder, alongside the ```AFAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
+After downloading the BTS datasets, unzip them, and rename them to "T100 Data.csv", "P1.2 Data.csv", "P6 Data.csv" and "P10 Data.csv", respectively. Place all six datasets under the same folder, alongside the ```AFAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code) folder.
 
 **User Actions:** ```AFAT``` can be run as a MATLAB script, with minimal user action. 
 
@@ -218,7 +218,7 @@ Note: By default, these data tables are computed using quarterly data, but then 
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the BTS dataset, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code).
+After downloading the BTS dataset, unzip it, and rename it to "DB1B Data.csv". Place all three datasets under the same folder, alongside the ```AMAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Project/tree/main/MATLAB%20Code) folder.
 
 **User Actions:** ```AMAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AMAT``` to generate custom data tables. For example, setting ```Desired_Airport = 'BOS'```, ```Number_Markets = 20```, ```Desired_Sorting = 2``` and ```Desired_Airline = 'United'``` will generate tables (1) - (5) showing the top 20 ODs out of Boston (origin) by PDEW, tables (6) - (10) showing the top 20 ODs into Boston (destination). All of these tables also report revenue, RPMs, average fare, and yield for all other airlines, but the ODs are sorted specifically for United.
 
@@ -290,7 +290,7 @@ Note: By default, these data tables are computed using annual T100 data. ```ARAT
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```ARAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
+After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```ARAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code) folder.
 
 **User Actions:** ```ARAT``` can be run as a MATLAB script, with minimal user action. However, the user can modify some of the fields under the "USER DEFINED INPUTS" section of ```ARAT``` to generate custom data tables. For example, setting ```Origin_Airport = 'BOS'``` will display the top routes out of that airport. Specifying ```Number_Routes = 20``` will generate tables that show only the top 20 routes. Finally, inputting ```Destination_Airport = 'MIA'``` will amend the route from ```Origin_Airport``` to ```Destination_Airport``` should it not be listed already in the top 20 routes.
 
@@ -335,7 +335,7 @@ Lastly, the user can specify which tables to save locally by modifying the ```Sa
 * Generate the desired data using APAT or AFAT.
 * Directly download the [APAT](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/APAT%20Outputs) and [AFAT](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Output%20Data%20Tables/AFAT%20Outputs) folders containing processed data for the 2015 - 2025 period.
 
-After downloading the folders, place them under the same folder, alongside the ```ATAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code). For every new year of data generated, it is important to maintain the same folder structure as currently formatter within the APAT and AFAT folders for the ```ATAT``` code to work.
+After downloading the folders, place them under the same folder, alongside the ```ATAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code) folder. For every new year of data generated, it is important to maintain the same folder structure as currently formatter within the APAT and AFAT folders for the ```ATAT``` code to work.
 
 **User Actions:** ```ATAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```ATAT``` to generate custom plots. 
 
@@ -554,7 +554,7 @@ Note: By default, these data tables are computed using annual T100 data. ```AAAT
 * Aircraft Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 * Airline Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```AAAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
+After downloading the BTS dataset, unzip it, and rename it to "T100 Data.csv". Place all three datasets under the same folder, alongside the ```AAAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code) folder.
 
 **User Actions:** ```AAAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AAAT``` to generate custom data tables. For example, setting ```Desired_Airline = 'United'``` and ```Desired_Aircraft = 'B787-8'``` will display the set of routes operated by United's B787-8, alongside the above-listed metrics.
 
@@ -595,7 +595,7 @@ Lastly, the user can specify whether to save a table or not locally by modifying
 * [FAA Aircraft Registration Database](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download).
 * Tail Registry Aircraft and Engines Codes dataset, from [Input Data Tables](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/Input%20Data%20Tables).
 
-After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "DEREG.txt" files. Place these two text files, as well as the excel file, under the same folder, alongside the ```AEAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code).
+After downloading the FAA dataset, unzip it, and extract the "MASTER.txt" and "DEREG.txt" files. Place these two text files, as well as the excel file, under the same folder, alongside the ```AEAT``` code, which can be found in the [MATLAB Code](https://github.com/andyeske/Airline-Data-Analysis-Tools/tree/main/MATLAB%20Code) folder.
 
 **User Actions:** ```AEAT``` can be run as a MATLAB script, with minimal user action. The user can modify some of the fields under the "USER DEFINED INPUTS" section of ```AEAT``` to generate custom plots. 
 
