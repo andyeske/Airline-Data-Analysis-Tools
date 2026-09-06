@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Network Analysis Tool</title>
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: #667eea;
+            color: white;
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-style: italic;
+        }
+        
+        .loading-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .loading-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: #667eea;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .debug-info {
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.8em;
+            font-family: monospace;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .filters-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f0f4ff;
+            border-radius: 6px;
+            border: 2px solid #667eea;
+            align-items: start;
+        }
+        
+        .filters-container.hidden-loading {
+            visibility: hidden;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            height: 45px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .instruction-message {
+            grid-column: 1 / -1;
+            padding: 15px;
+            background-color: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            color: #667eea;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+        
+        .instruction-message.hidden {
+            display: none;
+        }
+        
+        .instruction-message.show {
+            display: block;
+        }
+        
+        .metrics-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metrics-container.hidden-content {
+            display: none;
+        }
+        
+        .metric-box {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .metric-box h3 {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 8px;
+        }
+        
+        .metric-box p {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .map-controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 40px 10px 40px;
+            justify-content: center;
+        }
+        
+        .map-controls.hidden-content {
+            display: none;
+        }
+        
+        .zoom-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .zoom-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .zoom-button:active {
+            transform: translateY(0);
+        }
+        
+        #mapPlot {
+            width: calc(100% - 80px);
+            height: 600px;
+            margin: 0 40px 20px 40px;
+        }
+        
+        .map-note {
+            text-align: center;
+            margin: 0 40px 20px 40px;
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .status-bar {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #667eea;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Airline Network Analysis Tool</h1>
+        
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-title">Loading Data...</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressPercentage">0</span>% Complete
+            </div>
+            <div class="debug-info" id="debugInfo">Starting...</div>
+        </div>
+        
+        <div class="filters-container hidden-loading" id="filtersContainer">
+            <div class="filter-group">
+                <label for="yearSelect">Select year</label>
+                <select id="yearSelect" onchange="onYearChange()">
+                    <option value="">Loading years...</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="airlineSelect">Select airline</label>
+                <select id="airlineSelect" onchange="onAirlineChange()">
+                    <option value="">Select a year first</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="airportInput">Write 3-letter airport code (optional)</label>
+                <input type="text" id="airportInput" maxlength="3" 
+                       onchange="onFilterChange()" placeholder="e.g., DEN, ATL" 
+                       style="text-transform: uppercase;">
+            </div>
+            
+            <div class="instruction-message show" id="instructionMessage">
+                Select a year and airline to display the map
+            </div>
+        </div>
+        
+        <div class="metrics-container hidden-content" id="metricsContainer">
+            <div class="metric-box">
+                <h3 id="metricsHeader">Key Metrics</h3>
+                <p><strong>Total unique routes (uni-directional):</strong> <span id="uniqueRoutes">-</span></p>
+                <p><strong>Total departures:</strong> <span id="totalDepartures">-</span> (thousand)</p>
+            </div>
+        </div>
+
+        <div class="status-bar" id="statusBar"></div>
+        <div class="map-controls hidden-content" id="mapControls">
+            <button class="zoom-button" onclick="zoomIn()">Zoom In</button>
+            <button class="zoom-button" onclick="zoomOut()">Zoom Out</button>
+        </div>
+        <div id="mapPlot"></div>
+        <div class="map-note">Airports shown in bold had 100+ daily movements and/or 10+ uni-directional routes during the selected year.</div>
+    </div>
+
+    <script>
+        const AIRLINE_NAMES = {
+            'AA': 'American', 'AS': 'Alaska', 'B6': 'JetBlue', 'C5': 'CommuteAir',
+            'CO': 'Continental', 'DL': 'Delta', 'EA': 'Eastern', 'EV': 'Atlantic Southeast',
+            'F9': 'Frontier', 'FL': 'AirTran', 'G4': 'Allegiant', 'G7': 'GoJet',
+            'HA': 'Hawaiian', 'HP': 'America West', 'JI': 'Midway', 'KN': 'Morris Air',
+            'MQ': 'Envoy', 'MX': 'Breeze', 'NK': 'Spirit', 'NW': 'Northwest',
+            'OH': 'PSA', 'OO': 'SkyWest', 'PA': 'Pan Am', 'PT': 'Piedmont',
+            'QQ': 'Reno Air', 'QX': 'Horizon', 'SY': 'Sun Country', 'TW': 'TWA',
+            'UA': 'United', 'US': 'US Airways', 'VX': 'Virgin America', 'WN': 'Southwest',
+            'XP': 'Avelo', 'XE': 'ExpressJet', 'YV': 'Mesa', 'YX': 'Republic',
+            '9E': 'Endeavor', '9L': 'Colgan Air', 'AQ': 'Aloha', 'AX': 'Trans States',
+            'J7': 'ValuJet', 'OE': 'Comair', 'OW': 'Executive', 'RP': 'Chautauqua',
+            'TZ': 'ATA', 'XJ': 'Mesaba', 'ZW': 'Air Wisconsin'
+        };
+
+        const CONTINENTAL_BOUNDS = { minLat: 24, maxLat: 50, minLon: -130, maxLon: -65 };
+        const DEFAULT_LAT_RANGE = [24, 50];
+        const DEFAULT_LON_RANGE = [-130, -65];
+        
+        let currentZoomLevel = 1;
+        let currentLatRange = [...DEFAULT_LAT_RANGE];
+        let currentLonRange = [...DEFAULT_LON_RANGE];
+
+        let dataCache = {
+            networkData: null,
+            coordinates: {},
+            availableYears: [],
+            airlinesByYear: {},
+            yearColumnName: null,
+            airlineColumnName: null,
+            originColumnName: null,
+            destColumnName: null,
+            departuresColumnName: null
+        };
+
+        const debugInfo = document.getElementById('debugInfo');
+
+        function log(msg) {
+            console.log(msg);
+            debugInfo.textContent += msg + '\n';
+            debugInfo.scrollTop = debugInfo.scrollHeight;
+        }
+
+        function updateProgress(pct) {
+            document.getElementById('progressBar').style.width = pct + '%';
+            document.getElementById('progressPercentage').textContent = pct;
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingContainer').style.display = 'none';
+            document.getElementById('filtersContainer').classList.remove('hidden-loading');
+        }
+
+        function isInContinentalUS(lat, lon) {
+            return lat >= CONTINENTAL_BOUNDS.minLat && lat <= CONTINENTAL_BOUNDS.maxLat && 
+                   lon >= CONTINENTAL_BOUNDS.minLon && lon <= CONTINENTAL_BOUNDS.maxLon;
+        }
+
+        function cleanAirlineCode(rawCode) {
+            // Remove any parenthetical content like "(1)" from airline codes
+            return rawCode.trim().split('(')[0].trim();
+        }
+
+        function zoomIn() {
+            currentZoomLevel *= 1.5;
+            const latCenter = (currentLatRange[0] + currentLatRange[1]) / 2;
+            const lonCenter = (currentLonRange[0] + currentLonRange[1]) / 2;
+            const latRange = (DEFAULT_LAT_RANGE[1] - DEFAULT_LAT_RANGE[0]) / currentZoomLevel;
+            const lonRange = (DEFAULT_LON_RANGE[1] - DEFAULT_LON_RANGE[0]) / currentZoomLevel;
+            
+            currentLatRange = [latCenter - latRange / 2, latCenter + latRange / 2];
+            currentLonRange = [lonCenter - lonRange / 2, lonCenter + lonRange / 2];
+            
+            Plotly.relayout('mapPlot', {
+                'geo.lataxis.range': currentLatRange,
+                'geo.lonaxis.range': currentLonRange
+            });
+        }
+
+        function zoomOut() {
+            currentZoomLevel /= 1.5;
+            const latCenter = (currentLatRange[0] + currentLatRange[1]) / 2;
+            const lonCenter = (currentLonRange[0] + currentLonRange[1]) / 2;
+            const latRange = (DEFAULT_LAT_RANGE[1] - DEFAULT_LAT_RANGE[0]) / currentZoomLevel;
+            const lonRange = (DEFAULT_LON_RANGE[1] - DEFAULT_LON_RANGE[0]) / currentZoomLevel;
+            
+            currentLatRange = [latCenter - latRange / 2, latCenter + latRange / 2];
+            currentLonRange = [lonCenter - lonRange / 2, lonCenter + lonRange / 2];
+            
+            Plotly.relayout('mapPlot', {
+                'geo.lataxis.range': currentLatRange,
+                'geo.lonaxis.range': currentLonRange
+            });
+        }
+
+        async function loadData() {
+            try {
+                const github = "https://raw.githubusercontent.com/andyeske/Airline-Data-Analysis-Tools/main";
+                
+                log("Step 1: Loading network data...");
+                updateProgress(10);
+                
+                const networkUrl = `${github}/Input%20Data%20Tables/ANAT%20Datasets/US%20Airline%20Networks.csv`;
+                const response = await fetch(networkUrl);
+                const csv = await response.text();
+                const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+                dataCache.networkData = parsed.data;
+                log(`✓ Parsed ${parsed.data.length} routes`);
+                
+                if (parsed.data.length > 0) {
+                    const colNames = Object.keys(parsed.data[0]);
+                    colNames.forEach(col => {
+                        const lower = col.toLowerCase();
+                        if (lower.includes('year')) dataCache.yearColumnName = col;
+                        if (lower.includes('airline')) dataCache.airlineColumnName = col;
+                        if (lower.includes('origin')) dataCache.originColumnName = col;
+                        if (lower.includes('dest')) dataCache.destColumnName = col;
+                        if (lower.includes('departures') || lower.includes('frequencies')) dataCache.departuresColumnName = col;
+                    });
+                }
+                
+                updateProgress(30);
+                log("Step 2: Loading coordinates...");
+                
+                const coordUrl = `${github}/Input%20Data%20Tables/US%20Airports%20Coordinates.csv`;
+                const coordResponse = await fetch(coordUrl);
+                const coordCsv = await coordResponse.text();
+                const coordParsed = Papa.parse(coordCsv, { header: true, skipEmptyLines: true });
+                
+                coordParsed.data.forEach(row => {
+                    const vals = Object.values(row);
+                    if (vals.length >= 3) {
+                        const airport = String(vals[0]).toUpperCase().trim();
+                        const lat = parseFloat(vals[1]);
+                        const lon = parseFloat(vals[2]);
+                        if (!isNaN(lat) && !isNaN(lon)) {
+                            dataCache.coordinates[airport] = { lat, lon };
+                        }
+                    }
+                });
+                log(`✓ Loaded ${Object.keys(dataCache.coordinates).length} airports`);
+                
+                updateProgress(60);
+                log("Step 3: Building mappings...");
+                
+                const yearsSet = new Set();
+                const airlinesByYearMap = {};
+                
+                dataCache.networkData.forEach(route => {
+                    if (route && route[dataCache.yearColumnName] && route[dataCache.airlineColumnName]) {
+                        const year = parseInt(route[dataCache.yearColumnName]);
+                        const rawAirline = route[dataCache.airlineColumnName];
+                        const airline = cleanAirlineCode(rawAirline);
+                        if (!isNaN(year)) {
+                            yearsSet.add(year);
+                            if (!airlinesByYearMap[year]) airlinesByYearMap[year] = new Set();
+                            airlinesByYearMap[year].add(airline);
+                        }
+                    }
+                });
+                
+                dataCache.availableYears = Array.from(yearsSet).sort((a, b) => a - b);
+                for (let year in airlinesByYearMap) {
+                    dataCache.airlinesByYear[year] = Array.from(airlinesByYearMap[year]).sort();
+                }
+                
+                updateProgress(80);
+                
+                const yearSelect = document.getElementById('yearSelect');
+                yearSelect.innerHTML = '<option value="">Select a year</option>';
+                dataCache.availableYears.forEach(year => {
+                    const opt = document.createElement('option');
+                    opt.value = year;
+                    opt.text = year;
+                    yearSelect.appendChild(opt);
+                });
+                
+                updateProgress(100);
+                log("✓ Data loaded successfully");
+                setTimeout(() => { hideLoading(); }, 500);
+                
+            } catch (error) {
+                log(`✗ Error: ${error.message}`);
+            }
+        }
+
+        function onYearChange() {
+            const year = document.getElementById('yearSelect').value;
+            const airlineSelect = document.getElementById('airlineSelect');
+            
+            if (!year) {
+                airlineSelect.innerHTML = '<option value="">Select a year first</option>';
+                return;
+            }
+            
+            const airlines = dataCache.airlinesByYear[parseInt(year)] || [];
+            const sorted = airlines.map(a => {
+                const code = a.trim();
+                const name = AIRLINE_NAMES[code] || code;
+                return {code: code, name: name};
+            }).sort((a, b) => a.name.localeCompare(b.name));
+            
+            airlineSelect.innerHTML = '<option value="">Select airline</option><option value="Total">Total (All Airlines)</option>';
+            sorted.forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item.code;
+                opt.text = item.name;
+                airlineSelect.appendChild(opt);
+            });
+        }
+
+        function onAirlineChange() {
+            document.getElementById('airportInput').value = '';
+            onFilterChange();
+        }
+
+        function onFilterChange() {
+            const year = document.getElementById('yearSelect').value;
+            const airline = document.getElementById('airlineSelect').value;
+            const airport = document.getElementById('airportInput').value;
+            
+            if (!year || !airline) {
+                document.getElementById('instructionMessage').classList.remove('hidden');
+                document.getElementById('instructionMessage').classList.add('show');
+                return;
+            }
+            
+            document.getElementById('instructionMessage').classList.add('hidden');
+            document.getElementById('instructionMessage').classList.remove('show');
+            generateMap(year, airline, airport);
+        }
+
+        function generateMap(year, airline, airport) {
+            try {
+                // Show metrics and controls on first valid selection
+                document.getElementById('metricsContainer').classList.remove('hidden-content');
+                document.getElementById('mapControls').classList.remove('hidden-content');
+                
+                // Reset zoom level when generating new map
+                currentZoomLevel = 1;
+                currentLatRange = [...DEFAULT_LAT_RANGE];
+                currentLonRange = [...DEFAULT_LON_RANGE];
+                
+                let filtered = dataCache.networkData.filter(route => {
+                    if (!route[dataCache.yearColumnName] || !route[dataCache.airlineColumnName]) return false;
+                    if (parseInt(route[dataCache.yearColumnName]) !== parseInt(year)) return false;
+                    
+                    const rawAirline = route[dataCache.airlineColumnName];
+                    const cleanedAirline = cleanAirlineCode(rawAirline);
+                    if (airline !== 'Total' && cleanedAirline !== airline) return false;
+                    
+                    const origin = String(route[dataCache.originColumnName] || '').toUpperCase().trim();
+                    const dest = String(route[dataCache.destColumnName] || '').toUpperCase().trim();
+                    
+                    if (!origin || !dest) return false;
+                    if (!dataCache.coordinates[origin] || !dataCache.coordinates[dest]) return false;
+                    
+                    if (airport && origin !== airport && dest !== airport) return false;
+                    
+                    return true;
+                });
+                
+                if (filtered.length === 0) {
+                    document.getElementById('mapPlot').innerHTML = '<div style="padding:20px; color:red;">No routes found: please check the airport spelling and/or change the year, airline or airport.</div>';
+                    return;
+                }
+                
+                // Get airline name
+                let airlineName = airline === 'Total' ? 'Total (All Airlines)' : (AIRLINE_NAMES[airline] || airline);
+                
+                // Get airport display value
+                let airportDisplay = airport ? airport + ' Network' : 'Full Network';
+                
+                // Update metrics header
+                document.getElementById('metricsHeader').textContent = `Key Metrics | ${year} - ${airlineName} - ${airportDisplay}`;
+                
+                // Count routes per origin airport
+                const routesPerAirport = {};
+                filtered.forEach(route => {
+                    const origin = String(route[dataCache.originColumnName] || '').toUpperCase().trim();
+                    const dest = String(route[dataCache.destColumnName] || '').toUpperCase().trim();
+                    const key = origin + '-' + dest;
+                    
+                    if (!routesPerAirport[origin]) {
+                        routesPerAirport[origin] = new Set();
+                    }
+                    routesPerAirport[origin].add(dest);
+                });
+                
+                // Convert sets to count
+                for (let apt in routesPerAirport) {
+                    routesPerAirport[apt] = routesPerAirport[apt].size;
+                }
+                
+                // Track departures per route for line thickness
+                const routeDepartures = {};
+                filtered.forEach(route => {
+                    const origin = String(route[dataCache.originColumnName] || '').toUpperCase().trim();
+                    const dest = String(route[dataCache.destColumnName] || '').toUpperCase().trim();
+                    const key = origin < dest ? origin + '-' + dest : dest + '-' + origin;
+                    const deps = parseInt(route[dataCache.departuresColumnName] || 0);
+                    
+                    if (!routeDepartures[key]) {
+                        routeDepartures[key] = 0;
+                    }
+                    routeDepartures[key] += deps;
+                });
+                
+                const maxDepsRoute = Math.max(...Object.values(routeDepartures));
+                
+                // Create separate traces for each route
+                const routeTraces = [];
+                const routeKeys = {};
+                
+                filtered.forEach(route => {
+                    const origin = String(route[dataCache.originColumnName] || '').toUpperCase().trim();
+                    const dest = String(route[dataCache.destColumnName] || '').toUpperCase().trim();
+                    const key = origin < dest ? origin + '-' + dest : dest + '-' + origin;
+                    
+                    // Only add once per unique route
+                    if (routeKeys[key]) return;
+                    routeKeys[key] = true;
+                    
+                    const o = dataCache.coordinates[origin];
+                    const d = dataCache.coordinates[dest];
+                    
+                    // Line width proportional to departures (0.5 to 5)
+                    const lineWidth = 0.5 + (4.5 * routeDepartures[key] / maxDepsRoute);
+                    
+                    routeTraces.push({
+                        lon: [o.lon, d.lon],
+                        lat: [o.lat, d.lat],
+                        mode: 'lines',
+                        line: { 
+                            width: lineWidth,
+                            color: 'rgba(102, 126, 234, 0.6)' 
+                        },
+                        type: 'scattergeo',
+                        showlegend: false,
+                        hoverinfo: 'skip'
+                    });
+                });
+                
+                // Build airports
+                const airportDeps = {};
+                filtered.forEach(route => {
+                    const origin = String(route[dataCache.originColumnName] || '').toUpperCase().trim();
+                    const dest = String(route[dataCache.destColumnName] || '').toUpperCase().trim();
+                    const deps = parseInt(route[dataCache.departuresColumnName] || 0);
+                    
+                    airportDeps[origin] = (airportDeps[origin] || 0) + deps;
+                    airportDeps[dest] = (airportDeps[dest] || 0) + deps;
+                });
+                
+                const aptLons = [];
+                const aptLats = [];
+                const aptSizes = [];
+                const aptTexts = [];
+                
+                const aptValues = Object.values(airportDeps);
+                const maxDeps = aptValues.length > 0 ? Math.max(...aptValues) : 1;
+                
+                for (let apt in airportDeps) {
+                    const coord = dataCache.coordinates[apt];
+                    const size = 5 + 15 * (airportDeps[apt] / maxDeps);
+                    aptLons.push(coord.lon);
+                    aptLats.push(coord.lat);
+                    aptSizes.push(size);
+                    
+                    // Show label if: 10+ unique routes, high departures (>36500 = ~100 per day), or selected airport
+                    const uniqueRoutes = routesPerAirport[apt] || 0;
+                    const showLabel = uniqueRoutes >= 10 || airportDeps[apt] > 36500 || apt === airport;
+                    aptTexts.push(showLabel ? apt : '');
+                }
+                
+                const layout = {
+                    geo: {
+                        center: { lat: 39, lon: -98 },
+                        projection: { type: 'mercator' },
+                        lataxis: { range: currentLatRange },
+                        lonaxis: { range: currentLonRange },
+                        showland: true,
+                        landcolor: 'rgb(200, 200, 200)',
+                        showocean: true,
+                        oceancolor: 'rgb(230, 245, 255)',
+                        coastcolor: 'rgb(204, 204, 204)',
+                        countrycolor: 'rgb(200, 200, 200)',
+                        countrywidth: 1.5,
+                        showlakes: true,
+                        lakecolor: 'rgb(199, 235, 251)',
+                        showcountries: true,
+                        resolution: 50,
+                        domain: { x: [0, 1], y: [0, 1] }
+                    },
+                    margin: { l: 0, r: 0, t: 0, b: 0, pad: 0 },
+                    paper_bgcolor: 'white',
+                    plot_bgcolor: 'white'
+                };
+                
+                // Choropleth trace to color USA and territories
+                const choroplethTrace = {
+                    type: 'choropleth',
+                    locations: ['USA', 'PRI', 'VIR', 'GUM', 'ASM', 'MNP'],
+                    z: [1, 1, 1, 1, 1, 1],
+                    colorscale: [[0, 'rgb(243, 205, 160)'], [1, 'rgb(243, 205, 160)']],
+                    showscale: false,
+                    marker: { line: { color: 'rgb(200, 200, 200)', width: 1 } },
+                    hoverinfo: 'skip',
+                    showlegend: false
+                };
+                
+                const routeTrace = {
+                    lon: aptLons,
+                    lat: aptLats,
+                    mode: 'markers+text',
+                    marker: { size: aptSizes, color: 'white', line: { width: 2, color: 'gray' } },
+                    text: aptTexts,
+                    textposition: 'top center',
+                    textfont: { size: 12, color: 'black', family: 'Arial Black' },
+                    type: 'scattergeo',
+                    showlegend: false
+                };
+                
+                // Count unique routes as directional (A->B and B->A are different)
+                const uniqueRoutes = new Set();
+                filtered.forEach(r => {
+                    const o = String(r[dataCache.originColumnName] || '').toUpperCase();
+                    const d = String(r[dataCache.destColumnName] || '').toUpperCase();
+                    const key = o + '-' + d;
+                    uniqueRoutes.add(key);
+                });
+                
+                const totalDeps = (filtered.reduce((s, r) => s + parseInt(r[dataCache.departuresColumnName] || 0), 0) / 1000).toFixed(3);
+                
+                document.getElementById('uniqueRoutes').textContent = uniqueRoutes.size;
+                document.getElementById('totalDepartures').textContent = totalDeps;
+                
+                // Combine all traces: choropleth, route traces, and airports
+                const allTraces = [choroplethTrace, ...routeTraces, routeTrace];
+                
+                Plotly.newPlot('mapPlot', allTraces, layout, { responsive: true, displayModeBar: false });
+                
+            } catch (error) {
+                console.error(error);
+                document.getElementById('mapPlot').innerHTML = `<div style="padding:20px; color:red;">${error.message}</div>`;
+            }
+        }
+
+        window.addEventListener('load', loadData);
+    </script>
+</body>
+</html>
